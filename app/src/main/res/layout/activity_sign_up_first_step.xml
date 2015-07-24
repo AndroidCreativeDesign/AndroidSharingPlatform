@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <include layout="@layout/toolbar" />
+
+    <EditText
+        android:id="@+id/id_et_phone_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/enter_phone_number"
+        android:inputType="number"
+        android:maxLength="11" />
+
+
+    <EditText
+        android:id="@+id/id_et_sign_up_first_step_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/enter_sign_in_password"
+        android:inputType="textPassword"
+        android:maxLength="15" />
+
+    <Button
+        android:id="@+id/id_btn_sign_in_first_step_next_step"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/common_pay_button_green"
+        android:text="下一步" />
+
+</LinearLayout>

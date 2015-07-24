@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar" />
+
+
+
+    <EditText
+        android:id="@+id/id_et_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="请输入标题" />
+
+    <!--    <EditText
+            android:id="@+id/id_et_introduce"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/id_et_title"
+            android:hint="请输入介绍" />-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="类型"/>
+    <RadioGroup
+        android:id="@+id/id_rg_radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        >
+
+        <RadioButton
+            android:id="@+id/id_rb_zhaomu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="团队招募"/>
+        <RadioButton
+            android:id="@+id/id_rb_chuangyi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="创意活动"/>
+
+        <RadioButton
+            android:id="@+id/id_rb_miaoxiang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="奇思妙想"/>
+
+        <RadioButton
+            android:id="@+id/id_rb_zhongchou"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="物资筹集"/>
+
+
+    </RadioGroup>
+</LinearLayout>

@@ -1,0 +1,43 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar" />
+
+    <EditText
+        android:id="@+id/id_et_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:imeOptions="actionNext"
+        android:hint="姓名" />
+
+    <EditText
+        android:id="@+id/id_et_student_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:imeOptions="actionNext"
+        android:hint="学号" />
+
+    <EditText
+        android:id="@+id/id_et_class"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:imeOptions="actionNext"
+        android:hint="班级" />
+
+    <EditText
+        android:id="@+id/id_et_phone_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:imeOptions="actionNext"
+        android:hint="手机号" />
+
+    <EditText
+        android:id="@+id/id_et_qq"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="QQ号" />
+
+
+</LinearLayout>

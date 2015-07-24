@@ -1,0 +1,96 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <include layout="@layout/toolbar" />
+
+    <EditText
+        android:id="@+id/id_et_phone_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/enter_phone_number"
+        android:inputType="number"
+        android:maxLength="11" />
+
+    <EditText
+        android:id="@+id/id_et_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/enter_password"
+        android:inputType="textPassword" />
+
+    <TextView
+        android:id="@+id/id_tv_forgot_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:text="@string/forgot_password"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/id_btn_sign_in"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+
+        android:text="@string/sign_in" />
+
+    <Button
+        android:id="@+id/id_btn_sign_up_now"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:gravity="center"
+        android:text="@string/sign_up_now_for_free" />
+
+
+    <RelativeLayout
+        android:id="@+id/id_layout_line"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/id_tv_or"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/or" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="0.1dp"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/id_tv_or"
+            android:layout_toStartOf="@id/id_tv_or"
+
+            android:background="@android:color/white" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="0.1dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/id_tv_or"
+            android:layout_toRightOf="@id/id_tv_or"
+            android:background="@android:color/white" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/id_btn_sign_in_by_weibo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sign_in_by_weibo" />
+
+    <Button
+        android:id="@+id/id_btn_sign_in_by_wchat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sign_in_by_wchat" />
+
+
+</LinearLayout>

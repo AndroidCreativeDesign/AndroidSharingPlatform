@@ -1,0 +1,60 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <!-- Actionbar 颜色  Toolbar设置的是Actionbar的颜色 -->
+      <!--  <item name="colorPrimary">#66cc99</item>-->
+        <!-- 状态栏颜色 -->
+<!--
+        <item name="colorPrimaryDark">#66cc99</item>
+-->
+        <!-- 箭头样式风格 -->
+
+
+
+ <!--
+        <item name="colorPrimary">#2196F3</item>
+        <item name="colorPrimaryDark">#1565C0</item>
+        <item name="colorAccent">#FF3D00</item>
+        <item name="drawerArrowStyle">@style/AppTheme.MyDrawerArrowStyle</item>
+        <item name="colorControlNormal">@android:color/white</item>
+        <item name="android:textColorPrimary">@android:color/white</item>-->
+
+        <!-- Main theme colors -->
+        <!--   your app branding color for the app bar -->
+        <item name="colorPrimary">@color/primary</item>
+        <!--   darker variant for the status bar and contextual app bars -->
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <!--   theme UI controls like checkboxes and text fields -->
+        <item name="colorAccent">@color/accent</item>
+        <item name="drawerArrowStyle">@style/AppTheme.MyDrawerArrowStyle</item>
+        <item name="colorControlNormal">@android:color/white</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
+
+    </style>
+
+
+    <style name="AppTheme.MyDrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <!-- 是否为旋转动画效果 默认是true  false的话，为另外一种动画效果 -->
+        <item name="spinBars">true</item>
+        <!-- icon颜色 -->
+        <item name="color">#FFFFFF</item>
+    </style>
+
+    <style name="Theme.AppCompat.NoActionBar.Fullscreen" parent="AppTheme">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+
+
+    <style name="Widget.CardContent" parent="android:Widget">
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:paddingTop">24dp</item>
+        <item name="android:paddingBottom">24dp</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+</resources>

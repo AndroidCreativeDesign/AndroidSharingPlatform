@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="cn.daixiaodong.myapp" >
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <application
+        android:name=".application.MyApp"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="萌想"
+        android:theme="@style/AppTheme" >
+        <meta-data
+            android:name="leancloud"
+            android:value="LeanCloud" />
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="55a9006167e58ec10b004054" />
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="fir" />
+
+        <service
+            android:name="com.umeng.update.net.DownloadingService"
+            android:process=":DownloadingService" />
+
+        <activity
+            android:name="com.umeng.update.UpdateDialogActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name=".activity.MainActivity_"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.SignInActivity_"
+            android:label="@string/title_activity_sign_in"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.SignUpFirstStepActivity_" />
+        <activity
+            android:name=".activity.SignUpSecondStepActivity_"
+            android:label="@string/title_activity_sign_up_second_step"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.WelcomeActivity_"
+            android:label="@string/title_activity_welcome"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity android:name=".activity.PasswordResetActivity_" />
+        <activity android:name=".activity.DreamDetailActivity_" />
+        <activity android:name=".activity.CreateDreamActivity_" />
+        <activity android:name=".activity.CreateDreamSecondActivity_" />
+        <activity android:name=".activity.CreateDreamThirdActivity_" />
+        <activity android:name="com.avos.avoscloud.feedback.ThreadActivity" />
+
+        <service
+            android:name="com.avos.avoscloud.PushService"
+            android:exported="true" />
+
+        <receiver android:name=".receiver.PushBroadcastReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="cn.daixiaodong.myapp.push" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".activity.SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:screenOrientation="portrait" />
+        <!-- bmob pay sdk activity begin ,please put below code into application tag -->
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name="com.bmob.pay.tool.PayActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent" />
+        <!-- bmob pay sdk activity end -->
+
+        <activity
+            android:name=".activity.ProfileActivity"
+            android:label="@string/title_activity_profile" >
+        </activity>
+        <activity
+            android:name=".activity.SearchActivity"
+            android:label="@string/title_activity_search" >
+        </activity>
+        <activity
+            android:name=".activity.TopicActivity_"
+            android:label="@string/title_activity_topic" >
+        </activity>
+        <activity
+            android:name=".activity.CollegeActivity_"
+            android:label="@string/title_activity_college" >
+        </activity>
+        <activity
+            android:name=".activity.AssociationActivity_"
+            android:label="@string/title_activity_association" >
+        </activity>
+        <activity
+            android:name=".activity.RegistrationInformationActivity_"
+            android:label="@string/title_activity_registration_information" >
+        </activity>
+        <activity
+            android:name=".chat.LeanCloudChat"
+            android:label="@string/title_activity_lean_cloud_chat" >
+        </activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,44 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+
+    <TextView
+        android:id="@+id/id_tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="活动标题" />
+
+    <TextView
+        android:id="@+id/id_tv_join"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/id_tv_title"
+        android:text="目前参与人数" />
+
+    <TextView
+        android:id="@+id/id_tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/id_tv_join"
+        android:text="时间" />
+
+    <TextView
+        android:id="@+id/id_tv_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/id_tv_time"
+        android:text="地点" />
+
+
+    <TextView
+        android:id="@+id/id_tv_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:text="距离开始还有1天" />
+
+
+</RelativeLayout>

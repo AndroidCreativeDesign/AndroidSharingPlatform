@@ -1,0 +1,95 @@
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp"
+    android:paddingTop="8dp"
+    app:cardCornerRadius="2dp">
+
+
+    <TextView
+        android:id="@+id/id_tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:text="title"
+        android:textColor="@android:color/holo_blue_bright"
+        android:textSize="18sp" />
+
+
+    <!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:id="@+id/id_iv_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+
+            android:src="@mipmap/ic_launcher" />
+
+
+        <TextView
+            android:id="@+id/id_tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_toRightOf="@id/id_iv_image"
+            android:maxLines="1"
+            android:padding="8dp"
+            android:text="骑行川藏线"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/id_tv_introduce"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/id_tv_title"
+            android:layout_toRightOf="@id/id_iv_image"
+            android:text="这是一个简短的介绍内容" />
+
+        <TextView
+            android:id="@+id/id_tv_start_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/id_tv_introduce"
+            android:layout_toRightOf="@id/id_iv_image"
+
+            android:text="2014-07-11(今天) 14:00" />
+
+        <TextView
+            android:id="@+id/id_tv_end_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/id_tv_start_date"
+            android:layout_toRightOf="@id/id_iv_image"
+
+            android:text="2014-07-11(今天) 14:00" />
+
+        <TextView
+            android:id="@+id/id_tv_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/id_tv_end_date"
+            android:layout_toRightOf="@id/id_iv_image"
+
+            android:text="组织者：戴小冬    " />
+
+        <TextView
+            android:id="@+id/id_tv_stage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/id_tv_username"
+            android:layout_toRightOf="@id/id_iv_image"
+
+            android:text="阶段：创意阶段" />
+
+
+    </RelativeLayout>-->
+
+
+</android.support.v7.widget.CardView>

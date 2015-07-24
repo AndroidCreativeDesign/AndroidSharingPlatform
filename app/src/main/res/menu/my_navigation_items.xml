@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/action_home"
+            android:checked="true"
+            android:icon="@drawable/ic_home_white_48dp"
+            android:title="首页" />
+
+        <item
+            android:id="@+id/action_collect"
+            android:icon="@drawable/ic_star_white_48dp"
+            android:title="收藏" />
+
+        <item
+            android:id="@+id/action_follow"
+            android:icon="@drawable/ic_favorite_white_48dp"
+            android:title="关注" />
+
+        <item
+            android:id="@+id/action_message"
+            android:icon="@drawable/ic_message_white_48dp"
+            android:title="消息" />
+
+
+    </group>
+
+
+    <item android:title="其他">
+        <menu>
+            <item
+                android:id="@+id/action_feedback"
+                android:icon="@drawable/ic_feedback_white_48dp"
+                android:title="反馈" />
+            <item
+                android:id="@+id/action_settings"
+                android:icon="@drawable/ic_settings_white_48dp"
+                android:title="设置" />
+
+        </menu>
+    </item>
+
+</menu>

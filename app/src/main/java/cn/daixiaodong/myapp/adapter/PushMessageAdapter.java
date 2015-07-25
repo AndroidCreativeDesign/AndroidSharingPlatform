@@ -10,13 +10,15 @@ import android.widget.TextView;
 import java.util.List;
 
 import cn.daixiaodong.myapp.R;
-import cn.daixiaodong.myapp.bean.PushMessage;
+import cn.daixiaodong.myapp.model.PushMessageModel;
 
-
+/**
+ *  推送消息记录列表   Adapter
+ */
 public class PushMessageAdapter extends RecyclerView.Adapter<PushMessageAdapter.MyViewHolder> {
 
     private Context mContext;
-    private List<PushMessage> mDataSet;
+    private List<PushMessageModel> mDataSet;
     private LayoutInflater mLayoutInflater;
     private OnItemClickListener mListener;
 
@@ -25,19 +27,19 @@ public class PushMessageAdapter extends RecyclerView.Adapter<PushMessageAdapter.
         this.mLayoutInflater = LayoutInflater.from(context);
     }
 
-    public PushMessageAdapter(Context context, List<PushMessage> data) {
+    public PushMessageAdapter(Context context, List<PushMessageModel> data) {
         this.mContext = context;
         this.mDataSet = data;
         this.mLayoutInflater = LayoutInflater.from(context);
 
     }
 
-    public void setDataSet(List<PushMessage> data) {
+    public void setDataSet(List<PushMessageModel> data) {
         this.mDataSet = data;
         notifyDataSetChanged();
     }
 
-    public void addData(List<PushMessage> data) {
+    public void addData(List<PushMessageModel> data) {
         this.mDataSet.addAll(0, data);
         this.notifyItemInserted(1);
     }
@@ -45,7 +47,7 @@ public class PushMessageAdapter extends RecyclerView.Adapter<PushMessageAdapter.
     @Override
     public PushMessageAdapter.MyViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
 
-        View view = mLayoutInflater.inflate(R.layout.item_dream, viewGroup, false);
+        View view = mLayoutInflater.inflate(R.layout.item_push_message, viewGroup, false);
         MyViewHolder viewHolder = new MyViewHolder(view);
         return viewHolder;
     }

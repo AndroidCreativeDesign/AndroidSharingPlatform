@@ -7,6 +7,10 @@ import android.view.MenuItem;
 
 import cn.daixiaodong.myapp.R;
 
+
+/**
+ *  设置 界面
+ */
 public class SettingsActivity extends ActionBarActivity {
 
     @Override

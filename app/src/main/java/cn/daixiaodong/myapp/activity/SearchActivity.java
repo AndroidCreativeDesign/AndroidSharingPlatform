@@ -19,13 +19,17 @@ import java.util.List;
 
 import cn.daixiaodong.myapp.R;
 import cn.daixiaodong.myapp.activity.common.BaseActivity;
-import cn.daixiaodong.myapp.adapter.PublishAdapter;
+import cn.daixiaodong.myapp.adapter.UserPublishListAdapter;
 
+
+/**
+ *  搜索界面
+ */
 public class SearchActivity extends BaseActivity {
 
     private ArrayList<AVObject> mData;
 
-    private PublishAdapter mAdapter;
+    private UserPublishListAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +76,7 @@ public class SearchActivity extends BaseActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
         mData = new ArrayList<>();
-        mAdapter = new PublishAdapter(this, mData);
+        mAdapter = new UserPublishListAdapter(this, mData);
         recyclerView.setAdapter(mAdapter);
     }
 

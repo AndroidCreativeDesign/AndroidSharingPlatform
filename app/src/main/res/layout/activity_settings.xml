@@ -5,7 +5,7 @@
     android:orientation="vertical"
     tools:context="cn.daixiaodong.myapp.activity.SettingsActivity">
 
-    <include layout="@layout/toolbar" />
+    <include layout="@layout/include_toolbar" />
 
     <fragment
         android:id="@+id/id_fragment_settings"

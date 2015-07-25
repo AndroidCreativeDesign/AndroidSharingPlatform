@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
 
-    <include layout="@layout/toolbar" />
+    <include layout="@layout/include_toolbar" />
 
     <EditText
         android:id="@+id/id_et_phone_number"

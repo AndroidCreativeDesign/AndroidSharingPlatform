@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
 
-    <include layout="@layout/toolbar" />
+    <include layout="@layout/include_toolbar" />
 
     <android.support.v4.widget.DrawerLayout
 
@@ -26,9 +26,9 @@
             android:layout_height="match_parent"
             android:layout_gravity="start"
             android:background="#FFFFFF"
-            app:headerLayout="@layout/left_menu_header"
+            app:headerLayout="@layout/include_left_menu_header"
             app:itemTextColor="@color/menu_item_text_color"
-            app:menu="@menu/my_navigation_items"
+            app:menu="@menu/menu_navigation"
             app:theme="@style/Widget.Design.TabLayout" />
     </android.support.v4.widget.DrawerLayout>
 </LinearLayout>

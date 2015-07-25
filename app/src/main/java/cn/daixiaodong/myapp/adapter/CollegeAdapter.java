@@ -6,6 +6,9 @@ import android.view.ViewGroup;
 import android.widget.ExpandableListAdapter;
 
 
+/**
+ *  学院列表  Adapter
+ */
 public class CollegeAdapter implements ExpandableListAdapter {
     @Override
     public void registerDataSetObserver(DataSetObserver observer) {

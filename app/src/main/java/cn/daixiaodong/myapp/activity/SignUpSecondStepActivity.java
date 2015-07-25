@@ -17,7 +17,7 @@ import org.androidannotations.annotations.ViewById;
 
 import cn.daixiaodong.myapp.R;
 import cn.daixiaodong.myapp.activity.common.BaseActivity;
-import cn.daixiaodong.myapp.utils.ActivityCollector;
+import cn.daixiaodong.myapp.activity.common.ActivityCollector;
 
 
 /**

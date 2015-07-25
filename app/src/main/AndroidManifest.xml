@@ -53,15 +53,14 @@
             android:label="@string/title_activity_sign_up_second_step"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.WelcomeActivity_"
+            android:name=".activity.SplashActivity_"
             android:label="@string/title_activity_welcome"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".activity.PasswordResetActivity_" />
-        <activity android:name=".activity.DreamDetailActivity_" />
-        <activity android:name=".activity.CreateDreamActivity_" />
-        <activity android:name=".activity.CreateDreamSecondActivity_" />
-        <activity android:name=".activity.CreateDreamThirdActivity_" />
+        <activity android:name=".activity.IdeaDetailActivity_" />
+        <activity android:name=".activity.PublishIdeaActivity_" />
+
         <activity android:name="com.avos.avoscloud.feedback.ThreadActivity" />
 
         <service
@@ -95,7 +94,7 @@
         <!-- bmob pay sdk activity end -->
 
         <activity
-            android:name=".activity.ProfileActivity"
+            android:name=".activity.UserProfileActivity"
             android:label="@string/title_activity_profile" >
         </activity>
         <activity
@@ -103,7 +102,7 @@
             android:label="@string/title_activity_search" >
         </activity>
         <activity
-            android:name=".activity.TopicActivity_"
+            android:name=".activity.AssociationTopicActivity_"
             android:label="@string/title_activity_topic" >
         </activity>
         <activity
@@ -111,7 +110,7 @@
             android:label="@string/title_activity_college" >
         </activity>
         <activity
-            android:name=".activity.AssociationActivity_"
+            android:name=".activity.AssociationDetailActivity_"
             android:label="@string/title_activity_association" >
         </activity>
         <activity

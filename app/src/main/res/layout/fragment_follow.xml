@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout="@layout/view_stub_log_in_tip" />
+        android:layout="@layout/include_log_in_prompt" />
 
 
 </FrameLayout>

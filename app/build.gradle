@@ -71,6 +71,7 @@ dependencies {
     compile 'com.github.rahatarmanahmed:circularprogressview:2.3.2'
     compile files('libs/okhttp-2.4.0.jar')
     compile files('libs/picasso-2.5.2.jar')
+    compile files('libs/xUtils-2.6.14.jar')
 }
 
 apt {

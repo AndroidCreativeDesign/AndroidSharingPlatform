@@ -16,11 +16,10 @@ import org.androidannotations.annotations.ViewById;
 import cn.daixiaodong.myapp.R;
 import cn.daixiaodong.myapp.activity.common.BaseActivity;
 
+
 /**
- * Created by daixiaodong on 15/7/13.
+ *  密码重置界面
  */
-
-
 @EActivity(R.layout.activity_password_reset)
 public class PasswordResetActivity extends BaseActivity {
     @ViewById(R.id.id_et_phone_number)

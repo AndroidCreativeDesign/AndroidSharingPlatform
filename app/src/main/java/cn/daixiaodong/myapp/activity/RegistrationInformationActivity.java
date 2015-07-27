@@ -24,7 +24,9 @@ import java.util.List;
 import cn.daixiaodong.myapp.R;
 import cn.daixiaodong.myapp.activity.common.BaseActivity;
 
-
+/**
+ *  协会报名信息填写界面
+ */
 @EActivity
 public class RegistrationInformationActivity extends BaseActivity {
 
@@ -102,7 +104,7 @@ public class RegistrationInformationActivity extends BaseActivity {
         //noinspection SimplifiableIfStatement
         switch (id) {
             case R.id.action_next:
-                AVObject object = new AVObject("user_association");
+                AVObject object = new AVObject("user_join_association");
                 object.put("name", mName.getText().toString());
                 object.put("studentId", mStudentId.getText().toString());
                 object.put("phoneNum", mPhoneNumber.getText().toString());

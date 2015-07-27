@@ -34,7 +34,8 @@
             android:name="com.umeng.update.UpdateDialogActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
-            android:name=".activity.MainActivity_"
+            android:name=".activity.WelcomeStartActivity"
+            android:label="@string/title_activity_welcome_start"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -53,15 +54,13 @@
             android:label="@string/title_activity_sign_up_second_step"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.WelcomeActivity_"
+            android:name=".activity.SplashActivity_"
             android:label="@string/title_activity_welcome"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".activity.PasswordResetActivity_" />
-        <activity android:name=".activity.DreamDetailActivity_" />
-        <activity android:name=".activity.CreateDreamActivity_" />
-        <activity android:name=".activity.CreateDreamSecondActivity_" />
-        <activity android:name=".activity.CreateDreamThirdActivity_" />
+        <activity android:name=".activity.IdeaDetailActivity_" />
+        <activity android:name=".activity.PublishIdeaActivity_" />
         <activity android:name="com.avos.avoscloud.feedback.ThreadActivity" />
 
         <service
@@ -95,7 +94,7 @@
         <!-- bmob pay sdk activity end -->
 
         <activity
-            android:name=".activity.ProfileActivity"
+            android:name=".activity.UserProfileActivity"
             android:label="@string/title_activity_profile" >
         </activity>
         <activity
@@ -103,7 +102,7 @@
             android:label="@string/title_activity_search" >
         </activity>
         <activity
-            android:name=".activity.TopicActivity_"
+            android:name=".activity.AssociationTopicActivity_"
             android:label="@string/title_activity_topic" >
         </activity>
         <activity
@@ -111,7 +110,7 @@
             android:label="@string/title_activity_college" >
         </activity>
         <activity
-            android:name=".activity.AssociationActivity_"
+            android:name=".activity.AssociationDetailActivity_"
             android:label="@string/title_activity_association" >
         </activity>
         <activity
@@ -121,6 +120,12 @@
         <activity
             android:name=".chat.LeanCloudChat"
             android:label="@string/title_activity_lean_cloud_chat" >
+        </activity>
+        <activity android:name=".activity.MainActivity_" >
+        </activity>
+        <activity
+            android:name=".activity.WelcomeGuideActivity"
+            android:label="@string/title_activity_welcome_guide" >
         </activity>
     </application>
 

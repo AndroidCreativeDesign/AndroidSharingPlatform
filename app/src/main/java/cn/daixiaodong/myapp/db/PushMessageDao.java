@@ -7,7 +7,7 @@ import com.j256.ormlite.dao.Dao;
 import java.sql.SQLException;
 import java.util.List;
 
-import cn.daixiaodong.myapp.bean.PushMessage;
+import cn.daixiaodong.myapp.model.PushMessageModel;
 
 /**
  * Created by daixiaodong on 15/7/23.
@@ -15,7 +15,7 @@ import cn.daixiaodong.myapp.bean.PushMessage;
 public class PushMessageDao {
 
     private Context mContext;
-    private Dao<PushMessage, Integer> mPushMessageDao;
+    private Dao<PushMessageModel, Integer> mPushMessageDao;
     private DatabaseHelper mHelper;
 
 
@@ -23,7 +23,7 @@ public class PushMessageDao {
         this.mContext = context;
         try {
             mHelper = DatabaseHelper.getInstance(context);
-            mPushMessageDao = mHelper.getDao(PushMessage.class);
+            mPushMessageDao = mHelper.getDao(PushMessageModel.class);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -34,24 +34,24 @@ public class PushMessageDao {
     /**
      * 增加一个推送消息
      *
-     * @param pushMessage 推送消息对象
+     * @param pushMessageModel 推送消息对象
      */
-    public void addPushMessage(PushMessage pushMessage) {
+    public void addPushMessage(PushMessageModel pushMessageModel) {
         try {
-            mPushMessageDao.create(pushMessage);
+            mPushMessageDao.create(pushMessageModel);
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
 
-    public List<PushMessage> findPushMessages() {
-        List<PushMessage> pushMessages = null;
+    public List<PushMessageModel> findPushMessages() {
+        List<PushMessageModel> pushMessageModels = null;
         try {
-            pushMessages = mPushMessageDao.queryForAll();
+            pushMessageModels = mPushMessageDao.queryForAll();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return pushMessages;
+        return pushMessageModels;
     }
 }

@@ -26,9 +26,9 @@ import cn.daixiaodong.myapp.utils.NetworkUtil;
 @EActivity(R.layout.activity_sign_in)
 public class SignInActivity extends BaseActivity {
 
-    public final static int LOGIN_REQUEST_CODE = 1111;
-    public final static int LOGIN_SUCCESS_RESULT_CODE = 1112;
-    public final static int LOGIN_CANCEL_RESULT_CODE = 1113;
+    public final static int SIGN_IN_REQUEST_CODE = 1111;
+    public final static int SIGN_IN_SUCCESS_RESULT_CODE = 1112;
+    public final static int SIGN_IN_CANCEL_RESULT_CODE = 1113;
 
 
     @ViewById(R.id.id_tb_toolbar)
@@ -99,7 +99,7 @@ public class SignInActivity extends BaseActivity {
             public void done(AVUser avUser, AVException e) {
                 if (e == null) {
                     showToast("登录成功");
-                    SignInActivity.this.setResult(LOGIN_SUCCESS_RESULT_CODE,getIntent());
+                    SignInActivity.this.setResult(SIGN_IN_SUCCESS_RESULT_CODE,getIntent());
                     finish();
                 } else {
                     e.printStackTrace();
@@ -151,7 +151,7 @@ public class SignInActivity extends BaseActivity {
 
         switch (item.getItemId()){
             case android.R.id.home:
-                SignInActivity.this.setResult(LOGIN_CANCEL_RESULT_CODE, getIntent());
+                SignInActivity.this.setResult(SIGN_IN_CANCEL_RESULT_CODE, getIntent());
                 finish();
                 break;
         }

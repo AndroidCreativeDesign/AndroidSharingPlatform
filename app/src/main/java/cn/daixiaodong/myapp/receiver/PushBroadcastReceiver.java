@@ -19,12 +19,12 @@ import java.util.Iterator;
 import cn.daixiaodong.myapp.R;
 import cn.daixiaodong.myapp.activity.MainActivity;
 import cn.daixiaodong.myapp.activity.MainActivity_;
-import cn.daixiaodong.myapp.bean.PushMessage;
+import cn.daixiaodong.myapp.model.PushMessageModel;
 import cn.daixiaodong.myapp.db.PushMessageDao;
 import cn.daixiaodong.myapp.fragment.SettingsFragment;
 
 /**
- * 接收推送消息的广播接收器
+ * 自定义的接收推送消息广播接收器，替代LeanCloud提供的
  */
 public class PushBroadcastReceiver extends BroadcastReceiver {
     public static final String PUSH_ACTION = "cn.daixiaodong.myapp.push";
@@ -94,7 +94,7 @@ public class PushBroadcastReceiver extends BroadcastReceiver {
 
             if (mMessage != null) {
 
-                PushMessage pushmessage = new PushMessage();
+                PushMessageModel pushmessage = new PushMessageModel();
                 pushmessage.setMessage(mMessage);
                 dao.addPushMessage(pushmessage);
             }

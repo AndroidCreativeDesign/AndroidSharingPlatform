@@ -2,10 +2,8 @@ package cn.daixiaodong.myapp.activity;
 
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -32,11 +30,10 @@ import java.util.ArrayList;
 import cn.daixiaodong.myapp.R;
 import cn.daixiaodong.myapp.activity.common.BaseActivity;
 import cn.daixiaodong.myapp.config.Constants;
-import cn.daixiaodong.myapp.fragment.CollectFragment;
-import cn.daixiaodong.myapp.fragment.FollowFragment;
+import cn.daixiaodong.myapp.fragment.UserCollectFragment;
+import cn.daixiaodong.myapp.fragment.UserFollowFragment;
 import cn.daixiaodong.myapp.fragment.HomeFragment;
-import cn.daixiaodong.myapp.fragment.MessageFragment;
-import cn.daixiaodong.myapp.fragment.SettingsFragment;
+import cn.daixiaodong.myapp.fragment.PushMessageFragment;
 import cn.daixiaodong.myapp.receiver.PushBroadcastReceiver;
 
 
@@ -101,9 +98,6 @@ public class MainActivity extends BaseActivity {
         initToolbar();
         initNav();
         setCurrentFragment("首页", R.id.action_home);
-
-
-
     }
 
     private void initData() {
@@ -186,16 +180,16 @@ public class MainActivity extends BaseActivity {
                 // 收藏
                 case R.id.action_collect:
                     Log.i("tag", "case 1");
-                    mCurrentFragment = new CollectFragment();
+                    mCurrentFragment = new UserCollectFragment();
                     break;
                 // 消息
                 case R.id.action_message:
                     Log.i("tag", "case 2");
-                    mCurrentFragment = new MessageFragment();
+                    mCurrentFragment = new PushMessageFragment();
                     break;
                 case R.id.action_follow:
                     Log.i("tag", "action follow");
-                    mCurrentFragment = new FollowFragment();
+                    mCurrentFragment = new UserFollowFragment();
 
                     break;
             }

@@ -56,4 +56,6 @@
     <string name="title_activity_association">AssociationActivity</string>
     <string name="title_activity_registration_information">RegistrationInformationActivity</string>
     <string name="title_activity_lean_cloud_chat">LeanCloudChat</string>
+    <string name="title_activity_welcome_start">WelcomeStartActivity</string>
+    <string name="title_activity_welcome_guide">WelcomeGuideActivity</string>
 </resources>

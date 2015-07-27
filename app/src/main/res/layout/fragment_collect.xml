@@ -24,14 +24,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout="@layout/network_error" />
+        android:layout="@layout/include_network_error" />
 
     <ViewStub
         android:id="@+id/id_vs_login_in_tip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout="@layout/view_stub_log_in_tip" />
+        android:layout="@layout/include_log_in_prompt" />
 
 
 </RelativeLayout>

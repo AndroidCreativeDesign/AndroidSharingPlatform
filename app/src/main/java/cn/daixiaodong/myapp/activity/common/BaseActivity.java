@@ -7,10 +7,8 @@ import android.widget.Toast;
 
 import com.avos.avoscloud.AVAnalytics;
 
-import cn.daixiaodong.myapp.utils.ActivityCollector;
-
 /**
- * Created by daixiaodong on 15/7/11.
+ *  Activity 基类
  */
 public class BaseActivity extends AppCompatActivity {
 

@@ -16,14 +16,14 @@ import android.view.ViewGroup;
 import com.avos.avoscloud.AVUser;
 
 import cn.daixiaodong.myapp.R;
-import cn.daixiaodong.myapp.activity.CreateDreamActivity_;
+import cn.daixiaodong.myapp.activity.PublishIdeaActivity_;
 import cn.daixiaodong.myapp.activity.SignInActivity;
 import cn.daixiaodong.myapp.adapter.ViewPagerAdapter;
 import cn.daixiaodong.myapp.fragment.common.BaseFragment;
 
 
 /**
- * 首页
+ * 首页Fragment  嵌套3个子Fragment
  */
 public class HomeFragment extends BaseFragment {
 
@@ -75,7 +75,7 @@ public class HomeFragment extends BaseFragment {
                 if (!checkUserStatus()) {
                     SignInActivity_.intent(getActivity()).extra("log_in_toward", 0).start();
                 } else {
-                    CreateDreamActivity_.intent(getActivity()).start();
+                    PublishIdeaActivity_.intent(getActivity()).start();
                 }
                 break;*/
         /*    case R.id.action_search:
@@ -94,9 +94,9 @@ public class HomeFragment extends BaseFragment {
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
         viewPager.setOffscreenPageLimit(3);
-        adapter.addFragment(new DreamListFragment(), "首页");
-        adapter.addFragment(new JoinListFragment(), "我参加的");
-        adapter.addFragment(new CreateListFragment(), "我发起的");
+        adapter.addFragment(new IdeaListFragment(), "首页");
+        adapter.addFragment(new UserJoinListFragment(), "我参加的");
+        adapter.addFragment(new UserPublishListFragment(), "我发起的");
         viewPager.setAdapter(adapter);
     }
 
@@ -104,9 +104,9 @@ public class HomeFragment extends BaseFragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         Log.i("parentFragment",""+resultCode+"");
-        if(requestCode == SignInActivity.LOGIN_REQUEST_CODE){
-            if(resultCode == SignInActivity.LOGIN_SUCCESS_RESULT_CODE){
-                CreateDreamActivity_.intent(getActivity()).start();
+        if(requestCode == SignInActivity.SIGN_IN_REQUEST_CODE){
+            if(resultCode == SignInActivity.SIGN_IN_SUCCESS_RESULT_CODE){
+                PublishIdeaActivity_.intent(getActivity()).start();
             }
         }
     }

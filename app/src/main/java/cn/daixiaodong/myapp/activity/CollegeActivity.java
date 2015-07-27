@@ -13,6 +13,9 @@ import cn.daixiaodong.myapp.R;
 import cn.daixiaodong.myapp.activity.common.BaseActivity;
 
 
+/**
+ *  所有学院列表界面
+ */
 @EActivity(R.layout.activity_college)
 public class CollegeActivity extends BaseActivity {
 

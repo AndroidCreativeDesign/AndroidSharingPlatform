@@ -32,10 +32,9 @@ import static android.support.v7.widget.RecyclerView.OnScrollListener;
 
 
 /**
- *  用户收藏的idea
+ * 用户收藏的idea
  */
 public class UserCollectFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener {
-
 
 
     private View mConvertView;
@@ -110,8 +109,9 @@ public class UserCollectFragment extends BaseFragment implements SwipeRefreshLay
 
 
     /**
-     *  加载数据
-     * @param isRefresh  true:数据刷新   false: 加载更多
+     * 加载数据
+     *
+     * @param isRefresh true:数据刷新   false: 加载更多
      */
     private void loadData(boolean isRefresh) {
         if (isRefresh) {
@@ -137,7 +137,8 @@ public class UserCollectFragment extends BaseFragment implements SwipeRefreshLay
 
 
     /**
-     *  接收 SignInActivity 的返回数据
+     * 接收 SignInActivity 的返回数据
+     *
      * @param requestCode
      * @param resultCode
      * @param data
@@ -157,7 +158,8 @@ public class UserCollectFragment extends BaseFragment implements SwipeRefreshLay
 
 
     /**
-     *  当视图显示时，更新界面状态
+     * 当视图显示时，更新界面状态
+     *
      * @param hidden
      */
     @Override
@@ -181,7 +183,7 @@ public class UserCollectFragment extends BaseFragment implements SwipeRefreshLay
             }
         } else {
             if (mSignInTip == null) {
-                ViewStub viewStub = (ViewStub) mConvertView.findViewById(R.id.id_vs_login_in_tip);
+                ViewStub viewStub = (ViewStub) mConvertView.findViewById(R.id.id_vs_login_in_prompt);
                 mSignInTip = viewStub.inflate();
                 mSignInTip.findViewById(R.id.id_btn_log_in).setOnClickListener(new View.OnClickListener() {
                     @Override

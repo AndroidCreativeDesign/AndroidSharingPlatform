@@ -1,8 +1,5 @@
 package cn.daixiaodong.myapp.fragment;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -12,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewStub;
 
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVObject;
@@ -26,6 +24,8 @@ import java.util.List;
 
 import cn.daixiaodong.myapp.R;
 import cn.daixiaodong.myapp.activity.IdeaDetailActivity_;
+import cn.daixiaodong.myapp.activity.SignInActivity;
+import cn.daixiaodong.myapp.activity.SignInActivity_;
 import cn.daixiaodong.myapp.adapter.UserPublishListAdapter;
 import cn.daixiaodong.myapp.fragment.common.BaseFragment;
 
@@ -45,12 +45,17 @@ public class UserPublishListFragment extends BaseFragment {
 
     private SwipeRefreshLayout mSwipeRefreshLayout;
 
+    private View mSignInPromptView;
+    private boolean isFirstLoad = true;
+
+    private int mOffset;
+
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.i("UserPublishListFragment", "onCreateView");
-        mView = inflater.inflate(R.layout.fragment_create_list, container, false);
+        mView = inflater.inflate(R.layout.fragment_publish_list, container, false);
         return mView;
     }
 
@@ -72,28 +77,29 @@ public class UserPublishListFragment extends BaseFragment {
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                loadData();
+                refreshData();
             }
         });
     }
 
-
-    private void loadData() {
+    private void refreshData() {
         AVQuery<AVObject> query = new AVQuery<>("idea");
         query.whereEqualTo("user", AVUser.getCurrentUser());
         query.orderByDescending("createdAt");
+        query.setLimit(1);
         query.findInBackground(new FindCallback<AVObject>() {
             @Override
             public void done(List<AVObject> list, AVException e) {
                 mSwipeRefreshLayout.setRefreshing(false);
+
                 if (e == null) {
-                    mData.addAll(list);
-                    mAdapter.notifyItemInserted(0);
-                  /*  for (AVObject object : list) {
-                        Log.i("title", object.getString("title"));
-                        AVUser user = object.getAVUser("user");
-                        Log.i("username", user.getUsername());
-                    }*/
+                    Log.i("list.size()", list.size() + "");
+                    if (!list.isEmpty()) {
+                        mData.clear();
+                        mData.addAll(list);
+                        mAdapter.notifyDataSetChanged();
+                        mOffset = mData.get(mData.size() - 1).getInt("ideaId");
+                    }
                 } else {
                     e.printStackTrace();
                 }
@@ -105,7 +111,7 @@ public class UserPublishListFragment extends BaseFragment {
     private void setUpRecyclerView() {
         mPublishRecyclerView =
                 (RecyclerView) mView.findViewById(R.id.id_rv_publish_recycler_view);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         mPublishRecyclerView.setLayoutManager(linearLayoutManager);
         mData = new ArrayList<>();
         mAdapter = new UserPublishListAdapter(getActivity(), mData);
@@ -121,108 +127,96 @@ public class UserPublishListFragment extends BaseFragment {
                 IdeaDetailActivity_.intent(getActivity()).objectId(objectId).title(title).start();
             }
         });
+
+        mPublishRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+
+                if (newState == RecyclerView.SCROLL_STATE_IDLE
+                        && linearLayoutManager.findLastVisibleItemPosition() + 1 == mAdapter.getItemCount()) {
+
+                    if (!mSwipeRefreshLayout.isRefreshing()) {
+                        mSwipeRefreshLayout.setRefreshing(true);
+                        loadMoreData();
+
+                    }
+                }
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                mSwipeRefreshLayout.setEnabled(linearLayoutManager
+                        .findFirstCompletelyVisibleItemPosition() == 0);
+            }
+        });
     }
 
+    private void loadMoreData() {
+        AVQuery<AVObject> query = new AVQuery<>("idea");
+        query.setLimit(1);
+        query.whereEqualTo("user", AVUser.getCurrentUser());
+        query.orderByDescending("createdAt");
+        query.whereLessThan("ideaId", mOffset);
+        query.findInBackground(new FindCallback<AVObject>() {
+            @Override
+            public void done(List<AVObject> list, AVException e) {
+                mSwipeRefreshLayout.setRefreshing(false);
+                if (e == null) {
 
-    @Override
-    public void onPause() {
-        super.onPause();
-        Log.i("UserPublishListFragment", "onPause");
+                    if (!list.isEmpty()) {
+                        mData.addAll(list);
+                        mAdapter.notifyDataSetChanged();
+                        mOffset = list.get(list.size() - 1).getInt("ideaId");
+                    }
+                }else {
+                    e.printStackTrace();
+                }
+            }
+        });
+
     }
 
 
     @Override
     public void onResume() {
         super.onResume();
-        Log.i("UserPublishListFragment", "onResume");
+        if (isSignIn()) {
+            if (isFirstLoad) {
+
+                mSwipeRefreshLayout.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        mSwipeRefreshLayout.setRefreshing(true);
+                        refreshData();
+                    }
+                });
+                isFirstLoad = false;
+            }
+            if (mSignInPromptView != null) {
+                mSignInPromptView.setVisibility(View.GONE);
+                mSwipeRefreshLayout.setVisibility(View.VISIBLE);
+                mPublishRecyclerView.setVisibility(View.VISIBLE);
+            }
+
+        } else {
+            if (mSignInPromptView == null) {
+                ViewStub viewStub = (ViewStub) mView.findViewById(R.id.id_vs_login_in_prompt);
+                mSignInPromptView = viewStub.inflate();
+                mSignInPromptView.findViewById(R.id.id_btn_log_in).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // 跳转到登录界面
+                        SignInActivity_.intent(UserPublishListFragment.this).startForResult(SignInActivity.SIGN_IN_REQUEST_CODE);
+                    }
+
+                });
+            }
+            mPublishRecyclerView.setVisibility(View.GONE);
+            mSwipeRefreshLayout.setVisibility(View.GONE);
+            mSignInPromptView.setVisibility(View.VISIBLE);
+        }
 
     }
-
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Log.i("UserPublishListFragment", "onCreate");
-
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        Log.i("UserPublishListFragment", "onActivityResult");
-
-    }
-
-
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        Log.i("UserPublishListFragment", "onAttach");
-
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        Log.i("UserPublishListFragment", "onDestroy");
-
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        Log.i("UserPublishListFragment", "onDestroyView");
-
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        Log.i("UserPublishListFragment", "onDetach");
-
-    }
-
-    @Override
-    public void onHiddenChanged(boolean hidden) {
-        super.onHiddenChanged(hidden);
-        Log.i("UserPublishListFragment", "onHiddenChanged");
-
-    }
-
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        Log.i("UserPublishListFragment", "onConfigurationChanged");
-
-    }
-
-
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        Log.i("UserPublishListFragment", "onSaveInstanceState");
-
-    }
-
-    @Override
-    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
-        super.onViewStateRestored(savedInstanceState);
-        Log.i("UserPublishListFragment", "onViewStateRestored");
-
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        Log.i("UserPublishListFragment", "onStart");
-
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        Log.i("UserPublishListFragment", "onStop");
-
-    }
-
 }

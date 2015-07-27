@@ -17,4 +17,10 @@
 
     </android.support.v4.widget.SwipeRefreshLayout>
 
+    <ViewStub
+        android:id="@+id/id_vs_login_in_prompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout="@layout/include_log_in_prompt" />
+
 </LinearLayout>

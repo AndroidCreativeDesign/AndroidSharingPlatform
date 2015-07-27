@@ -99,7 +99,7 @@ public class SignInActivity extends BaseActivity {
             public void done(AVUser avUser, AVException e) {
                 if (e == null) {
                     showToast("登录成功");
-                    SignInActivity.this.setResult(SIGN_IN_SUCCESS_RESULT_CODE,getIntent());
+                    SignInActivity.this.setResult(SIGN_IN_SUCCESS_RESULT_CODE, getIntent());
                     finish();
                 } else {
                     e.printStackTrace();

@@ -45,7 +45,7 @@ public class UserCollectFragment extends BaseFragment implements SwipeRefreshLay
 
     // 登录提示 View
     private View mSignInTip;
-
+    private int mOffset;
 
     @Nullable
     @Override
@@ -70,7 +70,7 @@ public class UserCollectFragment extends BaseFragment implements SwipeRefreshLay
                 @Override
                 public void run() {
                     mRefreshLayout.setRefreshing(true);
-                    loadData(true);
+                    refreshData();
                 }
             });
         } else {
@@ -83,7 +83,7 @@ public class UserCollectFragment extends BaseFragment implements SwipeRefreshLay
     }
 
     private void setUpRecyclerView() {
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(linearLayoutManager);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mData = new ArrayList<>();
@@ -93,46 +93,82 @@ public class UserCollectFragment extends BaseFragment implements SwipeRefreshLay
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
+
+                if (newState == RecyclerView.SCROLL_STATE_IDLE
+                        && linearLayoutManager.findLastVisibleItemPosition() + 1 == mAdapter.getItemCount()) {
+
+                    if (!mRefreshLayout.isRefreshing()) {
+                        mRefreshLayout.setRefreshing(true);
+                        loadMoreData();
+
+                    }
+                }
             }
 
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
+                mRefreshLayout.setEnabled(linearLayoutManager
+                        .findFirstCompletelyVisibleItemPosition() == 0);
             }
         });
     }
 
-    @Override
-    public void onRefresh() {
-        loadData(true);
+    private void refreshData() {
+        AVQuery<AVObject> query = new AVQuery<>("user_collect");
+        query.whereEqualTo("user", AVUser.getCurrentUser());
+        query.include("idea");
+        query.orderByDescending("createdAt");
+        query.limit(1);
+        query.findInBackground(new FindCallback<AVObject>() {
+            @Override
+            public void done(List<AVObject> list, AVException e) {
+                mRefreshLayout.setRefreshing(false);
+                if (e == null) {
+                    if (!list.isEmpty()) {
+                        mData.clear();
+                        mData.addAll(list);
+                        mAdapter.notifyDataSetChanged();
+                        mOffset = list.get(list.size() - 1).getInt("collectId");
+                    }
+                } else {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
 
-    /**
-     * 加载数据
-     *
-     * @param isRefresh true:数据刷新   false: 加载更多
-     */
-    private void loadData(boolean isRefresh) {
-        if (isRefresh) {
-            AVQuery<AVObject> query = new AVQuery<>("user_collect");
-            query.whereEqualTo("user", AVUser.getCurrentUser());
-            query.include("idea");
-            query.findInBackground(new FindCallback<AVObject>() {
-                @Override
-                public void done(List<AVObject> list, AVException e) {
-                    mRefreshLayout.setRefreshing(false);
-                    if (e == null) {
+    private void loadMoreData() {
+        AVUser user = AVUser.getCurrentUser();
+        AVQuery<AVObject> query = new AVQuery<>("user_collect");
+        query.setLimit(1);
+        query.whereEqualTo("user", user);
+        query.include("idea");
+        query.include("idea.user");
+        query.orderByDescending("createdAt");
+        query.whereLessThan("collectId", mOffset);
+        query.findInBackground(new FindCallback<AVObject>() {
+            @Override
+            public void done(List<AVObject> list, AVException e) {
+                mRefreshLayout.setRefreshing(false);
+                if (e == null) {
+                    if (!list.isEmpty()) {
                         mData.addAll(list);
                         mAdapter.notifyDataSetChanged();
-                    } else {
-                        e.printStackTrace();
-
+                        mOffset = list.get(list.size() - 1).getInt("collectId");
                     }
+                } else {
+                    e.printStackTrace();
                 }
-            });
+            }
+        });
+    }
 
-        }
+
+    @Override
+    public void onRefresh() {
+        refreshData();
     }
 
 
@@ -150,7 +186,7 @@ public class UserCollectFragment extends BaseFragment implements SwipeRefreshLay
             if (resultCode == SignInActivity.SIGN_IN_SUCCESS_RESULT_CODE) {
                 updateUI();
                 mRefreshLayout.setRefreshing(true);
-                loadData(true);
+                refreshData();
             }
         }
 

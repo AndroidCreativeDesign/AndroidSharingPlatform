@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -7,54 +8,387 @@
     <include layout="@layout/include_toolbar" />
 
 
-
-    <EditText
-        android:id="@+id/id_et_title"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="请输入标题" />
+        android:layout_height="wrap_content">
 
-    <!--    <EditText
-            android:id="@+id/id_et_introduce"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/id_et_title"
-            android:hint="请输入介绍" />-->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="类型"/>
-    <RadioGroup
-        android:id="@+id/id_rg_radio_group"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="请选择类型" />
+
+            <RadioGroup
+                android:id="@+id/group_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/rbtn_type_one"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="团队招募" />
+
+                <RadioButton
+                    android:id="@+id/rbtn_type_two"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="创意活动" />
+
+                <RadioButton
+                    android:id="@+id/rbtn_type_three"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="奇思妙想" />
+
+                <RadioButton
+                    android:id="@+id/rbtn_type_four"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="项目众筹" />
+
+
+            </RadioGroup>
+
+            <EditText
+                android:id="@+id/et_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="请输入标题" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="开始日期" />
+
+
+                <TextView
+                    android:id="@+id/tv_start_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:hint="请选择日期" />
+
+                <TextView
+                    android:id="@+id/tv_start_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:hint="请选择时间" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="结束日期" />
+
+
+                <TextView
+                    android:id="@+id/tv_end_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:hint="请选择日期" />
+
+                <TextView
+                    android:id="@+id/tv_end_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:hint="请选择时间" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="人数" />
+
+                <EditText
+                    android:id="@+id/et_join_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="已参加人数" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="总人数" />
+
+                <EditText
+                    android:id="@+id/et_total_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="总人数" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="阶段" />
+
+                <RadioGroup
+                    android:id="@+id/group_stage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rbtn_stage_one"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="创意中" />
+
+                    <RadioButton
+                        android:id="@+id/rbtn_stage_two"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="实施中" />
+
+                    <RadioButton
+                        android:id="@+id/rbtn_stage_three"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="众筹中" />
+
+
+                </RadioGroup>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="是否需要报名信息" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/chk_recruit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="是否发起招募" />
+
+                <CheckBox
+                    android:id="@+id/chk_crowdfunding"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="是否发起众筹" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/llayout_crowdfunding"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="众筹总额" />
+
+                <EditText
+                    android:id="@+id/et_crowdfunding_total_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="众筹总额" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="活动费用" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="活动费用" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llayout_recruit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="招募人数" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="请输入需要招募的人数" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="介绍" />
+
+
+                <EditText
+                    android:id="@+id/et_introduce"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lines="10" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+    <android.support.v7.widget.GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
 
-        >
+        app:columnCount="3">
 
-        <RadioButton
-            android:id="@+id/id_rb_zhaomu"
+
+        <LinearLayout
+            android:id="@+id/llayout_introduce"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="团队招募"/>
-        <RadioButton
-            android:id="@+id/id_rb_chuangyi"
+            android:orientation="vertical"
+            app:layout_columnWeight="1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="介绍" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llayout_img"
+
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:orientation="vertical"
+            app:layout_columnWeight="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="上传图片" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llayout_join"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="创意活动"/>
+            android:orientation="vertical"
+            app:layout_columnWeight="1">
 
-        <RadioButton
-            android:id="@+id/id_rb_miaoxiang"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="人数" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llayout_stage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="奇思妙想"/>
+            android:orientation="vertical"
+            app:layout_columnWeight="1">
 
-        <RadioButton
-            android:id="@+id/id_rb_zhongchou"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="阶段" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llayout_registration"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="物资筹集"/>
+            android:orientation="vertical"
+            app:layout_columnWeight="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="报名审核" />
 
 
-    </RadioGroup>
+        </LinearLayout>
+
+
+    </android.support.v7.widget.GridLayout>
+
+
 </LinearLayout>

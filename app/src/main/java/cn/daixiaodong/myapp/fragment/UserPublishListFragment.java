@@ -170,7 +170,7 @@ public class UserPublishListFragment extends BaseFragment {
                         mAdapter.notifyDataSetChanged();
                         mOffset = list.get(list.size() - 1).getInt("ideaId");
                     }
-                }else {
+                } else {
                     e.printStackTrace();
                 }
             }

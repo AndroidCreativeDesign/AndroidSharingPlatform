@@ -63,6 +63,7 @@ public class UserJoinListAdapter extends RecyclerView.Adapter<UserJoinListAdapte
                 }
             }
         });
+
         AVObject dream = mDataSet.get(i).getAVObject("idea");
         viewHolder.title.setText(dream.getString("title"));
        /* SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.CHINESE);

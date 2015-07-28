@@ -69,6 +69,8 @@ dependencies {
     //avoscloud-search 为 LeanCloud 应用内搜索包
     compile 'com.melnykov:floatingactionbutton:1.3.0'
     compile 'com.github.rahatarmanahmed:circularprogressview:2.3.2'
+    compile 'com.android.support:gridlayout-v7:22.2.1'
+    compile 'com.wdullaer:materialdatetimepicker:1.4.2'
 }
 
 apt {

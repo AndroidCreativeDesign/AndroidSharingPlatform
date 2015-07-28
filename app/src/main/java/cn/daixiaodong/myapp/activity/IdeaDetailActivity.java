@@ -123,7 +123,7 @@ public class IdeaDetailActivity extends BaseActivity {
                 AVUser user = AVUser.getCurrentUser();
                 final AVObject collect = new AVObject("user_collect");
                 collect.put("user", user);
-                collect.put("event", mIdea);
+                collect.put("idea", mIdea);
                 collect.saveInBackground(new SaveCallback() {
                     @Override
                     public void done(AVException e) {
@@ -192,6 +192,7 @@ public class IdeaDetailActivity extends BaseActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             //  getSupportActionBar().setHomeButtonEnabled(true);
         }
+
 
 
     }

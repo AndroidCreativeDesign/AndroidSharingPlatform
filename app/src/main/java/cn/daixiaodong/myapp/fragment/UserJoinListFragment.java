@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -84,7 +85,7 @@ public class UserJoinListFragment extends BaseFragment {
         query.whereEqualTo("user", user);
         query.include("idea");
         query.include("idea.user");
-        query.orderByDescending("createAt");
+        query.orderByDescending("createdAt");
         query.findInBackground(new FindCallback<AVObject>() {
             @Override
             public void done(List<AVObject> list, AVException e) {
@@ -94,7 +95,7 @@ public class UserJoinListFragment extends BaseFragment {
                         mData.clear();
                         mData.addAll(list);
                         mAdapter.notifyDataSetChanged();
-                        mOffset = list.get(list.size() - 1).getInt("ideaId");
+                        mOffset = list.get(list.size() - 1).getInt("joinId");
                     }
                 } else {
                     e.printStackTrace();
@@ -110,17 +111,18 @@ public class UserJoinListFragment extends BaseFragment {
         query.whereEqualTo("user", user);
         query.include("idea");
         query.include("idea.user");
-        query.orderByDescending("createAt");
-        query.whereLessThan("ideaId", mOffset);
+        query.orderByDescending("createdAt");
+        query.whereLessThan("joinId", mOffset);
         query.findInBackground(new FindCallback<AVObject>() {
             @Override
             public void done(List<AVObject> list, AVException e) {
                 mSwipeRefreshLayout.setRefreshing(false);
                 if (e == null) {
                     if (!list.isEmpty()) {
+                        Log.i("list size",list.size()+"");
                         mData.addAll(list);
                         mAdapter.notifyDataSetChanged();
-                        mOffset = list.get(list.size() - 1).getInt("ideaId");
+                        mOffset = list.get(list.size() - 1).getInt("joinId");
                     }
                 } else {
                     e.printStackTrace();

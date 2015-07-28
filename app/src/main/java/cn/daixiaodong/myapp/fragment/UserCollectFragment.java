@@ -8,6 +8,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,6 +48,7 @@ public class UserCollectFragment extends BaseFragment implements SwipeRefreshLay
     // 登录提示 View
     private View mSignInTip;
     private int mOffset;
+    private boolean isFirstRefresh = true;
 
     @Nullable
     @Override
@@ -66,17 +68,6 @@ public class UserCollectFragment extends BaseFragment implements SwipeRefreshLay
         mRecyclerView = (RecyclerView) mConvertView.findViewById(R.id.id_rv_collect_recycler_view);
         setUpRecyclerView();
         setRefreshLayout();
-        if (isSignIn()) {
-            mRefreshLayout.post(new Runnable() {
-                @Override
-                public void run() {
-                    mRefreshLayout.setRefreshing(true);
-                    refreshData();
-                }
-            });
-        } else {
-            updateUI();
-        }
     }
 
     private void setRefreshLayout() {
@@ -189,11 +180,31 @@ public class UserCollectFragment extends BaseFragment implements SwipeRefreshLay
                 updateUI();
                 mRefreshLayout.setRefreshing(true);
                 refreshData();
+                isFirstRefresh = false;
             }
         }
 
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (isFirstRefresh) {
+            if (isSignIn()) {
+                isFirstRefresh = false;
+                mRefreshLayout.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        mRefreshLayout.setRefreshing(true);
+                        refreshData();
+                        Log.i("onResume", "onResume");
+                    }
+                });
+            } else {
+                updateUI();
+            }
+        }
+    }
 
     /**
      * 当视图显示时，更新界面状态
@@ -240,7 +251,8 @@ public class UserCollectFragment extends BaseFragment implements SwipeRefreshLay
 
 
     /**
-     *  item点击事件
+     * item点击事件
+     *
      * @param viewHolder
      * @param pos
      */

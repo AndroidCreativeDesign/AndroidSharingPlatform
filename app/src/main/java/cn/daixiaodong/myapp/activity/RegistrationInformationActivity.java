@@ -111,6 +111,7 @@ public class RegistrationInformationActivity extends BaseActivity {
                 object.put("class", mClass.getText().toString());
                 object.put("user", AVUser.getCurrentUser());
                 object.put("association",mAssociation);
+                object.put("type",1);
                 object.saveInBackground(new SaveCallback() {
                     @Override
                     public void done(AVException e) {

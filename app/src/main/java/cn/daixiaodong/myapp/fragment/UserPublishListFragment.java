@@ -26,6 +26,7 @@ import cn.daixiaodong.myapp.R;
 import cn.daixiaodong.myapp.activity.IdeaDetailActivity_;
 import cn.daixiaodong.myapp.activity.SignInActivity;
 import cn.daixiaodong.myapp.activity.SignInActivity_;
+import cn.daixiaodong.myapp.activity.UpdateIdeaActivity_;
 import cn.daixiaodong.myapp.adapter.UserPublishListAdapter;
 import cn.daixiaodong.myapp.fragment.common.BaseFragment;
 
@@ -33,7 +34,7 @@ import cn.daixiaodong.myapp.fragment.common.BaseFragment;
  * 用户创建的idea列表
  */
 @EFragment
-public class UserPublishListFragment extends BaseFragment {
+public class UserPublishListFragment extends BaseFragment implements UserPublishListAdapter.OnItemClickListener {
 
 
     private View mView;
@@ -117,16 +118,7 @@ public class UserPublishListFragment extends BaseFragment {
         mAdapter = new UserPublishListAdapter(getActivity(), mData);
         mPublishRecyclerView.setAdapter(mAdapter);
 
-
-        mAdapter.setOnItemClickListener(new UserPublishListAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(UserPublishListAdapter.MyViewHolder viewHolder, int pos) {
-                AVObject object = mData.get(pos);
-                String objectId = object.getObjectId();
-                String title = object.getString("title");
-                IdeaDetailActivity_.intent(getActivity()).objectId(objectId).title(title).start();
-            }
-        });
+        mAdapter.setOnItemClickListener(this);
 
         mPublishRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -218,5 +210,21 @@ public class UserPublishListFragment extends BaseFragment {
             mSignInPromptView.setVisibility(View.VISIBLE);
         }
 
+    }
+
+    @Override
+    public void onItemClick(UserPublishListAdapter.MyViewHolder viewHolder, int pos) {
+        AVObject object = mData.get(pos);
+        String objectId = object.getObjectId();
+        String title = object.getString("title");
+        IdeaDetailActivity_.intent(getActivity()).objectId(objectId).title(title).start();
+    }
+
+    @Override
+    public void onEditBtnClick(UserPublishListAdapter.MyViewHolder viewHolder, int pos) {
+        AVObject object = mData.get(pos);
+        String objectId = object.getObjectId();
+        String title = object.getString("title");
+        UpdateIdeaActivity_.intent(this).objectId(objectId).title(title).start();
     }
 }

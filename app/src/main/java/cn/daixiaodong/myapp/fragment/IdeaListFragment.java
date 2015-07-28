@@ -97,7 +97,7 @@ public class IdeaListFragment extends BaseFragment {
     private void loadData(final boolean isRefresh) {
 
         AVQuery<AVObject> query1 = new AVQuery<>("idea");
-        query1.whereEqualTo("tag", 1);
+        query1.whereEqualTo("type", 1);
         query1.findInBackground(new FindCallback<AVObject>() {
             @Override
             public void done(List<AVObject> list, AVException e) {
@@ -119,7 +119,7 @@ public class IdeaListFragment extends BaseFragment {
 
     private void loadNotTopicData(final boolean isRefresh) {
         final AVQuery<AVObject> query = new AVQuery<>("idea");
-        query.whereNotEqualTo("tag", 1);
+        query.whereNotEqualTo("type", 1);
         query.orderByDescending("createdAt");
         query.setLimit(1);
         query.include("user");
@@ -232,10 +232,10 @@ public class IdeaListFragment extends BaseFragment {
             @Override
             public void onItemClick(IdeaAdapter.MyViewHolder viewHolder, int pos) {
 
-                int tag = mData.get(pos).getInt("tag");
+                int tag = mData.get(pos).getInt("type");
 
                 if (tag == Constants.TOPIC) {
-                    String tagName = mData.get(pos).getString("tagName");
+                    String tagName = mData.get(pos).getString("typeName");
                     if (Constants.ASSOCIATION_TOPIC.equals(tagName)) {
                         Intent intent = new Intent(getActivity(), AssociationTopicActivity_.class);
                         startActivity(intent);

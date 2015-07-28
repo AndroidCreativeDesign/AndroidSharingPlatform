@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.avos.avoscloud.AVObject;
@@ -14,7 +15,7 @@ import java.util.List;
 import cn.daixiaodong.myapp.R;
 
 /**
- *  用户发布的idea列表   Adapter
+ * 用户发布的idea列表   Adapter
  */
 public class UserPublishListAdapter extends RecyclerView.Adapter<UserPublishListAdapter.MyViewHolder> {
 
@@ -63,7 +64,22 @@ public class UserPublishListAdapter extends RecyclerView.Adapter<UserPublishList
                 }
             }
         });
-        viewHolder.title.setText(mDataSet.get(i).getString("title"));
+
+        AVObject idea = mDataSet.get(i);
+        viewHolder.titleText.setText(idea.getString("title"));
+        viewHolder.joinNumText.setText(idea.getString("joinNum"));
+        viewHolder.startDateText.setText(idea.getString("startDate"));
+        viewHolder.endDateText.setText(idea.getString("endDate"));
+        viewHolder.addressText.setText(idea.getString("address"));
+        viewHolder.editBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mListener != null) {
+                    mListener.onEditBtnClick(viewHolder, i);
+                }
+            }
+        });
+
     }
 
     @Override
@@ -77,6 +93,8 @@ public class UserPublishListAdapter extends RecyclerView.Adapter<UserPublishList
 
     public interface OnItemClickListener {
         void onItemClick(MyViewHolder viewHolder, int pos);
+
+        void onEditBtnClick(MyViewHolder viewHolder, int pos);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {
@@ -85,11 +103,22 @@ public class UserPublishListAdapter extends RecyclerView.Adapter<UserPublishList
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView title;
+        public TextView titleText;
+        public TextView joinNumText;
+        public TextView startDateText;
+        public TextView endDateText;
+        public TextView addressText;
+        public Button editBtn;
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            title = (TextView) itemView.findViewById(R.id.id_tv_title);
+            titleText = (TextView) itemView.findViewById(R.id.tv_title);
+            joinNumText = (TextView) itemView.findViewById(R.id.tv_join_num);
+            startDateText = (TextView) itemView.findViewById(R.id.tv_start_date);
+            endDateText = (TextView) itemView.findViewById(R.id.tv_end_date);
+            addressText = (TextView) itemView.findViewById(R.id.tv_address);
+            editBtn = (Button) itemView.findViewById(R.id.btn_edit);
+
         }
     }
 

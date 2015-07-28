@@ -31,7 +31,7 @@ import cn.daixiaodong.myapp.fragment.common.BaseFragment;
  * 用户参与的idea列表
  */
 
-public class UserJoinListFragment extends BaseFragment {
+public class UserJoinListFragment extends BaseFragment implements UserJoinListAdapter.OnItemClickListener {
     private View mView;
 
 
@@ -140,16 +140,8 @@ public class UserJoinListFragment extends BaseFragment {
         mAdapter = new UserJoinListAdapter(getActivity(), mData);
         mJoinRecyclerView.setAdapter(mAdapter);
 
+        mAdapter.setOnItemClickListener(this);
 
-        mAdapter.setOnItemClickListener(new UserJoinListAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(UserJoinListAdapter.MyViewHolder viewHolder, int pos) {
-                AVObject object = mData.get(pos).getAVObject("idea");
-                String objectId = object.getObjectId();
-                String title = object.getString("title");
-                IdeaDetailActivity_.intent(getActivity()).objectId(objectId).title(title).start();
-            }
-        });
         mJoinRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
@@ -218,4 +210,11 @@ public class UserJoinListFragment extends BaseFragment {
 
     }
 
+    @Override
+    public void onItemClick(RecyclerView.ViewHolder viewHolder, int pos) {
+        AVObject object = mData.get(pos).getAVObject("idea");
+        String objectId = object.getObjectId();
+        String title = object.getString("title");
+        IdeaDetailActivity_.intent(getActivity()).objectId(objectId).title(title).start();
+    }
 }

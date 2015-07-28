@@ -70,12 +70,12 @@ public class IdeaAdapter extends RecyclerView.Adapter<IdeaAdapter.MyViewHolder> 
         });
         AVObject dream = mDataSet.get(i);
 
-        if (dream.getInt("tag") == 1) {
+        if (dream.getInt("type") == 1) {
             viewHolder.introduce.setVisibility(View.GONE);
             viewHolder.title.setVisibility(View.GONE);
             viewHolder.time.setVisibility(View.GONE);
             viewHolder.tagName.setVisibility(View.VISIBLE);
-            viewHolder.tagName.setText(dream.getString("tagName"));
+            viewHolder.tagName.setText(dream.getString("typeName"));
         } else {
 
             viewHolder.title.setVisibility(View.VISIBLE);

@@ -117,6 +117,10 @@
             android:name=".activity.EditIdeaDetailActivity"
             android:label="@string/title_activity_edit_idea_detail" >
         </activity>
+        <activity
+            android:name=".activity.UpdateIdeaActivity_"
+            android:label="@string/title_activity_idea_edit" >
+        </activity>
     </application>
 
 </manifest>

@@ -1,6 +1,7 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:orientation="vertical"
     android:padding="16dp">
 
 
@@ -8,28 +9,95 @@
         android:id="@+id/id_tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="活动标题" />
+        android:text="活动标题"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/id_tv_join"
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/id_tv_title"
-        android:text="目前参与人数" />
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/id_tv_time"
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/id_tv_title"
+            android:text="目前参与人数：" />
+
+        <TextView
+            android:id="@+id/id_tv_join"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="545" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/id_tv_join"
-        android:text="时间" />
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/id_tv_address"
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/id_tv_join"
+            android:text="开始时间：" />
+
+        <TextView
+            android:id="@+id/id_tv_start_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="545" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/id_tv_time"
-        android:text="地点" />
+        android:orientation="horizontal">
+
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/id_tv_start_time"
+            android:text="结束时间：" />
+
+        <TextView
+            android:id="@+id/tv_end_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="545" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_end_time"
+            android:text="地点：" />
+
+        <TextView
+            android:id="@+id/id_tv_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="545" />
+
+    </LinearLayout>
 
 
     <TextView
@@ -38,7 +106,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:text="距离开始还有1天" />
+        android:text="距离开始还有1天"
+        android:visibility="gone" />
 
 
-</RelativeLayout>
+</LinearLayout>

@@ -9,52 +9,46 @@ import android.widget.TextView;
 
 import com.avos.avoscloud.AVObject;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
 
 import cn.daixiaodong.myapp.R;
 
 /**
- *  用户参与的idea 列表  Adapter
+ * 用户参与的idea 列表  Adapter
  */
-public class UserJoinListAdapter extends RecyclerView.Adapter<UserJoinListAdapter.MyViewHolder> {
+public class UserJoinListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private Context mContext;
     private List<AVObject> mDataSet;
     private LayoutInflater mLayoutInflater;
     private OnItemClickListener mListener;
 
-    public UserJoinListAdapter(Context context) {
-        this.mContext = context;
-        this.mLayoutInflater = LayoutInflater.from(context);
-    }
 
     public UserJoinListAdapter(Context context, List<AVObject> data) {
-        this.mContext = context;
         this.mDataSet = data;
         this.mLayoutInflater = LayoutInflater.from(context);
 
     }
 
-    public void setDataSet(List<AVObject> data) {
-        this.mDataSet = data;
-        notifyDataSetChanged();
-    }
-
-    public void addData(List<AVObject> data) {
-        this.mDataSet.addAll(0, data);
-        this.notifyItemInserted(1);
-    }
 
     @Override
-    public UserJoinListAdapter.MyViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+
+        if (viewType == 1) {
+            return new AssociationViewHolder(mLayoutInflater.inflate(R.layout.item_join_association, viewGroup, false));
+
+        }
 
         View view = mLayoutInflater.inflate(R.layout.item_join, viewGroup, false);
-        MyViewHolder viewHolder = new MyViewHolder(view);
-        return viewHolder;
+        return new MyViewHolder(view);
+
+
     }
 
     @Override
-    public void onBindViewHolder(final UserJoinListAdapter.MyViewHolder viewHolder, final int i) {
+    public void onBindViewHolder(final RecyclerView.ViewHolder viewHolder, final int i) {
+        AVObject dream = mDataSet.get(i).getAVObject("idea");
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,47 +57,51 @@ public class UserJoinListAdapter extends RecyclerView.Adapter<UserJoinListAdapte
                 }
             }
         });
+        if (viewHolder instanceof MyViewHolder) {
+             MyViewHolder holder = (MyViewHolder) viewHolder;
 
-        AVObject dream = mDataSet.get(i).getAVObject("idea");
-        viewHolder.title.setText(dream.getString("title"));
-       /* SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.CHINESE);
-        Date startDate = dream.getDate("startDate");
-        Date endDate = dream.getDate("endDate");
-        viewHolder.time.setText(format.format(dream.getDate("startDate")));
-        viewHolder.join.setText(dream.getInt("joinNum"));
-        viewHolder.address.setText(dream.getString(dream.getString("address")));
-        Date currentDate = new Date();
-        long days = (startDate.getTime() - currentDate.getTime()) / (24 * 60 * 60 * 1000);
-        if(days < 0 && dream.getInt("status") == 0){
-            viewHolder.status.setText("已结束");
-        }else if( days < 1){
-            viewHolder.status.setText("即将开始");
-        }else if(days > 1){
-            viewHolder.status.setText("距离开始还有"+days+"天");
-        }*/
+
+
+            holder.title.setText(dream.getString("title"));
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.CHINESE);
+
+
+            holder.startTime.setText(format.format(dream.getDate("startDate")));
+            holder.endTime.setText(format.format(dream.getDate("endDate")));
+
+
+            holder.join.setText(dream.getInt("joinNum") + "");
+
+            holder.address.setText(dream.getString(dream.getString("address")));
+        }
+        if (viewHolder instanceof AssociationViewHolder) {
+            final AssociationViewHolder holder = (AssociationViewHolder) viewHolder;
+            holder.associationNameText.setText(dream.getString("title"));
+        }
+
     }
 
     @Override
     public int getItemCount() {
-        if (mDataSet == null) {
-            return 0;
-        }
+
         return mDataSet.size();
     }
 
 
     public interface OnItemClickListener {
-        void onItemClick(MyViewHolder viewHolder, int pos);
+        void onItemClick(RecyclerView.ViewHolder viewHolder, int pos);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {
         this.mListener = listener;
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
 
         public TextView title;
-        public TextView time;
+        public TextView startTime;
+        public TextView endTime;
+
         public TextView join;
         public TextView address;
         public TextView status;
@@ -111,12 +109,27 @@ public class UserJoinListAdapter extends RecyclerView.Adapter<UserJoinListAdapte
         public MyViewHolder(View itemView) {
             super(itemView);
             title = (TextView) itemView.findViewById(R.id.id_tv_title);
-            time = (TextView) itemView.findViewById(R.id.id_tv_time);
+            startTime = (TextView) itemView.findViewById(R.id.id_tv_start_time);
+            endTime = (TextView) itemView.findViewById(R.id.tv_end_time);
             join = (TextView) itemView.findViewById(R.id.id_tv_join);
             address = (TextView) itemView.findViewById(R.id.id_tv_address);
             status = (TextView) itemView.findViewById(R.id.id_tv_status);
         }
     }
 
+    public static class AssociationViewHolder extends RecyclerView.ViewHolder {
 
+        public TextView associationNameText;
+
+        public AssociationViewHolder(View itemView) {
+            super(itemView);
+            associationNameText = (TextView) itemView.findViewById(R.id.tv_association_name);
+        }
+    }
+
+
+    @Override
+    public int getItemViewType(int position) {
+        return mDataSet.get(position).getAVObject("idea").getInt("type");
+    }
 }

@@ -1,5 +1,6 @@
 package cn.daixiaodong.myapp.activity;
 
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.Button;
@@ -34,6 +35,9 @@ public class SignInActivity extends BaseActivity {
     @ViewById(R.id.id_tb_toolbar)
     Toolbar mViewToolbar;
 
+
+    @ViewById(R.id.til_phone_number)
+    TextInputLayout mPhoneNumberInputLayout;
 
     @ViewById(R.id.id_et_phone_number)
     EditText mViewPhoneNumber;
@@ -117,7 +121,8 @@ public class SignInActivity extends BaseActivity {
      */
     private boolean checkData(String phoneNumber, String password) {
         if (phoneNumber.isEmpty()) {
-            showToast("请输入手机号码");
+           // showToast("请输入手机号码");
+            mPhoneNumberInputLayout.setError("请输入手机号码");
             return false;
         }
         if (phoneNumber.length() != 11) {

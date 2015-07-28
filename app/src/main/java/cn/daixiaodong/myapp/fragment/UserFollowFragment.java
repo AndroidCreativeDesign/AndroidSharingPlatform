@@ -45,6 +45,9 @@ public class UserFollowFragment extends BaseFragment implements SwipeRefreshLayo
     private View mSignInTip;
 
     private int mOffset;
+
+    private boolean isFirstRefresh = true;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -64,17 +67,7 @@ public class UserFollowFragment extends BaseFragment implements SwipeRefreshLayo
         mRecyclerView = (RecyclerView) mConvertView.findViewById(R.id.id_rv_collect_recycler_view);
         setUpRecyclerView();
         setRefreshLayout();
-        if (isSignIn()) {
-            mRefreshLayout.post(new Runnable() {
-                @Override
-                public void run() {
-                    mRefreshLayout.setRefreshing(true);
-                    loadData(true);
-                }
-            });
-        } else {
-            updateUI();
-        }
+
     }
 
     private void setRefreshLayout() {
@@ -122,6 +115,27 @@ public class UserFollowFragment extends BaseFragment implements SwipeRefreshLayo
         }
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        if(isFirstRefresh){
+            if (isSignIn()) {
+                isFirstRefresh = false;
+                mRefreshLayout.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        mRefreshLayout.setRefreshing(true);
+                        loadData(true);
+                        Log.i("onResume", "onResume");
+                    }
+                });
+            } else {
+                updateUI();
+            }
+        }
+
+    }
 
     @Override
     public void onItemClick(UserFollowListAdapter.MyViewHolder viewHolder, int pos) {
@@ -144,11 +158,14 @@ public class UserFollowFragment extends BaseFragment implements SwipeRefreshLayo
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        Log.i("onActivityResult", "onActivityResult");
+
         if (requestCode == SignInActivity.SIGN_IN_REQUEST_CODE) {
             if (resultCode == SignInActivity.SIGN_IN_SUCCESS_RESULT_CODE) {
                 updateUI();
                 mRefreshLayout.setRefreshing(true);
                 loadData(true);
+                isFirstRefresh = false;
             }
         }
 

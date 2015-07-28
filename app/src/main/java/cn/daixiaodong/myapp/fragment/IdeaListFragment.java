@@ -8,6 +8,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,13 +22,12 @@ import com.avos.avoscloud.FindCallback;
 import com.melnykov.fab.FloatingActionButton;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import cn.daixiaodong.myapp.R;
 import cn.daixiaodong.myapp.activity.AssociationTopicActivity_;
-import cn.daixiaodong.myapp.activity.PublishIdeaActivity_;
 import cn.daixiaodong.myapp.activity.IdeaDetailActivity_;
+import cn.daixiaodong.myapp.activity.PublishIdeaActivity_;
 import cn.daixiaodong.myapp.activity.SignInActivity;
 import cn.daixiaodong.myapp.activity.SignInActivity_;
 import cn.daixiaodong.myapp.adapter.IdeaAdapter;
@@ -49,7 +49,7 @@ public class IdeaListFragment extends BaseFragment {
     private int mLastVisibleItem;
 
 
-    private Date mMinDate;
+    private int mOffset;
 
     private int mPager = 1;
 
@@ -126,7 +126,7 @@ public class IdeaListFragment extends BaseFragment {
 
 
         if (!isRefresh) {
-            query.whereLessThan("createdAt", mMinDate);
+            query.whereLessThan("ideaId", mOffset);
         }
         query.setCachePolicy(AVQuery.CachePolicy.NETWORK_ELSE_CACHE);
         query.findInBackground(new FindCallback<AVObject>() {
@@ -135,9 +135,15 @@ public class IdeaListFragment extends BaseFragment {
                 mSwipeRefreshLayout.setRefreshing(false);
                 if (e == null) {
                     if (!list.isEmpty()) {
+                        for (AVObject object : list) {
+                            int id = object.getInt("ideaId");
+                            Log.i("id--->", id + "");
+                        }
 
 
-                        mMinDate = list.get(list.size() - 1).getCreatedAt();
+                        mOffset = list.get(list.size() - 1).getInt("ideaId");
+                        Log.i("mOffset", mOffset + "");
+
                         if (isRefresh) {
                             mData.addAll(topicNum, list);
                         } else {
@@ -183,12 +189,14 @@ public class IdeaListFragment extends BaseFragment {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
+
                 if (newState == RecyclerView.SCROLL_STATE_IDLE
-                        && mLastVisibleItem + 1 == mAdapter.getItemCount()) {
+                        && linearLayoutManager.findLastVisibleItemPosition() + 1 == mAdapter.getItemCount()) {
 
                     if (!mSwipeRefreshLayout.isRefreshing()) {
                         mSwipeRefreshLayout.setRefreshing(true);
                         loadNotTopicData(false);
+
                     }
                 }
             }
@@ -196,7 +204,8 @@ public class IdeaListFragment extends BaseFragment {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                mLastVisibleItem = linearLayoutManager.findLastVisibleItemPosition();
+                mSwipeRefreshLayout.setEnabled(linearLayoutManager
+                        .findFirstCompletelyVisibleItemPosition() == 0);
             }
         });
 

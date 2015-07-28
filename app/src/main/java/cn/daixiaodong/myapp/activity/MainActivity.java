@@ -108,9 +108,10 @@ public class MainActivity extends BaseActivity {
         mViewNav.findViewById(R.id.id_iv_profile_photo).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showToast("点击有效");
+                UserProfileActivity_.intent(MainActivity.this).start();
             }
         });
+
         mViewNav.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {

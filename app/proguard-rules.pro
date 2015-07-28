@@ -46,6 +46,7 @@
 -dontwarn org.apache.**
 -keep class org.apache.** { *;}
 
+
 -dontwarn org.jivesoftware.smack.**
 -keep class org.jivesoftware.smack.** { *;}
 
@@ -54,5 +55,11 @@
 
 -dontwarn org.xbill.**
 -keep class org.xbill.** { *;}
+
+
+
+-libraryjars libs/BmobPay_V1.0.2.jar
+-keep class com.bmob.pay.** {*;}
+
 
 -keepattributes *Annotation*

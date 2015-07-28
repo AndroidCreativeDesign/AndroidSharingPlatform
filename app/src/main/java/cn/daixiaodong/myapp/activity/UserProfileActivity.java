@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import org.androidannotations.annotations.EActivity;
+
 import cn.daixiaodong.myapp.R;
 import cn.daixiaodong.myapp.activity.common.BaseActivity;
 
@@ -11,12 +13,12 @@ import cn.daixiaodong.myapp.activity.common.BaseActivity;
 /**
  *  用户个人资料 界面
  */
+@EActivity(R.layout.activity_user_profile)
 public class UserProfileActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
     }
 
     @Override

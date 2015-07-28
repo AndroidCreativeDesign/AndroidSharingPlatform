@@ -86,6 +86,7 @@ public class PublishIdeaActivity extends BaseActivity {
                 idea.put("totalFee", 111.9); // 总费用
                 idea.put("isRecruit", 0);  // 是否招募
                 idea.put("recruit", 0); // 招募类型
+//                idea.put("id",1);
                 idea.put("user", AVUser.getCurrentUser());  // 用户
 
                 idea.saveInBackground(new SaveCallback() {
@@ -93,6 +94,7 @@ public class PublishIdeaActivity extends BaseActivity {
                     public void done(AVException e) {
                         if (e == null) {
                             showToast("保存成功");
+
                         }
                     }
                 });

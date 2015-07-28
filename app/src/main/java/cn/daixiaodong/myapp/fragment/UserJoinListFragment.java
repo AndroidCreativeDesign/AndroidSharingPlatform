@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewStub;
 
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVObject;
@@ -20,6 +21,8 @@ import java.util.List;
 
 import cn.daixiaodong.myapp.R;
 import cn.daixiaodong.myapp.activity.IdeaDetailActivity_;
+import cn.daixiaodong.myapp.activity.SignInActivity;
+import cn.daixiaodong.myapp.activity.SignInActivity_;
 import cn.daixiaodong.myapp.adapter.UserJoinListAdapter;
 import cn.daixiaodong.myapp.fragment.common.BaseFragment;
 
@@ -36,6 +39,12 @@ public class UserJoinListFragment extends BaseFragment {
     private UserJoinListAdapter mAdapter;
 
     private SwipeRefreshLayout mSwipeRefreshLayout;
+
+    private View mSignInPromptView;
+    private boolean isFirstLoad = true;
+
+
+    private int mOffset;
 
     @Nullable
     @Override
@@ -55,6 +64,7 @@ public class UserJoinListFragment extends BaseFragment {
         super.onActivityCreated(savedInstanceState);
         setUpSwipeRefreshLayout();
         setUpRecyclerView();
+
     }
 
     private void setUpSwipeRefreshLayout() {
@@ -62,16 +72,15 @@ public class UserJoinListFragment extends BaseFragment {
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                loadData();
+                refreshData();
             }
         });
     }
 
-    private void loadData() {
+    private void refreshData() {
         AVUser user = AVUser.getCurrentUser();
         AVQuery<AVObject> query = new AVQuery<>("user_join");
-        query.setSkip(0);
-        query.setLimit(10);
+        query.setLimit(1);
         query.whereEqualTo("user", user);
         query.include("idea");
         query.include("idea.user");
@@ -81,9 +90,40 @@ public class UserJoinListFragment extends BaseFragment {
             public void done(List<AVObject> list, AVException e) {
                 mSwipeRefreshLayout.setRefreshing(false);
                 if (e == null) {
+                    if (!list.isEmpty()) {
+                        mData.clear();
+                        mData.addAll(list);
+                        mAdapter.notifyDataSetChanged();
+                        mOffset = list.get(list.size() - 1).getInt("ideaId");
+                    }
+                } else {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
 
-                    mData.addAll(list);
-                    mAdapter.notifyItemInserted(0);
+    private void loadMoreData() {
+        AVUser user = AVUser.getCurrentUser();
+        AVQuery<AVObject> query = new AVQuery<>("user_join");
+        query.setLimit(1);
+        query.whereEqualTo("user", user);
+        query.include("idea");
+        query.include("idea.user");
+        query.orderByDescending("createAt");
+        query.whereLessThan("ideaId", mOffset);
+        query.findInBackground(new FindCallback<AVObject>() {
+            @Override
+            public void done(List<AVObject> list, AVException e) {
+                mSwipeRefreshLayout.setRefreshing(false);
+                if (e == null) {
+                    if (!list.isEmpty()) {
+                        mData.addAll(list);
+                        mAdapter.notifyDataSetChanged();
+                        mOffset = list.get(list.size() - 1).getInt("ideaId");
+                    }
+                } else {
+                    e.printStackTrace();
                 }
             }
         });
@@ -92,7 +132,7 @@ public class UserJoinListFragment extends BaseFragment {
     private void setUpRecyclerView() {
         mJoinRecyclerView =
                 (RecyclerView) mView.findViewById(R.id.id_rv_join_recycler_view);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         mJoinRecyclerView.setLayoutManager(linearLayoutManager);
         mData = new ArrayList<>();
         mAdapter = new UserJoinListAdapter(getActivity(), mData);
@@ -108,5 +148,72 @@ public class UserJoinListFragment extends BaseFragment {
                 IdeaDetailActivity_.intent(getActivity()).objectId(objectId).title(title).start();
             }
         });
+        mJoinRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+
+                if (newState == RecyclerView.SCROLL_STATE_IDLE
+                        && linearLayoutManager.findLastVisibleItemPosition() + 1 == mAdapter.getItemCount()) {
+
+                    if (!mSwipeRefreshLayout.isRefreshing()) {
+                        mSwipeRefreshLayout.setRefreshing(true);
+                        loadMoreData();
+
+                    }
+                }
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                mSwipeRefreshLayout.setEnabled(linearLayoutManager
+                        .findFirstCompletelyVisibleItemPosition() == 0);
+            }
+        });
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (isSignIn()) {
+
+            if (isFirstLoad) {
+                mSwipeRefreshLayout.setRefreshing(true);
+                mSwipeRefreshLayout.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        mSwipeRefreshLayout.setRefreshing(true);
+                        refreshData();
+                    }
+                });
+                isFirstLoad = false;
+            }
+            if (mSignInPromptView != null) {
+                mSignInPromptView.setVisibility(View.GONE);
+                mSwipeRefreshLayout.setVisibility(View.VISIBLE);
+                mJoinRecyclerView.setVisibility(View.VISIBLE);
+
+
+            }
+        } else {
+            if (mSignInPromptView == null) {
+                ViewStub viewStub = (ViewStub) mView.findViewById(R.id.id_vs_login_in_prompt);
+                mSignInPromptView = viewStub.inflate();
+                mSignInPromptView.findViewById(R.id.id_btn_log_in).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // 跳转到登录界面
+                        SignInActivity_.intent(UserJoinListFragment.this).startForResult(SignInActivity.SIGN_IN_REQUEST_CODE);
+                    }
+
+                });
+            }
+            mJoinRecyclerView.setVisibility(View.GONE);
+            mSwipeRefreshLayout.setVisibility(View.GONE);
+            mSignInPromptView.setVisibility(View.VISIBLE);
+        }
+
+    }
+
 }

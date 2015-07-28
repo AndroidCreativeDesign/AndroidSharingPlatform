@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    >
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/id_srl_refresh_data"
@@ -17,10 +17,11 @@
 
 
     <ViewStub
+        android:id="@+id/id_vs_login_in_prompt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_centerInParent="true"
         android:layout="@layout/include_log_in_prompt" />
 
 
-</FrameLayout>
+</RelativeLayout>

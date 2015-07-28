@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.daixiaodong.myapp.R;
+import cn.daixiaodong.myapp.activity.IdeaDetailActivity_;
 import cn.daixiaodong.myapp.activity.SignInActivity;
 import cn.daixiaodong.myapp.activity.SignInActivity_;
 import cn.daixiaodong.myapp.adapter.UserCollectListAdapter;
@@ -34,7 +35,7 @@ import static android.support.v7.widget.RecyclerView.OnScrollListener;
 /**
  * 用户收藏的idea
  */
-public class UserCollectFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener {
+public class UserCollectFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener, UserCollectListAdapter.OnItemClickListener {
 
 
     private View mConvertView;
@@ -88,6 +89,7 @@ public class UserCollectFragment extends BaseFragment implements SwipeRefreshLay
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mData = new ArrayList<>();
         mAdapter = new UserCollectListAdapter(getActivity(), mData);
+        mAdapter.setOnItemClickListener(this);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.addOnScrollListener(new OnScrollListener() {
             @Override
@@ -236,4 +238,17 @@ public class UserCollectFragment extends BaseFragment implements SwipeRefreshLay
         }
     }
 
+
+    /**
+     *  item点击事件
+     * @param viewHolder
+     * @param pos
+     */
+    @Override
+    public void onItemClick(UserCollectListAdapter.MyViewHolder viewHolder, int pos) {
+        AVObject object = mData.get(pos).getAVObject("idea");
+        String objectId = object.getObjectId();
+        String title = object.getString("title");
+        IdeaDetailActivity_.intent(getActivity()).objectId(objectId).title(title).start();
+    }
 }

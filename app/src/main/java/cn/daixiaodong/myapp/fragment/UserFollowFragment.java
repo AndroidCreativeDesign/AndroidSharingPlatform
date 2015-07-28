@@ -7,6 +7,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.daixiaodong.myapp.R;
+import cn.daixiaodong.myapp.activity.UserProfileActivity_;
 import cn.daixiaodong.myapp.adapter.UserFollowListAdapter;
 import cn.daixiaodong.myapp.fragment.common.BaseFragment;
 
@@ -30,7 +32,7 @@ import static android.support.v7.widget.RecyclerView.OnScrollListener;
 /**
  *  用户关注的其他用户
  */
-public class UserFollowFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener {
+public class UserFollowFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener, UserFollowListAdapter.OnItemClickListener {
 
     private View mRootView;
     private SwipeRefreshLayout mRefreshLayout;
@@ -76,6 +78,7 @@ public class UserFollowFragment extends BaseFragment implements SwipeRefreshLayo
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mData = new ArrayList<>();
         mAdapter = new UserFollowListAdapter(getActivity(), mData);
+        mAdapter.setOnItemClickListener(this);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.addOnScrollListener(new OnScrollListener() {
             @Override
@@ -119,4 +122,13 @@ public class UserFollowFragment extends BaseFragment implements SwipeRefreshLayo
         }
     }
 
+    @Override
+    public void onItemClick(UserFollowListAdapter.MyViewHolder viewHolder, int pos) {
+        UserProfileActivity_.intent(this).start();
+    }
+
+    @Override
+    public void onUnfollowBtnClick(UserFollowListAdapter.MyViewHolder viewHolder, int pos) {
+        Log.i("按钮被点击了","第"+pos+"个");
+    }
 }

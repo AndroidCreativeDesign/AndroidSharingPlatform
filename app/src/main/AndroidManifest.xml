@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="cn.daixiaodong.myapp">
+    package="cn.daixiaodong.myapp" >
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -15,7 +15,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="萌想"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme" >
         <meta-data
             android:name="leancloud"
             android:value="LeanCloud" />
@@ -34,14 +34,23 @@
             android:name="com.umeng.update.UpdateDialogActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
-            android:name=".activity.MainActivity_"
+            android:name="com.echo.mengxiang.activity.WelcomeStartActivity_"
+            android:label="@string/title_activity_welcome_start"
             android:launchMode="singleInstance"
-            android:screenOrientation="portrait">
+            android:parentActivityName=".activity.common.BaseActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="cn.daixiaodong.myapp.activity.common.BaseActivity" />
+        </activity>
+        <activity
+            android:name=".activity.MainActivity_"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".activity.SignInActivity_"
@@ -60,14 +69,13 @@
         <activity android:name=".activity.PasswordResetActivity_" />
         <activity android:name=".activity.IdeaDetailActivity_" />
         <activity android:name=".activity.PublishIdeaActivity_" />
-
         <activity android:name="com.avos.avoscloud.feedback.ThreadActivity" />
 
         <service
             android:name="com.avos.avoscloud.PushService"
             android:exported="true" />
 
-        <receiver android:name=".receiver.PushBroadcastReceiver">
+        <receiver android:name=".receiver.PushBroadcastReceiver" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.USER_PRESENT" />
@@ -75,7 +83,6 @@
                 <action android:name="cn.daixiaodong.myapp.push" />
             </intent-filter>
         </receiver>
-
 
         <activity
             android:name=".activity.SettingsActivity"
@@ -96,27 +103,29 @@
 
         <activity
             android:name=".activity.UserProfileActivity_"
-            android:label="@string/title_activity_profile"></activity>
+            android:label="@string/title_activity_profile" />
         <activity
             android:name=".activity.SearchActivity"
-            android:label="@string/title_activity_search"></activity>
+            android:label="@string/title_activity_search" />
         <activity
             android:name=".activity.AssociationTopicActivity_"
-            android:label="@string/title_activity_topic"></activity>
+            android:label="@string/title_activity_topic" />
         <activity
             android:name=".activity.CollegeActivity_"
-            android:label="@string/title_activity_college"></activity>
+            android:label="@string/title_activity_college" />
         <activity
             android:name=".activity.AssociationDetailActivity_"
-            android:label="@string/title_activity_association"></activity>
+            android:label="@string/title_activity_association" />
         <activity
             android:name=".activity.RegistrationInformationActivity_"
-            android:label="@string/title_activity_registration_information"></activity>
+            android:label="@string/title_activity_registration_information" />
         <activity
             android:name=".chat.LeanCloudChat"
-            android:label="@string/title_activity_lean_cloud_chat"></activity>
-
-
+            android:label="@string/title_activity_lean_cloud_chat" />
+        <activity
+            android:name="com.echo.mengxiang.activity.WelcomeGuideActivity"
+            android:label="@string/title_activity_welcome_guide" >
+        </activity>
     </application>
 
 </manifest>

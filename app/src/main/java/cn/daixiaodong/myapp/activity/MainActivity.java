@@ -65,6 +65,18 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         if (savedInstanceState == null) {
             initData();
+        } else {
+
+            mFragments = (ArrayList<Fragment>) getSupportFragmentManager().getFragments();
+
+            // activity 实例被销毁，属性 为 NULL
+            Log.i("onCreate", "savedInstanceState != null");
+            Log.i("savedInstanceState", savedInstanceState.toString());
+            if (mFragments == null && mViewToolbar == null) {
+                Log.i("mFragments", "mFragments == null");
+                Log.i("mViewToolbar", " mViewToolbar == null");
+            }
+
         }
 
         // 接受消息推送 广播 数据 处理相应逻辑
@@ -85,7 +97,6 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        //outState.putSerializable("list", mFragments);
         Log.i("tag", "onSaveInstanceState");
         super.onSaveInstanceState(outState);
         //

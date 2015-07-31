@@ -59,6 +59,22 @@ public class HomeFragment extends BaseFragment {
         mViewPager = (ViewPager) getActivity().findViewById(R.id.id_vp_view_pager);
         setupViewPager(mViewPager);
         tabLayout.setupWithViewPager(mViewPager);
+        /*tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                showToast(getActivity(),tab.getPosition()+"");
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });*/
     }
 
     @Override

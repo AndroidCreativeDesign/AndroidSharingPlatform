@@ -213,7 +213,7 @@ public class UserPublishListFragment extends BaseFragment implements UserPublish
     }
 
     @Override
-    public void onItemClick(UserPublishListAdapter.MyViewHolder viewHolder, int pos) {
+    public void onItemClick(RecyclerView.ViewHolder viewHolder, int pos) {
         AVObject object = mData.get(pos);
         String objectId = object.getObjectId();
         String title = object.getString("title");
@@ -221,10 +221,11 @@ public class UserPublishListFragment extends BaseFragment implements UserPublish
     }
 
     @Override
-    public void onEditBtnClick(UserPublishListAdapter.MyViewHolder viewHolder, int pos) {
+    public void onEditBtnClick(RecyclerView.ViewHolder viewHolder, int pos) {
         AVObject object = mData.get(pos);
         String objectId = object.getObjectId();
         String title = object.getString("title");
-        UpdateIdeaActivity_.intent(this).objectId(objectId).title(title).start();
+        int type = object.getInt("type");
+        UpdateIdeaActivity_.intent(this).objectId(objectId).title(title).type(type).start();
     }
 }

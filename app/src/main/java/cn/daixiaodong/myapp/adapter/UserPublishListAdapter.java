@@ -13,21 +13,18 @@ import com.avos.avoscloud.AVObject;
 import java.util.List;
 
 import cn.daixiaodong.myapp.R;
+import cn.daixiaodong.myapp.config.Constants;
 
 /**
  * 用户发布的idea列表   Adapter
  */
-public class UserPublishListAdapter extends RecyclerView.Adapter<UserPublishListAdapter.MyViewHolder> {
+public class UserPublishListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private Context mContext;
     private List<AVObject> mDataSet;
     private LayoutInflater mLayoutInflater;
     private OnItemClickListener mListener;
 
-    public UserPublishListAdapter(Context context) {
-        this.mContext = context;
-        this.mLayoutInflater = LayoutInflater.from(context);
-    }
 
     public UserPublishListAdapter(Context context, List<AVObject> data) {
         this.mContext = context;
@@ -36,72 +33,106 @@ public class UserPublishListAdapter extends RecyclerView.Adapter<UserPublishList
 
     }
 
-    public void setDataSet(List<AVObject> data) {
-        this.mDataSet = data;
-        notifyDataSetChanged();
-    }
-
-    public void addData(List<AVObject> data) {
-        this.mDataSet.addAll(0, data);
-        this.notifyItemInserted(1);
-    }
 
     @Override
-    public UserPublishListAdapter.MyViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
 
-        View view = mLayoutInflater.inflate(R.layout.item_publish, viewGroup, false);
-        MyViewHolder viewHolder = new MyViewHolder(view);
+        RecyclerView.ViewHolder viewHolder = null;
+        switch (viewType) {
+            case Constants.TYPE_DEFAULT:
+                viewHolder = new DefaultViewHolder(mLayoutInflater.inflate(R.layout.item_publish, viewGroup, false));
+                break;
+            case Constants.TYPE_RECRUITMENT:
+                viewHolder = new RecruitmentViewHolder(mLayoutInflater.inflate(R.layout.item_publish_recruitment, viewGroup, false));
+                break;
+            case Constants.TYPE_CROWDFUNDING:
+                viewHolder = new CrowdfundingViewHolder(mLayoutInflater.inflate(R.layout.item_publish_crowdfunding, viewGroup, false));
+                break;
+        }
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(final UserPublishListAdapter.MyViewHolder viewHolder, final int i) {
+    public void onBindViewHolder(final RecyclerView.ViewHolder viewHolder, final int position) {
+
+        AVObject idea = mDataSet.get(position);
+        int type = idea.getInt("type");
+
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mListener != null) {
-                    mListener.onItemClick(viewHolder, i);
+                    mListener.onItemClick(viewHolder, position);
                 }
             }
         });
 
-        AVObject idea = mDataSet.get(i);
-        viewHolder.titleText.setText(idea.getString("title"));
-        viewHolder.joinNumText.setText(idea.getString("joinNum"));
-        viewHolder.startDateText.setText(idea.getString("startDate"));
-        viewHolder.endDateText.setText(idea.getString("endDate"));
-        viewHolder.addressText.setText(idea.getString("address"));
-        viewHolder.editBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mListener != null) {
-                    mListener.onEditBtnClick(viewHolder, i);
-                }
-            }
-        });
 
+        switch (type) {
+            case Constants.TYPE_DEFAULT:
+                onBindDefaultViewHolder(viewHolder, position, idea);
+                break;
+            case Constants.TYPE_RECRUITMENT:
+                onRecruitmentViewHolder(viewHolder, position, idea);
+                break;
+            case Constants.TYPE_CROWDFUNDING:
+                onCrowdfundingViewHolder(viewHolder, position, idea);
+                break;
+        }
+
+
+    }
+
+    private void onCrowdfundingViewHolder(RecyclerView.ViewHolder viewHolder, int position, AVObject idea) {
+        if (viewHolder instanceof CrowdfundingViewHolder) {
+            CrowdfundingViewHolder holder = (CrowdfundingViewHolder) viewHolder;
+            holder.titleText.setText(idea.getString("title"));
+        }
+    }
+
+    private void onRecruitmentViewHolder(RecyclerView.ViewHolder viewHolder, int position, AVObject idea) {
+        if (viewHolder instanceof RecruitmentViewHolder) {
+            RecruitmentViewHolder holder = (RecruitmentViewHolder) viewHolder;
+            holder.titleText.setText(idea.getString("title"));
+        }
+    }
+
+    private void onBindDefaultViewHolder(final RecyclerView.ViewHolder viewHolder, final int position, AVObject idea) {
+        if (viewHolder instanceof DefaultViewHolder) {
+            DefaultViewHolder holder = (DefaultViewHolder) viewHolder;
+            holder.titleText.setText(idea.getString("title"));
+            holder.joinNumText.setText(idea.getString("joinNum"));
+            holder.startDateText.setText(idea.getString("startDate"));
+            holder.endDateText.setText(idea.getString("endDate"));
+            holder.addressText.setText(idea.getString("address"));
+            holder.editBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mListener != null) {
+                        mListener.onEditBtnClick(viewHolder, position);
+                    }
+                }
+            });
+        }
     }
 
     @Override
     public int getItemCount() {
-        if (mDataSet == null) {
-            return 0;
-        }
+
         return mDataSet.size();
     }
 
-
     public interface OnItemClickListener {
-        void onItemClick(MyViewHolder viewHolder, int pos);
+        void onItemClick(RecyclerView.ViewHolder viewHolder, int pos);
 
-        void onEditBtnClick(MyViewHolder viewHolder, int pos);
+        void onEditBtnClick(RecyclerView.ViewHolder viewHolder, int pos);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {
         this.mListener = listener;
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public class DefaultViewHolder extends RecyclerView.ViewHolder {
 
         public TextView titleText;
         public TextView joinNumText;
@@ -110,7 +141,7 @@ public class UserPublishListAdapter extends RecyclerView.Adapter<UserPublishList
         public TextView addressText;
         public Button editBtn;
 
-        public MyViewHolder(View itemView) {
+        public DefaultViewHolder(View itemView) {
             super(itemView);
             titleText = (TextView) itemView.findViewById(R.id.tv_title);
             joinNumText = (TextView) itemView.findViewById(R.id.tv_join_num);
@@ -123,4 +154,28 @@ public class UserPublishListAdapter extends RecyclerView.Adapter<UserPublishList
     }
 
 
+    public static class RecruitmentViewHolder extends RecyclerView.ViewHolder {
+        public TextView titleText;
+
+        public RecruitmentViewHolder(View itemView) {
+            super(itemView);
+            titleText = (TextView) itemView.findViewById(R.id.tv_title);
+        }
+    }
+
+    public static class CrowdfundingViewHolder extends RecyclerView.ViewHolder {
+
+        public TextView titleText;
+
+        public CrowdfundingViewHolder(View itemView) {
+            super(itemView);
+            titleText = (TextView) itemView.findViewById(R.id.tv_title);
+        }
+    }
+
+
+    @Override
+    public int getItemViewType(int position) {
+        return mDataSet.get(position).getInt("type");
+    }
 }

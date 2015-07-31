@@ -5,7 +5,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -53,7 +52,7 @@ public class IdeaAdapter extends RecyclerView.Adapter<IdeaAdapter.MyViewHolder> 
     @Override
     public IdeaAdapter.MyViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
 
-        View view = mLayoutInflater.inflate(R.layout.item_idea, viewGroup, false);
+        View view = mLayoutInflater.inflate(R.layout.item_idea_new, viewGroup, false);
         MyViewHolder viewHolder = new MyViewHolder(view);
         return viewHolder;
     }
@@ -80,21 +79,21 @@ public class IdeaAdapter extends RecyclerView.Adapter<IdeaAdapter.MyViewHolder> 
 
             viewHolder.title.setVisibility(View.VISIBLE);
             viewHolder.time.setVisibility(View.VISIBLE);
-            viewHolder.introduce.setVisibility(View.VISIBLE);
+            viewHolder.introduce.setVisibility(View.GONE);
             viewHolder.tagName.setVisibility(View.GONE);
-            viewHolder.title.setText(mDataSet.get(i).getString("title") + mDataSet.get(i).getAVUser("user").getUsername());
+            viewHolder.title.setText(mDataSet.get(i).getString("title"));
             viewHolder.introduce.setText(dream.getString("introduce"));
 
 
         }
 
-
+/*
         FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) viewHolder.image.getLayoutParams();
 
         layoutParams.width = mWidth - (int) (16 * mScale + 0.5f);
         layoutParams.height = (int) ((9 * layoutParams.width) / 16.0f);
         viewHolder.image.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        viewHolder.image.setLayoutParams(layoutParams);
+        viewHolder.image.setLayoutParams(layoutParams);*/
 
      /*   Log.i("tag", layoutParams.width + "");
         Log.i("tag", layoutParams.height + "");*/

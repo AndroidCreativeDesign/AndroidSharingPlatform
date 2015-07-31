@@ -1,9 +1,8 @@
 package cn.daixiaodong.myapp.activity;
 
-import android.graphics.Color;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.View;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -12,6 +11,7 @@ import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.SignUpCallback;
 
+import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
@@ -39,6 +39,11 @@ public class SignUpFirstStepActivity extends BaseActivity {
     @ViewById(R.id.id_btn_sign_in_first_step_next_step)
     Button mViewNextStep;
 
+
+    @AfterViews
+    void init(){
+        initToolbar();
+    }
 
     @Click(R.id.id_btn_sign_in_first_step_next_step)
     void signUp() {
@@ -112,14 +117,17 @@ public class SignUpFirstStepActivity extends BaseActivity {
      */
     private void initToolbar() {
         setSupportActionBar(mViewToolbar);
-        mViewToolbar.setTitleTextColor(Color.WHITE);
         mViewToolbar.setTitle("注册");
-        mViewToolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_48dp);
-        mViewToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        if(getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == android.R.id.home){
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

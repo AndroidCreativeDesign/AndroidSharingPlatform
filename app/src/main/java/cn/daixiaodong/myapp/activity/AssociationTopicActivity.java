@@ -24,9 +24,10 @@ import java.util.List;
 import cn.daixiaodong.myapp.R;
 import cn.daixiaodong.myapp.activity.common.BaseActivity;
 import cn.daixiaodong.myapp.adapter.AssociationListAdapter;
+import cn.daixiaodong.myapp.view.SpacesItemDecoration;
 
 /**
- *  协会专题
+ * 协会专题
  */
 @EActivity
 public class AssociationTopicActivity extends BaseActivity implements AssociationListAdapter.OnItemClickListener {
@@ -51,7 +52,7 @@ public class AssociationTopicActivity extends BaseActivity implements Associatio
 
     private void initToolbar() {
         setSupportActionBar(mToolbar);
-        if(getSupportActionBar() != null){
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
         mToolbar.setTitle("社团专题");
@@ -74,6 +75,8 @@ public class AssociationTopicActivity extends BaseActivity implements Associatio
         mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2,
                 StaggeredGridLayoutManager.VERTICAL));
         mData = new ArrayList<>();
+        SpacesItemDecoration decoration = new SpacesItemDecoration(16);
+        mRecyclerView.addItemDecoration(decoration);
         mAdapter = new AssociationListAdapter(this, mData);
         mAdapter.setOnItemClickListener(this);
         mRecyclerView.setAdapter(mAdapter);
@@ -106,6 +109,19 @@ public class AssociationTopicActivity extends BaseActivity implements Associatio
             return true;
         }
 
+        if (id == R.id.action_search) {
+   /*         TextView textView = new TextView(this);
+            ViewGroup.LayoutParams layoutParams = textView.getLayoutParams();
+            layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT;
+            layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT;*/
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setView(R.layout.dialog_search);
+           
+            builder.setPositiveButton("确定", null);
+            builder.create().show();
+        }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -121,7 +137,6 @@ public class AssociationTopicActivity extends BaseActivity implements Associatio
         // TODO 判断是否登录
 
 
-
 //        RegistrationInformationActivity_.intent(AssociationTopicActivity.this).mAssociationId(mData.get(pos).getObjectId()).start();
 
         AVQuery<AVObject> query = new AVQuery<>("user_join_association");
@@ -135,7 +150,7 @@ public class AssociationTopicActivity extends BaseActivity implements Associatio
                         showToast("你已经加入了该协会，请勿重复报名");
                         AlertDialog.Builder builder = new AlertDialog.Builder(AssociationTopicActivity.this);
                         builder.setMessage("你已经加入了该协会，请勿重复报名");
-                        builder.setPositiveButton("确定",null);
+                        builder.setPositiveButton("确定", null);
                         builder.create().show();
                     } else {
                         RegistrationInformationActivity_.intent(AssociationTopicActivity.this).start();

@@ -8,6 +8,9 @@
         android:summary="接收活动通知"
         android:title="消息推送" />
 
+    
+
+
 
 
     <!--<PreferenceCategory android:title="Category 1">

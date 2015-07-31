@@ -1,15 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
+    android:layout_marginTop="8dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="8dp">
 
 
-    <TextView
-        android:id="@+id/tv_association_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="协会名称" />
+        <ImageView
+            android:id="@+id/img_association_logo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@mipmap/ic_launcher" />
 
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/tv_association_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_toRightOf="@id/img_association_logo"
+            android:text="协会名称"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+
+        <Button
+            android:id="@+id/btn_members"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/tv_association_name"
+            android:layout_below="@id/tv_association_name"
+            android:layout_toRightOf="@id/img_association_logo"
+            android:text="查看成员" />
+
+        <Button
+            android:id="@+id/btn_discuss"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_association_name"
+            android:layout_toRightOf="@id/btn_members"
+            android:text="讨论" />
+
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

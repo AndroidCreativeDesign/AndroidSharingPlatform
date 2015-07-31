@@ -1,33 +1,29 @@
 package cn.daixiaodong.myapp.activity;
 
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
 
-import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVObject;
-import com.avos.avoscloud.AVQuery;
-import com.avos.avoscloud.AVUser;
-import com.avos.avoscloud.FindCallback;
 
 import org.androidannotations.annotations.AfterExtras;
 import org.androidannotations.annotations.AfterViews;
-import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Extra;
 import org.androidannotations.annotations.ViewById;
 
-import java.util.List;
-
 import cn.daixiaodong.myapp.R;
 import cn.daixiaodong.myapp.activity.common.BaseActivity;
+import cn.daixiaodong.myapp.adapter.ViewPagerAdapter;
+import cn.daixiaodong.myapp.fragment.AssociationIntroduceFragment;
+import cn.daixiaodong.myapp.fragment.AssociationPhotosFragment;
 
 
 /**
- *  协会详情界面
+ * 协会详情界面
  */
 @EActivity
 public class AssociationDetailActivity extends BaseActivity {
@@ -35,16 +31,18 @@ public class AssociationDetailActivity extends BaseActivity {
     @ViewById(R.id.id_tb_toolbar)
     Toolbar mToolbar;
 
+    @ViewById(R.id.tl_tab_layout)
+    TabLayout mTabLayout;
 
-    @ViewById(R.id.id_btn_join)
-    Button mBtnJoin;
+    @ViewById(R.id.vp_view_pager)
+    ViewPager mViewPager;
+
 
     @Extra
     String mAssociationId;
 
     @Extra
     String mAssociationName;
-
 
     private AVObject mAssociation;
 
@@ -56,52 +54,22 @@ public class AssociationDetailActivity extends BaseActivity {
     @AfterViews
     void init() {
         setUpToolbar();
+        setUpViewPager();
+        mTabLayout.setupWithViewPager(mViewPager);
         mToolbar.setTitle(mAssociationName);
-        loadData();
+
     }
 
-    private void loadData() {
-        AVQuery<AVObject> query = new AVQuery<>("association");
-        query.whereEqualTo("objectId", mAssociationId);
-        query.findInBackground(new FindCallback<AVObject>() {
-            @Override
-            public void done(List<AVObject> list, AVException e) {
-                if (e == null) {
-                    mAssociation = list.get(0);
-                    showToast("数据加载完毕");
-                } else {
-                    e.printStackTrace();
-                }
-            }
-        });
+    private void setUpViewPager() {
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        mViewPager.setOffscreenPageLimit(2);
+        AssociationIntroduceFragment introduceFragment = AssociationIntroduceFragment.newInstance(mAssociationId, null);
+        AssociationPhotosFragment photosFragment = AssociationPhotosFragment.newInstance(mAssociationId, null);
+        adapter.addFragment(introduceFragment, "介绍");
+        adapter.addFragment(photosFragment, "精彩活动");
+        mViewPager.setAdapter(adapter);
     }
 
-    @Click(R.id.id_btn_join)
-    void join() {
-        AVQuery<AVObject> query = new AVQuery<>("user_association");
-        query.whereEqualTo("user", AVUser.getCurrentUser());
-        query.whereEqualTo("association", mAssociation);
-
-        // 这里可以用 count
-        query.findInBackground(new FindCallback<AVObject>() {
-            @Override
-            public void done(List<AVObject> list, AVException e) {
-                if (e == null) {
-                    if (!list.isEmpty()) {
-                        showToast("你已经加入了该协会，请勿重复报名");
-                        AlertDialog.Builder builder = new AlertDialog.Builder(AssociationDetailActivity.this);
-                        builder.setMessage("你已经加入了该协会，请勿重复报名");
-                        builder.setPositiveButton("确定", null);
-                        builder.create().show();
-                    } else {
-                        RegistrationInformationActivity_.intent(AssociationDetailActivity.this).start();
-                    }
-                } else {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

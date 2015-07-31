@@ -1,43 +1,127 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/include_toolbar" />
+    <include
+        android:id="@+id/include_toolbar"
+        layout="@layout/include_toolbar" />
 
-    <EditText
-        android:id="@+id/id_et_name"
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:imeOptions="actionNext"
-        android:hint="姓名" />
+        android:layout_below="@+id/include_toolbar">
 
-    <EditText
-        android:id="@+id/id_et_student_id"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:imeOptions="actionNext"
-        android:hint="学号" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/id_et_class"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:imeOptions="actionNext"
-        android:hint="班级" />
+            <EditText
+                android:id="@+id/id_et_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="姓名"
+                android:imeOptions="actionNext" />
 
-    <EditText
-        android:id="@+id/id_et_phone_number"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:imeOptions="actionNext"
-        android:hint="手机号" />
+            <EditText
+                android:id="@+id/id_et_student_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="学号"
+                android:imeOptions="actionNext" />
 
-    <EditText
-        android:id="@+id/id_et_qq"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="QQ号" />
+            <EditText
+                android:id="@+id/id_et_class"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="班级"
+                android:imeOptions="actionNext" />
+
+            <EditText
+                android:id="@+id/id_et_phone_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="手机号"
+                android:imeOptions="actionNext" />
+
+            <EditText
+                android:id="@+id/id_et_qq"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="QQ号" />
 
 
-</LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="报名费20元" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="支付方式" />
+
+            <RadioGroup
+                android:id="@+id/group_pay_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rbtn_alipay"
+
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:text="支付宝支付" />
+
+                <RadioButton
+                    android:id="@+id/rbtn_wepay"
+
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="微信支付" />
+
+                <RadioButton
+                    android:id="@+id/rbtn_other"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="报名点支付" />
+
+            </RadioGroup>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="注意："
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1、如果你尚未开通支付宝或微信支付，可以选择到报名点支付，然后提交报名，之后到报名点交会费即可" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2、报名费由校社团联合会管理与监督，且只用于协会集体活动。" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3、如果在报名过程中遇到任何问题，可以直接与QQ：496690324（CodingAdai）取得联系" />
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</RelativeLayout>

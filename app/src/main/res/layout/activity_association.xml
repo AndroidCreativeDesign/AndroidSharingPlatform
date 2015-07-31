@@ -3,48 +3,18 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/include_toolbar" />
+    <include layout="@layout/include_toolbar"/>
 
-    <ScrollView
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tl_tab_layout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="48dp"
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+        android:background="?colorPrimary" />
 
-            <TextView
-                android:id="@+id/id_tv_association_introduce"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="介绍" />
-
-            <TextView
-                android:id="@+id/id_tv_association_events"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="精彩活动" />
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="会费" />
-
-
-        </LinearLayout>
-
-
-    </ScrollView>
-
-
-    <Button
-        android:id="@+id/id_btn_join"
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_view_pager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="加入" />
-
+        android:layout_height="match_parent" />
 
 </LinearLayout>

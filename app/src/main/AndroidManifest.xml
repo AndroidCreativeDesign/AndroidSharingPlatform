@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="cn.daixiaodong.myapp" >
+    package="cn.daixiaodong.myapp">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -10,12 +10,16 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
+  <!--  <uses-feature
+        android:name="android.hardware.camera2"
+        android:required="true" />-->
+
     <application
         android:name=".application.MyApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="萌想"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <meta-data
             android:name="leancloud"
             android:value="LeanCloud" />
@@ -36,7 +40,7 @@
         <activity
             android:name=".activity.MainActivity_"
             android:launchMode="singleInstance"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -66,7 +70,7 @@
             android:name="com.avos.avoscloud.PushService"
             android:exported="true" />
 
-        <receiver android:name=".receiver.PushBroadcastReceiver" >
+        <receiver android:name=".receiver.PushBroadcastReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.USER_PRESENT" />
@@ -115,12 +119,13 @@
             android:label="@string/title_activity_lean_cloud_chat" />
         <activity
             android:name=".activity.EditIdeaDetailActivity"
-            android:label="@string/title_activity_edit_idea_detail" >
-        </activity>
+            android:label="@string/title_activity_edit_idea_detail"></activity>
         <activity
             android:name=".activity.UpdateIdeaActivity_"
-            android:label="@string/title_activity_idea_edit" >
-        </activity>
+            android:label="@string/title_activity_idea_edit"></activity>
+        <activity
+            android:name=".activity.UpdateActivity_"
+            android:label="@string/title_activity_update_recruitment"></activity>
     </application>
 
 </manifest>

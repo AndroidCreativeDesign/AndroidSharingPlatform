@@ -27,9 +27,9 @@ import java.util.List;
 import cn.daixiaodong.myapp.R;
 import cn.daixiaodong.myapp.activity.AssociationTopicActivity_;
 import cn.daixiaodong.myapp.activity.IdeaDetailActivity_;
-import cn.daixiaodong.myapp.activity.PublishIdeaActivity_;
 import cn.daixiaodong.myapp.activity.SignInActivity;
 import cn.daixiaodong.myapp.activity.SignInActivity_;
+import cn.daixiaodong.myapp.activity.UpdateActivity_;
 import cn.daixiaodong.myapp.adapter.IdeaAdapter;
 import cn.daixiaodong.myapp.config.Constants;
 import cn.daixiaodong.myapp.fragment.common.BaseFragment;
@@ -224,7 +224,8 @@ public class IdeaListFragment extends BaseFragment {
                     // 参考：http://www.tuicool.com/articles/2eM32a
                     SignInActivity_.intent(getParentFragment()).startForResult(SignInActivity.SIGN_IN_REQUEST_CODE);
                 } else {
-                    PublishIdeaActivity_.intent(getActivity()).start();
+//                    PublishIdeaActivity_.intent(getActivity()).start();
+                    UpdateActivity_.intent(getParentFragment()).start();
                 }
             }
         });

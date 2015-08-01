@@ -1,6 +1,10 @@
 package cn.daixiaodong.myapp.fragment;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -12,6 +16,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.avos.avoscloud.AVAnalytics;
 import com.avos.avoscloud.AVException;
@@ -51,15 +56,19 @@ public class IdeaListFragment extends BaseFragment {
 
     private int mOffset;
 
-    private int mPager = 1;
+    private NetWorkStateChangeBroadcastReceiver mReceiver;
 
+    private boolean isFirstIn = true;
 
     private int topicNum = 0;
+
+    private View mRootView;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.fragment_idea_list, container, false);
+        mRootView = mView.findViewById(R.id.flayout_root);
         return mView;
     }
 
@@ -82,6 +91,19 @@ public class IdeaListFragment extends BaseFragment {
                 loadData(true);
             }
         });
+
+
+        mReceiver = new NetWorkStateChangeBroadcastReceiver();
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
+        getActivity().registerReceiver(mReceiver, filter);
+
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        getActivity().unregisterReceiver(mReceiver);
     }
 
     private void setUpSwipeRefreshLayout() {
@@ -98,6 +120,9 @@ public class IdeaListFragment extends BaseFragment {
 
         AVQuery<AVObject> query1 = new AVQuery<>("idea");
         query1.whereEqualTo("type", 1);
+        if (isFirstIn) {
+            query1.setCachePolicy(AVQuery.CachePolicy.NETWORK_ELSE_CACHE);
+        }
         query1.findInBackground(new FindCallback<AVObject>() {
             @Override
             public void done(List<AVObject> list, AVException e) {
@@ -110,6 +135,13 @@ public class IdeaListFragment extends BaseFragment {
                     mData.addAll(0, list);
                     //mAdapter.notifyDataSetChanged();
                     loadNotTopicData(isRefresh);
+                } else {
+                    mSwipeRefreshLayout.setRefreshing(false);
+                    e.printStackTrace();
+                    if (!NetworkUtil.isNetworkConnected(getActivity())) {
+//                        Snackbar.make(mRootView,"网络异常，请检查网络是否连接",Snackbar.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(), "网络异常，请检查网络是否连接", Toast.LENGTH_LONG).show();
+                    }
                 }
             }
         });
@@ -128,7 +160,10 @@ public class IdeaListFragment extends BaseFragment {
         if (!isRefresh) {
             query.whereLessThan("ideaId", mOffset);
         }
-        query.setCachePolicy(AVQuery.CachePolicy.NETWORK_ELSE_CACHE);
+        if (isFirstIn) {
+            query.setCachePolicy(AVQuery.CachePolicy.NETWORK_ELSE_CACHE);
+            isFirstIn = false;
+        }
         query.findInBackground(new FindCallback<AVObject>() {
             @Override
             public void done(List<AVObject> list, AVException e) {
@@ -148,14 +183,19 @@ public class IdeaListFragment extends BaseFragment {
                             mData.addAll(topicNum, list);
                         } else {
                             mData.addAll(list);
-                            mPager++;
                         }
                         mAdapter.notifyDataSetChanged();
                         if (!NetworkUtil.isNetworkConnected(getActivity())) {
-                            showToast(getActivity(), "网络错误");
+                            Toast.makeText(getActivity(), "网络异常，请检查网络是否连接", Toast.LENGTH_LONG).show();
                         }
                     } else {
-                        showToast(getActivity(), "没有更多数据了");
+                        if (!NetworkUtil.isNetworkConnected(getActivity())) {
+                            Toast.makeText(getActivity(), "网络异常，请检查网络是否连接", Toast.LENGTH_LONG).show();
+                        } else {
+                            showToast(getActivity(), "没有更多数据了");
+
+                        }
+
                     }
                 } else {
                     e.printStackTrace();
@@ -251,4 +291,13 @@ public class IdeaListFragment extends BaseFragment {
             }
         });
     }
+
+    class NetWorkStateChangeBroadcastReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Log.i("action",intent.getAction());
+        }
+    }
+
 }

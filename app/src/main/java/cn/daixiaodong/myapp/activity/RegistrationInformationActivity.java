@@ -145,7 +145,7 @@ public class RegistrationInformationActivity extends BaseActivity implements Pay
             public void done(List<AVObject> list, AVException e) {
                 if (e == null) {
                     mAssociation = list.get(0);
-                    mJoin = new AVObject("user_join_association");
+                    mJoin = new AVObject(Constants.TABLE_USER_JOIN);
                     mJoin.put("name", mName.getText().toString());
                     mJoin.put("studentId", mStudentId.getText().toString());
                     mJoin.put("phoneNum", mPhoneNumber.getText().toString());
@@ -153,7 +153,7 @@ public class RegistrationInformationActivity extends BaseActivity implements Pay
                     mJoin.put("user", AVUser.getCurrentUser());
                     mJoin.put("association", mAssociation);
                     mJoin.put("payType", mPayType);
-                    mJoin.put("type", 1);
+                    mJoin.put("type", Constants.TYPE_ASSOCIATION);
                     mJoin.saveInBackground(new SaveCallback() {
                         @Override
                         public void done(AVException e) {

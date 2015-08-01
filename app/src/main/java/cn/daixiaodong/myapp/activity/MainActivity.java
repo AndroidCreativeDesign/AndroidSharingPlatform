@@ -1,7 +1,10 @@
 package cn.daixiaodong.myapp.activity;
 
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -12,13 +15,17 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.avos.avoscloud.AVInstallation;
+import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.PushService;
 import com.avos.avoscloud.feedback.FeedbackAgent;
 import com.bmob.pay.tool.BmobPay;
+import com.squareup.picasso.Picasso;
 import com.umeng.update.UmengUpdateAgent;
 
 import org.androidannotations.annotations.AfterViews;
@@ -30,11 +37,12 @@ import java.util.ArrayList;
 import cn.daixiaodong.myapp.R;
 import cn.daixiaodong.myapp.activity.common.BaseActivity;
 import cn.daixiaodong.myapp.config.Constants;
-import cn.daixiaodong.myapp.fragment.UserCollectFragment;
-import cn.daixiaodong.myapp.fragment.UserFollowFragment;
 import cn.daixiaodong.myapp.fragment.HomeFragment;
 import cn.daixiaodong.myapp.fragment.PushMessageFragment;
+import cn.daixiaodong.myapp.fragment.UserCollectFragment;
+import cn.daixiaodong.myapp.fragment.UserFollowFragment;
 import cn.daixiaodong.myapp.receiver.PushBroadcastReceiver;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 
 /**
@@ -59,6 +67,13 @@ public class MainActivity extends BaseActivity {
 
     private ArrayList<Fragment> mFragments;
 
+    private CircleImageView mProfilePhoto;
+
+    private TextView mUsername;
+
+    private UserStatusChangeBroadcastReceiver mReceiver;
+
+    private AVUser mUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,6 +108,16 @@ public class MainActivity extends BaseActivity {
         agent.sync();
         UmengUpdateAgent.update(this);
         BmobPay.init(this, Constants.BMOB_APPLICATION_ID);
+
+
+        // 注册用户登录状态改变的广播
+        mReceiver = new UserStatusChangeBroadcastReceiver();
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(Constants.ACTION_USER_SIGN_IN);
+        filter.addAction(Constants.ACTION_USER_SIGN_OUT);
+        registerReceiver(mReceiver, filter);
+
+
     }
 
     @Override
@@ -101,6 +126,12 @@ public class MainActivity extends BaseActivity {
         super.onSaveInstanceState(outState);
         //
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(mReceiver);
     }
 
     @AfterViews
@@ -113,15 +144,33 @@ public class MainActivity extends BaseActivity {
 
     private void initData() {
         mFragments = new ArrayList<>();
+        mUser = AVUser.getCurrentUser();
     }
 
     private void initNav() {
-        mViewNav.findViewById(R.id.id_iv_profile_photo).setOnClickListener(new View.OnClickListener() {
+
+
+        mViewNav.findViewById(R.id.llayout_container).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UserProfileActivity_.intent(MainActivity.this).start();
+                if (AVUser.getCurrentUser() != null) {
+
+                    UserProfileActivity_.intent(MainActivity.this).start();
+                } else {
+                    SignInActivity_.intent(MainActivity.this).start();
+                }
             }
         });
+
+        mProfilePhoto = (CircleImageView) mViewNav.findViewById(R.id.id_iv_profile_photo);
+
+        mUsername = (TextView) mViewNav.findViewById(R.id.tv_username);
+
+
+        if (mUser != null) {
+            Picasso.with(this).load(mUser.getString("profilePhotoUrl")).into(mProfilePhoto);
+            mUsername.setText(mUser.getUsername());
+        }
 
         mViewNav.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -199,6 +248,7 @@ public class MainActivity extends BaseActivity {
                     Log.i("tag", "case 2");
                     mCurrentFragment = new PushMessageFragment();
                     break;
+                // 关注
                 case R.id.action_follow:
                     Log.i("tag", "action follow");
                     mCurrentFragment = new UserFollowFragment();
@@ -219,6 +269,12 @@ public class MainActivity extends BaseActivity {
 
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main_activity, menu);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
@@ -227,8 +283,44 @@ public class MainActivity extends BaseActivity {
                     mDrawerLayout.closeDrawer(GravityCompat.START);
                 }
                 startActivity(new Intent(this, SearchActivity.class));
-                break;
+                return true;
+            case R.id.action_sign_out:
+
+                AVUser.logOut();
+                /*这样写  收不到广播
+                Intent intent = new Intent(MainActivity.this, UserStatusChangeBroadcastReceiver.class);
+                intent.setAction(Constants.ACTION_USER_SIGN_OUT);*/
+                Intent intent = new Intent(Constants.ACTION_USER_SIGN_OUT);
+                sendBroadcast(intent);
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }
+
+
+    class UserStatusChangeBroadcastReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if (Constants.ACTION_USER_SIGN_IN.equals(action)) {
+                updateUIWhenUserSignIn();
+            } else if (Constants.ACTION_USER_SIGN_OUT.equals(action)) {
+                updateUIWhenUserSignOut();
+
+            }
+        }
+    }
+
+    private void updateUIWhenUserSignOut() {
+        mProfilePhoto.setImageResource(R.drawable.ic_add_white_48dp);
+        mUsername.setText("未登录");
+    }
+
+    private void updateUIWhenUserSignIn() {
+        Picasso.with(MainActivity.this).load(AVUser.getCurrentUser().getString("profile_photo_url")).into(mProfilePhoto);
+        mUsername.setText(AVUser.getCurrentUser().getUsername());
+    }
+
+
 }

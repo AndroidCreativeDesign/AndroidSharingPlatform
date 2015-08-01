@@ -1,0 +1,45 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <include layout="@layout/include_toolbar" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="请选择类型" />
+
+    <RadioGroup
+        android:id="@+id/group_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/rbtn_type_default"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="创意活动" />
+
+        <RadioButton
+            android:id="@+id/rbtn_type_recruitment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="团队招募" />
+
+        <RadioButton
+            android:id="@+id/rbtn_type_crowdfunding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="梦想众筹" />
+
+    </RadioGroup>
+
+
+    <FrameLayout
+        android:id="@+id/flayout_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

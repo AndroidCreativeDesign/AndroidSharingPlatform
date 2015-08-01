@@ -59,4 +59,5 @@
     <string name="title_activity_edit_idea_detail">EditIdeaDetailActivity</string>
     <string name="title_activity_idea_edit">IdeaEditActivity</string>
     <string name="title_activity_update_recruitment">UpdateRecruitmentActivity</string>
+    <string name="title_activity_user_join">UserJoinActivity</string>
 </resources>

@@ -26,6 +26,7 @@ import java.util.List;
 
 import cn.daixiaodong.myapp.R;
 import cn.daixiaodong.myapp.activity.common.BaseActivity;
+import cn.daixiaodong.myapp.config.Constants;
 
 /**
  * idea详情页
@@ -91,9 +92,10 @@ public class IdeaDetailActivity extends BaseActivity {
 
 
         AVUser user = AVUser.getCurrentUser();
-        final AVObject object = new AVObject("user_join");
+        final AVObject object = new AVObject(Constants.TABLE_USER_JOIN);
         object.put("user", user);
         object.put("idea", mIdea);
+        object.put("type", mIdea.get("type"));
         object.saveInBackground(new SaveCallback() {
             @Override
             public void done(AVException e) {
@@ -121,7 +123,7 @@ public class IdeaDetailActivity extends BaseActivity {
             case R.id.action_collect:
                 showToast("收藏");
                 AVUser user = AVUser.getCurrentUser();
-                final AVObject collect = new AVObject("user_collect");
+                final AVObject collect = new AVObject(Constants.TABLE_USER_COLLECT);
                 collect.put("user", user);
                 collect.put("idea", mIdea);
                 collect.saveInBackground(new SaveCallback() {
@@ -147,35 +149,6 @@ public class IdeaDetailActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
-   /* @ViewById(R.id.id_btn_pay)
-    Button mBtnPay;
-
-
-    @Click(R.id.id_btn_pay)
-    void pay() {
-        new BmobPay(this).pay(0.02, "某商品", new PayListener() {
-            @Override
-            public void orderId(String s) {
-
-            }
-
-            @Override
-            public void succeed() {
-
-            }
-
-            @Override
-            public void fail(int i, String s) {
-
-            }
-
-            @Override
-            public void unknow() {
-
-            }
-        });
-    }*/
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -194,11 +167,10 @@ public class IdeaDetailActivity extends BaseActivity {
         }
 
 
-
     }
 
     private void loadData() {
-        AVQuery<AVObject> query = new AVQuery<AVObject>("idea");
+        AVQuery<AVObject> query = new AVQuery<>("idea");
         query.whereEqualTo("objectId", objectId);
         query.include("user");
         query.findInBackground(new FindCallback<AVObject>() {

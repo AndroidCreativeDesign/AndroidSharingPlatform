@@ -19,14 +19,14 @@ import cn.daixiaodong.myapp.config.Constants;
 /**
  * 用户参与的idea 列表  Adapter
  */
-public class UserJoinListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class OtherUserJoinListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private List<AVObject> mDataSet;
     private LayoutInflater mLayoutInflater;
     private OnItemClickListener mListener;
 
 
-    public UserJoinListAdapter(Context context, List<AVObject> data) {
+    public OtherUserJoinListAdapter(Context context, List<AVObject> data) {
         this.mDataSet = data;
         this.mLayoutInflater = LayoutInflater.from(context);
     }
@@ -103,7 +103,7 @@ public class UserJoinListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     private void onBindAssociationViewHolder(RecyclerView.ViewHolder viewHolder, int i, AVObject object) {
         if (viewHolder instanceof AssociationViewHolder) {
             final AssociationViewHolder holder = (AssociationViewHolder) viewHolder;
-            holder.associationNameText.setText(object.getAVObject("association").getString("name")+object.getInt("payStatus"));
+            holder.associationNameText.setText(object.getAVObject("association").getString("name") + object.getInt("payStatus"));
         }
     }
 

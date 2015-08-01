@@ -12,12 +12,20 @@ public class Constants {
 
     // 表名
     public static final String TABLE_USER_JOIN = "user_join_all";
+    public static final String TABLE_USER_COLLECT = "user_collect_all";
+    public static final String TABLE_ASSOCIATION_PHOTOS = "association_photos";
+    public static final String TABLE_ASSOCIATION = "association";
 
     // 不同类型
     public static final int TYPE_DEFAULT = 0;
     public static final int TYPE_ASSOCIATION = 1;
     public static final int TYPE_RECRUITMENT = 2;
     public static final int TYPE_CROWDFUNDING = 3;
+
+
+    // ACTION
+    public static final String ACTION_USER_SIGN_IN = "cn.daixiaodong.myapp.USER_SIGN_IN";
+    public static final String ACTION_USER_SIGN_OUT = "cn.daixiaodong.myapp.USER_SIGN_OUT";
 
 
     // 支付方式

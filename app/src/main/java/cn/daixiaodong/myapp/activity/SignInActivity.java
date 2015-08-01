@@ -1,5 +1,6 @@
 package cn.daixiaodong.myapp.activity;
 
+import android.content.Intent;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -19,6 +20,7 @@ import org.androidannotations.annotations.ViewById;
 
 import cn.daixiaodong.myapp.R;
 import cn.daixiaodong.myapp.activity.common.BaseActivity;
+import cn.daixiaodong.myapp.config.Constants;
 import cn.daixiaodong.myapp.utils.NetworkUtil;
 
 /**
@@ -54,8 +56,6 @@ public class SignInActivity extends BaseActivity {
 
     @ViewById(R.id.id_tv_forgot_password)
     TextView mViewForgotPassword;
-
-
 
 
     @Click(R.id.id_btn_sign_up_now)
@@ -104,6 +104,8 @@ public class SignInActivity extends BaseActivity {
                 if (e == null) {
                     showToast("登录成功");
                     SignInActivity.this.setResult(SIGN_IN_SUCCESS_RESULT_CODE, getIntent());
+                    Intent intent = new Intent(Constants.ACTION_USER_SIGN_IN);
+                    sendBroadcast(intent);
                     finish();
                 } else {
                     e.printStackTrace();
@@ -121,7 +123,7 @@ public class SignInActivity extends BaseActivity {
      */
     private boolean checkData(String phoneNumber, String password) {
         if (phoneNumber.isEmpty()) {
-           // showToast("请输入手机号码");
+            // showToast("请输入手机号码");
             mPhoneNumberInputLayout.setError("请输入手机号码");
             return false;
         }
@@ -145,7 +147,7 @@ public class SignInActivity extends BaseActivity {
         setSupportActionBar(mViewToolbar);
         mViewToolbar.setTitle("登录");
 
-        if(getSupportActionBar() != null){
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
     }
@@ -154,7 +156,7 @@ public class SignInActivity extends BaseActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case android.R.id.home:
                 SignInActivity.this.setResult(SIGN_IN_CANCEL_RESULT_CODE, getIntent());
                 finish();

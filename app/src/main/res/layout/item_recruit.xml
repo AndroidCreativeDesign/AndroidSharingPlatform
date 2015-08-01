@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/abc_list_item_padding_horizontal_material"
+
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="招募标题" />
+
+    <TextView
+        android:id="@+id/tv_register_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="已有100人报名" />
+
+    <TextView
+        android:id="@+id/tv_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="正在审核" />
+
+
+</LinearLayout>

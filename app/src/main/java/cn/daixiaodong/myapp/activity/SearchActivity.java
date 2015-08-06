@@ -19,17 +19,18 @@ import java.util.List;
 
 import cn.daixiaodong.myapp.R;
 import cn.daixiaodong.myapp.activity.common.BaseActivity;
-import cn.daixiaodong.myapp.adapter.UserPublishListAdapter;
+import cn.daixiaodong.myapp.adapter.IdeaAdapter;
 
 
 /**
- *  搜索界面
+ * 搜索界面
  */
-public class SearchActivity extends BaseActivity {
+public class SearchActivity extends BaseActivity implements IdeaAdapter.OnItemClickListener {
 
     private ArrayList<AVObject> mData;
 
-    private UserPublishListAdapter mAdapter;
+    private IdeaAdapter mAdapter;
+    private AVQuery<AVObject> mQuery;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +64,7 @@ public class SearchActivity extends BaseActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
+
                 showResult(newText);
 
                 return true;
@@ -76,7 +78,8 @@ public class SearchActivity extends BaseActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
         mData = new ArrayList<>();
-        mAdapter = new UserPublishListAdapter(this, mData);
+        mAdapter = new IdeaAdapter(this, mData);
+        mAdapter.setOnItemClickListener(this);
         recyclerView.setAdapter(mAdapter);
     }
 
@@ -84,40 +87,45 @@ public class SearchActivity extends BaseActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        if(item.getItemId() == android.R.id.home){
-
+        if (item.getItemId() == android.R.id.home) {
             finish();
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
-    private void showResult(String newText) {
+    private void showResult(final String newText) {
         if (newText.isEmpty()) {
             return;
         }
+        if (mQuery != null) {
+            mQuery.cancel();
 
-
-        AVQuery<AVObject> query = new AVQuery<>("dream");
+        }
+        mQuery = new AVQuery<>("idea");
         Log.i("newText", newText);
-        query.whereContains("title", newText);
-        query.setLimit(10);
-        query.findInBackground(new FindCallback<AVObject>() {
+        mQuery.whereContains("title", newText.trim());
+        mQuery.setLimit(10);
+        mQuery.findInBackground(new FindCallback<AVObject>() {
             @Override
             public void done(List<AVObject> list, AVException e) {
                 if (e != null) {
                     e.printStackTrace();
-                    return;
                 } else {
-                    Log.i("resultSize", list.size() + "");
                     mData.clear();
                     mData.addAll(list);
                     mAdapter.notifyDataSetChanged();
-
+                    Log.i("resultSize", list.size() + "");
                 }
             }
         });
 
+    }
+
+    @Override
+    public void onItemClick(IdeaAdapter.MyViewHolder viewHolder, int pos) {
+        String objectId = mData.get(pos).getObjectId();
+        String title = mData.get(pos).getString("title");
+        IdeaDetailActivity_.intent(this).objectId(objectId).title(title).start();
     }
 }

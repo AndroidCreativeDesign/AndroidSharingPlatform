@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="cn.daixiaodong.myapp" >
+    package="cn.daixiaodong.myapp">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -20,7 +20,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="萌想"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <meta-data
             android:name="leancloud"
             android:value="LeanCloud" />
@@ -41,7 +41,7 @@
         <activity
             android:name=".activity.MainActivity_"
             android:launchMode="singleInstance"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -71,7 +71,7 @@
             android:name="com.avos.avoscloud.PushService"
             android:exported="true" />
 
-        <receiver android:name=".receiver.PushBroadcastReceiver" >
+        <receiver android:name=".receiver.PushBroadcastReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.USER_PRESENT" />
@@ -97,9 +97,18 @@
             android:theme="@android:style/Theme.Translucent" />
         <!-- bmob pay sdk activity end -->
 
-        <activity
-            android:name=".activity.UserProfileActivity_"
-            android:label="@string/title_activity_profile" />
+        <activity android:name=".activity.UserProfileActivity_">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="daixiaodong.cn"
+                    android:scheme="user_profile" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".activity.SearchActivity"
             android:label="@string/title_activity_search" />
@@ -129,8 +138,41 @@
             android:label="@string/title_activity_update_recruitment" />
         <activity
             android:name=".activity.UserJoinActivity_"
-            android:label="@string/title_activity_user_join" >
+            android:label="@string/title_activity_user_join" />
+        <activity
+            android:name=".activity.SignUpFirstStepNewActivity_"
+            android:label="@string/title_activity_sign_up_first_step_new"
+            android:windowSoftInputMode="stateHidden">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="cn.daixiaodong.myapp.activity.common.BaseActivity" />
+
+            <!--
+              <intent-filter>
+                  <action android:name="android.intent.action.MAIN" />
+
+                  <category android:name="android.intent.category.LAUNCHER" />
+              </intent-filter>
+            -->
         </activity>
+        <activity
+            android:name=".activity.SignUpSecondStepNewActivity_"
+            android:label="@string/title_activity_sign_up_second_step_new"
+            android:windowSoftInputMode="stateHidden">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="cn.daixiaodong.myapp.activity.common.BaseActivity" />
+        </activity>
+        <activity
+            android:name=".activity.UserPublishActivity_"
+            android:label="@string/title_activity_user_publish" />
+        <activity
+            android:name=".activity.CommentActivity_"
+            android:label="@string/title_activity_comment" />
+        <activity
+            android:name=".activity.SignInByEmailActivity"
+            android:label="@string/title_activity_sign_in_by_email"
+            android:windowSoftInputMode="stateHidden"></activity>
     </application>
 
 </manifest>

@@ -26,10 +26,10 @@ import cn.daixiaodong.myapp.activity.common.BaseActivity;
 public class SignUpFirstStepActivity extends BaseActivity {
 
 
-    @ViewById(R.id.id_tb_toolbar)
+    @ViewById(R.id.toolbar)
     Toolbar mViewToolbar;
 
-    @ViewById(R.id.id_et_phone_number)
+    @ViewById(R.id.edit_mobile_phone_number)
     EditText mViewPhoneNumber;
 
     @ViewById(R.id.id_et_sign_up_first_step_password)

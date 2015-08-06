@@ -1,10 +1,12 @@
 package cn.daixiaodong.myapp.fragment;
 
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -18,7 +20,7 @@ import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.AVRelation;
 import com.avos.avoscloud.AVUser;
-import com.avos.avoscloud.FindCallback;
+import com.avos.avoscloud.SaveCallback;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,13 +28,15 @@ import java.util.List;
 import cn.daixiaodong.myapp.R;
 import cn.daixiaodong.myapp.activity.SignInActivity;
 import cn.daixiaodong.myapp.activity.SignInActivity_;
-import cn.daixiaodong.myapp.activity.UserProfileActivity_;
+import cn.daixiaodong.myapp.activity.UserJoinActivity_;
+import cn.daixiaodong.myapp.activity.UserPublishActivity_;
 import cn.daixiaodong.myapp.adapter.UserFollowListAdapter;
 import cn.daixiaodong.myapp.fragment.common.BaseFragment;
+import cn.daixiaodong.myapp.view.MyItemDecoration;
 
 
 /**
- *  用户关注的其他用户
+ * 用户关注的其他用户
  */
 public class UserFollowFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener, UserFollowListAdapter.OnItemClickListener {
 
@@ -81,6 +85,7 @@ public class UserFollowFragment extends BaseFragment implements SwipeRefreshLayo
         mData = new ArrayList<>();
         mAdapter = new UserFollowListAdapter(getActivity(), mData);
         mAdapter.setOnItemClickListener(this);
+        mRecyclerView.addItemDecoration(new MyItemDecoration(getResources().getDrawable(R.drawable.item_shape)));
         mRecyclerView.setAdapter(mAdapter);
 
     }
@@ -93,7 +98,7 @@ public class UserFollowFragment extends BaseFragment implements SwipeRefreshLayo
     private void loadData(boolean isRefresh) {
         if (isRefresh) {
 
-            AVUser user = AVUser.getCurrentUser();
+         /*   AVUser user = AVUser.getCurrentUser();
             AVRelation<AVObject> relation = user.getRelation("follow");
             relation.getQuery().findInBackground(new FindCallback<AVObject>() {
                 @Override
@@ -111,7 +116,15 @@ public class UserFollowFragment extends BaseFragment implements SwipeRefreshLayo
                         e.printStackTrace();
                     }
                 }
-            });
+            });*/
+            mRefreshLayout.setRefreshing(false);
+            for (int i = 0; i < 20; i++) {
+                AVUser user = new AVUser();
+                user.setUsername("尼玛" + i);
+                user.put("profilePhotoUrl", "http://p3.gexing.com/touxiang/20121101/1742/509243ee3badd_200x200_3.jpg");
+                mData.add(user);
+            }
+            mAdapter.notifyDataSetChanged();
         }
     }
 
@@ -119,7 +132,7 @@ public class UserFollowFragment extends BaseFragment implements SwipeRefreshLayo
     public void onResume() {
         super.onResume();
 
-        if(isFirstRefresh){
+        if (isFirstRefresh) {
             if (isSignIn()) {
                 isFirstRefresh = false;
                 mRefreshLayout.post(new Runnable() {
@@ -139,12 +152,49 @@ public class UserFollowFragment extends BaseFragment implements SwipeRefreshLayo
 
     @Override
     public void onItemClick(UserFollowListAdapter.MyViewHolder viewHolder, int pos) {
-        UserProfileActivity_.intent(this).start();
+        //UserProfileActivity_.intent(this).start();
+        final AVUser followUser = (AVUser) mData.get(pos);
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setItems(R.array.user_info, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which) {
+                    case 0:
+                        UserJoinActivity_.intent(getActivity())
+                                .extra("userId", "55ba35d3e4b0c170a520b83f")
+                                .extra("username", "王尼玛")
+                                .start();
+                        break;
+                    case 1:
+                        UserPublishActivity_.intent(getActivity())
+                                .extra("userId", "55ba35d3e4b0c170a520b83f")
+                                .extra("username", "王尼玛")
+                                .start();
+                        break;
+                    case 2:
+                        unfollow(followUser);
+
+                        break;
+                }
+            }
+        });
+        builder.show();
     }
 
-    @Override
-    public void onUnfollowBtnClick(UserFollowListAdapter.MyViewHolder viewHolder, int pos) {
-        Log.i("按钮被点击了", "第" + pos + "个");
+    private void unfollow(AVUser followUser) {
+        AVUser user = AVUser.getCurrentUser();
+        AVRelation<AVObject> relation = user.getRelation("likes");
+        relation.remove(followUser);
+        user.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(AVException e) {
+                if (e == null) {
+
+                } else {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
 
@@ -170,7 +220,6 @@ public class UserFollowFragment extends BaseFragment implements SwipeRefreshLayo
         }
 
     }
-
 
 
     /**

@@ -16,6 +16,9 @@
     <string name="verifyFailed">验证失败</string>
     <string name="verifySucceed">验证成功</string>
     <string name="sendFailed">发送失败</string>
+    <string name="term_of_service">同意<a href="http://www.google.com">《服务条款》</a>与<a href="http://www.google.com">《隐私条款》</a></string>
+    <string name="title_activity_sign_up_first_step_new">SignUpFirstStepNewActivity</string>
+    <string name="title_activity_sign_up_second_step_new">SignUpSecondStepNewActivity</string>
 
 
     <string-array name="array_left_menu">
@@ -59,4 +62,10 @@
     <string name="title_activity_idea_edit">IdeaEditActivity</string>
     <string name="title_activity_update_recruitment">UpdateRecruitmentActivity</string>
     <string name="title_activity_user_join">UserJoinActivity</string>
+    <string name="title_activity_user_publish">UserPublishActivity</string>
+    <string name="title_activity_comment">CommentActivity</string>
+    <string name="comment_username">   \</string>
+    <string name="comment_username_2">   <a href="m://my.com/">%1$s</a><br/></string>
+
+    <string name="title_activity_sign_in_by_email">SignInByEmailActivity</string>
 </resources>

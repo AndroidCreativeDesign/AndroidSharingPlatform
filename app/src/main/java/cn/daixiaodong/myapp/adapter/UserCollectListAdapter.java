@@ -9,24 +9,23 @@ import android.widget.TextView;
 
 import com.avos.avoscloud.AVObject;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
 
 import cn.daixiaodong.myapp.R;
+import cn.daixiaodong.myapp.config.Constants;
 
 /**
- *  收藏列表 Adapter
+ * 收藏列表 Adapter
  */
-public class UserCollectListAdapter extends RecyclerView.Adapter<UserCollectListAdapter.MyViewHolder> {
+public class UserCollectListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private Context mContext;
     private List<AVObject> mDataSet;
     private LayoutInflater mLayoutInflater;
     private OnItemClickListener mListener;
 
-    public UserCollectListAdapter(Context context) {
-        this.mContext = context;
-        this.mLayoutInflater = LayoutInflater.from(context);
-    }
 
     public UserCollectListAdapter(Context context, List<AVObject> data) {
         this.mContext = context;
@@ -35,51 +34,128 @@ public class UserCollectListAdapter extends RecyclerView.Adapter<UserCollectList
 
     }
 
-    public void setDataSet(List<AVObject> data) {
-        this.mDataSet = data;
-        notifyDataSetChanged();
-    }
 
-    public void addData(List<AVObject> data) {
-        this.mDataSet.addAll(0, data);
-        this.notifyItemInserted(1);
+    @Override
+    public int getItemViewType(int position) {
+        return mDataSet.get(position).getAVObject("idea").getInt("type");
     }
 
     @Override
-    public UserCollectListAdapter.MyViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+        RecyclerView.ViewHolder viewHolder = null;
+        switch (viewType) {
+            case Constants.TYPE_DEFAULT:
+                viewHolder = new DefaultViewHolder(mLayoutInflater.inflate(R.layout.item_collect, viewGroup, false));
+                break;
+            case Constants.TYPE_CROWDFUNDING:
+                viewHolder = new CrowdfundingViewHolder(mLayoutInflater.inflate(R.layout.item_collect_crowdfunding, viewGroup, false));
+                break;
+            case Constants.TYPE_RECRUITMENT:
+                viewHolder = new RecruitmentViewHolder(mLayoutInflater.inflate(R.layout.item_collect_recruitment, viewGroup, false));
+                break;
+        }
 
-        View view = mLayoutInflater.inflate(R.layout.item_collect, viewGroup, false);
-        MyViewHolder viewHolder = new MyViewHolder(view);
         return viewHolder;
     }
 
+
     @Override
-    public void onBindViewHolder(final UserCollectListAdapter.MyViewHolder viewHolder, final int i) {
+    public void onBindViewHolder(final RecyclerView.ViewHolder viewHolder, final int position) {
+
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mListener != null) {
-                    mListener.onItemClick(viewHolder, i);
+                    mListener.onItemClick(viewHolder, position,getItemViewType(position));
                 }
             }
         });
 
-        viewHolder.title.setText(mDataSet.get(i).getAVObject("idea").getString("title"));
 
+        switch (getItemViewType(position)) {
+            case Constants.TYPE_DEFAULT:
+                onBindDefaultViewHolder(viewHolder, position);
+                break;
+            case Constants.TYPE_RECRUITMENT:
+                onBindRecruitmentViewHolder(viewHolder, position);
+                break;
+            case Constants.TYPE_CROWDFUNDING:
+                onBindCrowdfundingViewHolder(viewHolder, position);
+                break;
+        }
+    }
 
+    private void onBindCrowdfundingViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
+        CrowdfundingViewHolder holder = (CrowdfundingViewHolder) viewHolder;
+        AVObject idea = mDataSet.get(position).getAVObject("idea");
+        holder.titleText.setText(idea.getString("title"));
+    }
+
+    private void onBindRecruitmentViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
+        RecruitmentViewHolder holder = (RecruitmentViewHolder) viewHolder;
+        AVObject idea = mDataSet.get(position).getAVObject("idea");
+        holder.titleText.setText(idea.getString("title"));
+    }
+
+    private void onBindDefaultViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
+        DefaultViewHolder holder = (DefaultViewHolder) viewHolder;
+        AVObject idea = mDataSet.get(position).getAVObject("idea");
+        holder.title.setText(idea.getString("title"));
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.CHINESE);
+        holder.startTime.setText(format.format(idea.getDate("startDate")));
+        holder.endTime.setText(format.format(idea.getDate("endDate")));
+        holder.join.setText(idea.getInt("joinNum") + "");
+        holder.address.setText(idea.getString(idea.getString("address")));
     }
 
     @Override
     public int getItemCount() {
-        if (mDataSet == null) {
-            return 0;
-        }
         return mDataSet.size();
     }
 
 
+    public class DefaultViewHolder extends RecyclerView.ViewHolder {
+
+        public TextView title;
+        public TextView startTime;
+        public TextView endTime;
+
+        public TextView join;
+        public TextView address;
+
+        public DefaultViewHolder(View itemView) {
+            super(itemView);
+            title = (TextView) itemView.findViewById(R.id.id_tv_title);
+            startTime = (TextView) itemView.findViewById(R.id.id_tv_start_time);
+            endTime = (TextView) itemView.findViewById(R.id.tv_end_time);
+            join = (TextView) itemView.findViewById(R.id.id_tv_join);
+            address = (TextView) itemView.findViewById(R.id.id_tv_address);
+        }
+    }
+
+
+    public static class RecruitmentViewHolder extends RecyclerView.ViewHolder {
+        public TextView titleText;
+
+        public RecruitmentViewHolder(View itemView) {
+            super(itemView);
+            titleText = (TextView) itemView.findViewById(R.id.tv_title);
+        }
+    }
+
+    public static class CrowdfundingViewHolder extends RecyclerView.ViewHolder {
+
+        public TextView titleText;
+
+        public CrowdfundingViewHolder(View itemView) {
+            super(itemView);
+            titleText = (TextView) itemView.findViewById(R.id.tv_title);
+        }
+    }
+
+
     public interface OnItemClickListener {
-        void onItemClick(MyViewHolder viewHolder, int pos);
+        void onItemClick(RecyclerView.ViewHolder viewHolder, int pos,int viewType);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {

@@ -4,7 +4,9 @@ import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVObject;
@@ -12,8 +14,10 @@ import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.FindCallback;
 
+import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.Extra;
+import org.androidannotations.annotations.ViewById;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,10 +37,32 @@ public class UserJoinActivity extends BaseActivity implements OtherUserJoinListA
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private int mOffset;
 
-
     private AVUser mUser;
     @Extra("userId")
-     String mObjectId;
+    String mObjectId;
+
+    @Extra("username")
+    String username;
+
+
+    @ViewById(R.id.toolbar)
+    Toolbar mToolbar;
+
+
+    @AfterViews
+    void initViews() {
+        initToolbar();
+    }
+
+    private void initToolbar() {
+        setSupportActionBar(mToolbar);
+        mToolbar.setTitle("王尼玛");
+        mToolbar.setSubtitle("TA参与的");
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
+    }
 
 
     @Override
@@ -49,16 +75,25 @@ public class UserJoinActivity extends BaseActivity implements OtherUserJoinListA
             @Override
             public void run() {
                 mSwipeRefreshLayout.setRefreshing(true);
-
                 findUser();
-                refreshData();
             }
         });
     }
 
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if(item.getItemId()==android.R.id.home){
+            finish();
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
     private void findUser() {
         AVQuery<AVUser> query = AVUser.getQuery();
-        query.whereEqualTo("objectId", mObjectId);
+        query.whereEqualTo("objectId", "55ba35d3e4b0c170a520b83f");
         query.findInBackground(new FindCallback<AVUser>() {
             @Override
             public void done(List<AVUser> list, AVException e) {
@@ -115,6 +150,7 @@ public class UserJoinActivity extends BaseActivity implements OtherUserJoinListA
     }
 
     private void loadMoreData() {
+
         AVUser user = AVUser.getCurrentUser();
         AVQuery<AVObject> query = new AVQuery<>(Constants.TABLE_USER_JOIN);
         query.setLimit(1);
@@ -162,6 +198,10 @@ public class UserJoinActivity extends BaseActivity implements OtherUserJoinListA
                         && linearLayoutManager.findLastVisibleItemPosition() + 1 == mAdapter.getItemCount()) {
 
                     if (!mSwipeRefreshLayout.isRefreshing()) {
+
+                        if(mAdapter.getItemCount() < 10){
+                            return;
+                        }
                         mSwipeRefreshLayout.setRefreshing(true);
                         loadMoreData();
 

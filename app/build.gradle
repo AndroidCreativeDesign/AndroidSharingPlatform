@@ -73,6 +73,7 @@ dependencies {
     compile 'com.wdullaer:materialdatetimepicker:1.4.2'
 }
 
+
 apt {
     arguments {
         androidManifestFile variant.outputs[0].processResources.manifestFile

@@ -27,10 +27,6 @@ public class IdeaAdapter extends RecyclerView.Adapter<IdeaAdapter.MyViewHolder> 
     private int mWidth;
     private float mScale;
 
-    public IdeaAdapter(Context context) {
-        this.mContext = context;
-        this.mLayoutInflater = LayoutInflater.from(context);
-    }
 
     public IdeaAdapter(Context context, List<AVObject> data) {
         this.mContext = context;
@@ -39,15 +35,6 @@ public class IdeaAdapter extends RecyclerView.Adapter<IdeaAdapter.MyViewHolder> 
 
     }
 
-    public void setDataSet(List<AVObject> data) {
-        this.mDataSet = data;
-        notifyDataSetChanged();
-    }
-
-    public void addData(List<AVObject> data) {
-        this.mDataSet.addAll(0, data);
-        this.notifyItemInserted(1);
-    }
 
     @Override
     public IdeaAdapter.MyViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
@@ -103,9 +90,6 @@ public class IdeaAdapter extends RecyclerView.Adapter<IdeaAdapter.MyViewHolder> 
 
     @Override
     public int getItemCount() {
-        if (mDataSet == null) {
-            return 0;
-        }
         return mDataSet.size();
     }
 

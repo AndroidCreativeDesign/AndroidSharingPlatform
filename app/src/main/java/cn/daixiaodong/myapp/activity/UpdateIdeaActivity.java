@@ -33,7 +33,7 @@ public class UpdateIdeaActivity extends BaseActivity {
     int type;
 
 
-    @ViewById(R.id.id_tb_toolbar)
+    @ViewById(R.id.toolbar)
     Toolbar mToolbar;
 
     @Override

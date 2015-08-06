@@ -6,6 +6,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.avos.avoscloud.AVAnalytics;
+import com.avos.avoscloud.AVUser;
 
 /**
  *  Activity 基类
@@ -36,6 +37,14 @@ public class BaseActivity extends AppCompatActivity {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
 
     }
+
+    public boolean isSignIn(){
+        if(AVUser.getCurrentUser()!=null){
+            return true;
+        }
+        return false;
+    }
+
 
     @Override
     protected void onDestroy() {

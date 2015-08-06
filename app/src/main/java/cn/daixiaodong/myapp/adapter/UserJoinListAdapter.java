@@ -103,7 +103,7 @@ public class UserJoinListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     private void onBindAssociationViewHolder(RecyclerView.ViewHolder viewHolder, int i, AVObject object) {
         if (viewHolder instanceof AssociationViewHolder) {
             final AssociationViewHolder holder = (AssociationViewHolder) viewHolder;
-            holder.associationNameText.setText(object.getAVObject("association").getString("name")+object.getInt("payStatus"));
+            holder.associationNameText.setText(object.getAVObject("association").getString("name") + object.getInt("payStatus"));
         }
     }
 
@@ -149,7 +149,6 @@ public class UserJoinListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
         public TextView join;
         public TextView address;
-        public TextView status;
 
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -158,7 +157,6 @@ public class UserJoinListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             endTime = (TextView) itemView.findViewById(R.id.tv_end_time);
             join = (TextView) itemView.findViewById(R.id.id_tv_join);
             address = (TextView) itemView.findViewById(R.id.id_tv_address);
-            status = (TextView) itemView.findViewById(R.id.id_tv_status);
         }
     }
 

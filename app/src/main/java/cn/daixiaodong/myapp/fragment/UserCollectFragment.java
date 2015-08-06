@@ -28,6 +28,7 @@ import cn.daixiaodong.myapp.activity.IdeaDetailActivity_;
 import cn.daixiaodong.myapp.activity.SignInActivity;
 import cn.daixiaodong.myapp.activity.SignInActivity_;
 import cn.daixiaodong.myapp.adapter.UserCollectListAdapter;
+import cn.daixiaodong.myapp.config.Constants;
 import cn.daixiaodong.myapp.fragment.common.BaseFragment;
 
 import static android.support.v7.widget.RecyclerView.OnScrollListener;
@@ -108,7 +109,7 @@ public class UserCollectFragment extends BaseFragment implements SwipeRefreshLay
     }
 
     private void refreshData() {
-        AVQuery<AVObject> query = new AVQuery<>("user_collect");
+        AVQuery<AVObject> query = new AVQuery<>(Constants.TABLE_USER_COLLECT);
         query.whereEqualTo("user", AVUser.getCurrentUser());
         query.include("idea");
         query.orderByDescending("createdAt");
@@ -123,6 +124,9 @@ public class UserCollectFragment extends BaseFragment implements SwipeRefreshLay
                         mData.addAll(list);
                         mAdapter.notifyDataSetChanged();
                         mOffset = list.get(list.size() - 1).getInt("collectId");
+                    }else{
+                        mData.clear();
+                        mAdapter.notifyDataSetChanged();
                     }
                 } else {
                     e.printStackTrace();
@@ -134,7 +138,7 @@ public class UserCollectFragment extends BaseFragment implements SwipeRefreshLay
 
     private void loadMoreData() {
         AVUser user = AVUser.getCurrentUser();
-        AVQuery<AVObject> query = new AVQuery<>("user_collect");
+        AVQuery<AVObject> query = new AVQuery<>(Constants.TABLE_USER_COLLECT);
         query.setLimit(1);
         query.whereEqualTo("user", user);
         query.include("idea");
@@ -250,14 +254,9 @@ public class UserCollectFragment extends BaseFragment implements SwipeRefreshLay
     }
 
 
-    /**
-     * item点击事件
-     *
-     * @param viewHolder
-     * @param pos
-     */
+
     @Override
-    public void onItemClick(UserCollectListAdapter.MyViewHolder viewHolder, int pos) {
+    public void onItemClick(RecyclerView.ViewHolder viewHolder, int pos, int viewType) {
         AVObject object = mData.get(pos).getAVObject("idea");
         String objectId = object.getObjectId();
         String title = object.getString("title");

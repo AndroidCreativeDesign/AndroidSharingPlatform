@@ -9,6 +9,7 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
@@ -50,7 +51,7 @@ public class SignUpSecondStepActivity extends BaseActivity {
     private static final int REQUEST_IMAGE_CAPTURE = 1854;
     private static final int REQUEST_IMAGE_CROP = 1983;
     private static final int REQUEST_PICK = 2345;
-    @ViewById(R.id.id_tb_toolbar)
+    @ViewById(R.id.toolbar)
     Toolbar mViewToolbar;
 
     @ViewById(R.id.id_et_sign_up_second_step_verify_code)
@@ -167,17 +168,13 @@ public class SignUpSecondStepActivity extends BaseActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-          /*  Bundle extras = data.getExtras();
-            Bitmap imageBitmap = (Bitmap) extras.get("data");
-            mProfilePhoto.setImageBitmap(imageBitmap);*/
-
             try {
                 extraOutputFile = createImageFile();
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
-            cropImage(Uri.fromFile(extraOutputFile), 500, 500);
+            cropImage(Uri.fromFile(photoFile), 500, 500);
         }
         if (requestCode == REQUEST_IMAGE_CROP && resultCode == RESULT_OK) {
             try {
@@ -278,6 +275,7 @@ public class SignUpSecondStepActivity extends BaseActivity {
                 @Override
                 public void done(AVException e) {
                     if (e == null) {
+                        Log.i("profilePhotoUrl", file.getUrl());
                         saveUserInfoWithProfilePhoto(verifyCode);
                     } else {
                         e.printStackTrace();
@@ -346,14 +344,14 @@ public class SignUpSecondStepActivity extends BaseActivity {
     private void initToolbar() {
         setSupportActionBar(mViewToolbar);
         mViewToolbar.setTitle("完善信息");
-        if(getSupportActionBar() != null){
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId()== android.R.id.home){
+        if (item.getItemId() == android.R.id.home) {
             finish();
         }
         return super.onOptionsItemSelected(item);

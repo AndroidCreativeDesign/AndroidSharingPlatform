@@ -9,6 +9,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.avos.avoscloud.AVException;
+import com.avos.avoscloud.AVObject;
+import com.avos.avoscloud.AVQuery;
+import com.avos.avoscloud.FindCallback;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +33,11 @@ public class AssociationPhotosFragment extends Fragment {
     private String mParam2;
     private List<PhotoModel> mPhotosDataSet;
 
+    private List<AVObject> mDataSet;
+
+    private String mAssociationId;
+
+    private View mProgressLoad;
 
     private String[] photos = {"http://ww2.sinaimg.cn/large/610dc034gw1eqnjfdn45qj20h30mk443.jpg",
             "http://ww2.sinaimg.cn/large/610dc034gw1eqoqwkyy8cj20h20h10wz.jpg",
@@ -61,6 +71,8 @@ public class AssociationPhotosFragment extends Fragment {
             "http://ww3.sinaimg.cn/large/610dc034jw1es3mty6nm2j20go0n60t9.jpg",
             "http://ww2.sinaimg.cn/large/610dc034gw1es4si7kzebj20m80eu0te.jpg",
             "http://ww3.sinaimg.cn/large/610dc034gw1es89uzch20j20pw0xcadb.jpg"};
+    private RecyclerView mRecyclerView;
+    private PhotosAdapter mAdapter;
 
 
     public static AssociationPhotosFragment newInstance(String param1, String param2) {
@@ -79,7 +91,7 @@ public class AssociationPhotosFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
+            mAssociationId = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
@@ -94,22 +106,41 @@ public class AssociationPhotosFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        mDataSet = new ArrayList<>();
         initViews();
+        loadData();
+    }
+
+    private void loadData() {
+        AVQuery<AVObject> query = new AVQuery<>("img");
+        query.whereEqualTo("associationId", "55b33b01e4b011439bd8ab8e");
+        query.findInBackground(new FindCallback<AVObject>() {
+            @Override
+            public void done(List<AVObject> list, AVException e) {
+                if (e == null) {
+                    if (!list.isEmpty()) {
+                        mDataSet.addAll(list);
+                        mAdapter.notifyDataSetChanged();
+                        mProgressLoad.setVisibility(View.GONE);
+                        mRecyclerView.setVisibility(View.VISIBLE);
+                    } else {
+
+                    }
+                } else {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     private void initViews() {
-        mPhotosDataSet = new ArrayList<>();
-        PhotoModel photoModel;
-        for (String url : photos) {
-            photoModel = new PhotoModel(url);
-            mPhotosDataSet.add(photoModel);
-        }
-        RecyclerView photos = (RecyclerView) mConvertView.findViewById(R.id.rv_photos);
-        photos.setLayoutManager(new StaggeredGridLayoutManager(2,
+        mProgressLoad = mConvertView.findViewById(R.id.progress_load);
+        mRecyclerView = (RecyclerView) mConvertView.findViewById(R.id.rv_photos);
+        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2,
                 StaggeredGridLayoutManager.VERTICAL));
-        photos.setItemAnimator(new DefaultItemAnimator());
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        PhotosAdapter adapter = new PhotosAdapter(getActivity(), mPhotosDataSet);
-        photos.setAdapter(adapter);
+        mAdapter = new PhotosAdapter(getActivity(), mDataSet);
+        mRecyclerView.setAdapter(mAdapter);
     }
 }

@@ -36,7 +36,7 @@ import cn.daixiaodong.myapp.activity.common.BaseActivity;
 @EActivity(R.layout.activity_publish_idea)
 public class PublishIdeaActivity extends BaseActivity implements DatePickerDialog.OnDateSetListener {
 
-    @ViewById(R.id.id_tb_toolbar)
+    @ViewById(R.id.toolbar)
     Toolbar mViewToolbar;
 
 

@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -18,6 +17,7 @@ import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.CountCallback;
 import com.avos.avoscloud.FindCallback;
+import com.github.rahatarmanahmed.cpv.CircularProgressView;
 
 import java.util.List;
 
@@ -43,7 +43,7 @@ public class AssociationIntroduceFragment extends BaseFragment implements View.O
     private View convertView;
     private TextView mIntroduce;
     private Button mBtnJoin;
-    private ProgressBar mProgressLoad;
+    private CircularProgressView mProgressLoad;
     private RelativeLayout mLayoutContainer;
 
 
@@ -133,7 +133,7 @@ public class AssociationIntroduceFragment extends BaseFragment implements View.O
         mIntroduce = (TextView) convertView.findViewById(R.id.tv_introduce);
         mBtnJoin = (Button) convertView.findViewById(R.id.btn_join);
         mBtnJoin.setOnClickListener(this);
-        mProgressLoad = (ProgressBar) convertView.findViewById(R.id.progress_load);
+        mProgressLoad = (CircularProgressView) convertView.findViewById(R.id.progress_load);
         mLayoutContainer = (RelativeLayout) convertView.findViewById(R.id.rlayout_container);
     }
 

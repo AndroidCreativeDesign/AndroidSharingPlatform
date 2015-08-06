@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -20,9 +21,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVInstallation;
 import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.PushService;
+import com.avos.avoscloud.SaveCallback;
 import com.avos.avoscloud.feedback.FeedbackAgent;
 import com.bmob.pay.tool.BmobPay;
 import com.squareup.picasso.Picasso;
@@ -35,6 +38,7 @@ import org.androidannotations.annotations.ViewById;
 import java.util.ArrayList;
 
 import cn.daixiaodong.myapp.R;
+import cn.daixiaodong.myapp.activity.common.ActivityCollector;
 import cn.daixiaodong.myapp.activity.common.BaseActivity;
 import cn.daixiaodong.myapp.config.Constants;
 import cn.daixiaodong.myapp.fragment.HomeFragment;
@@ -55,7 +59,7 @@ public class MainActivity extends BaseActivity {
 
     public static final String BROAD_RECEIVER_ACTION = "broad_receiver";
 
-    @ViewById(R.id.id_tb_toolbar)
+    @ViewById(R.id.toolbar)
     Toolbar mViewToolbar;
 
     @ViewById(R.id.id_layout_drawer_layout)
@@ -102,7 +106,19 @@ public class MainActivity extends BaseActivity {
         }
 
         // 第三方SDK初始化
-        AVInstallation.getCurrentInstallation().saveInBackground();
+        AVInstallation.getCurrentInstallation().saveInBackground(new SaveCallback() {
+            @Override
+            public void done(AVException e) {
+                if (e == null) {
+                    // 保存成功
+                    String installationId = AVInstallation.getCurrentInstallation().getInstallationId();
+                    // 关联  installationId 到用户表等操作……
+                    Log.i("installationId", installationId + "");
+                } else {
+                    // 保存失败，输出错误信息
+                }
+            }
+        });
         PushService.setDefaultPushCallback(this, MainActivity_.class);
         FeedbackAgent agent = new FeedbackAgent(this);
         agent.sync();
@@ -116,7 +132,6 @@ public class MainActivity extends BaseActivity {
         filter.addAction(Constants.ACTION_USER_SIGN_IN);
         filter.addAction(Constants.ACTION_USER_SIGN_OUT);
         registerReceiver(mReceiver, filter);
-
 
     }
 
@@ -153,12 +168,18 @@ public class MainActivity extends BaseActivity {
         mViewNav.findViewById(R.id.llayout_container).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (AVUser.getCurrentUser() != null) {
+                mDrawerLayout.closeDrawer(GravityCompat.START);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (AVUser.getCurrentUser() != null) {
+                            UserProfileActivity_.intent(MainActivity.this).start();
+                        } else {
+                            SignInActivity_.intent(MainActivity.this).start();
+                        }
+                    }
+                }, 250);
 
-                    UserProfileActivity_.intent(MainActivity.this).start();
-                } else {
-                    SignInActivity_.intent(MainActivity.this).start();
-                }
             }
         });
 
@@ -179,12 +200,24 @@ public class MainActivity extends BaseActivity {
                 mDrawerLayout.closeDrawer(GravityCompat.START);
 
                 if (menuItem.getItemId() == R.id.action_feedback) {
-                    FeedbackAgent agent = new FeedbackAgent(MainActivity.this);
-                    agent.startDefaultThreadActivity();
+
+
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            FeedbackAgent agent = new FeedbackAgent(MainActivity.this);
+                            agent.startDefaultThreadActivity();
+                        }
+                    }, 300);
                     return true;
                 }
                 if (menuItem.getItemId() == R.id.action_settings) {
-                    startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+                        }
+                    }, 300);
                     return true;
                 }
 
@@ -195,6 +228,7 @@ public class MainActivity extends BaseActivity {
                     mCurrentPosition = menuItem.getItemId();
                     menuItem.setChecked(true);
                 }
+
 
                 return true;
             }
@@ -318,9 +352,30 @@ public class MainActivity extends BaseActivity {
     }
 
     private void updateUIWhenUserSignIn() {
-        Picasso.with(MainActivity.this).load(AVUser.getCurrentUser().getString("profile_photo_url")).into(mProfilePhoto);
+        Picasso.with(MainActivity.this).load(AVUser.getCurrentUser().getString("profilePhotoUrl")).into(mProfilePhoto);
         mUsername.setText(AVUser.getCurrentUser().getUsername());
     }
 
+
+    @Override
+    public void onBackPressed() {
+        if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+            mDrawerLayout.closeDrawer(GravityCompat.START);
+            return;
+        }
+
+        exitApp();
+    }
+
+    private long exitTime = 0;
+
+    private void exitApp() {
+        if ((System.currentTimeMillis() - exitTime) > 2000) {
+            showToast("再按一次退出");
+            exitTime = System.currentTimeMillis();
+        } else {
+            ActivityCollector.finishAll();
+        }
+    }
 
 }

@@ -4,23 +4,22 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <!-- Actionbar 颜色  Toolbar设置的是Actionbar的颜色 -->
-      <!--  <item name="colorPrimary">#66cc99</item>-->
+        <!--  <item name="colorPrimary">#66cc99</item>-->
         <!-- 状态栏颜色 -->
-<!--
-        <item name="colorPrimaryDark">#66cc99</item>
--->
+        <!--
+                <item name="colorPrimaryDark">#66cc99</item>
+        -->
         <!-- 箭头样式风格 -->
 
 
-
- <!--
-        <item name="colorPrimary">#2196F3</item>
-        <item name="colorPrimaryDark">#1565C0</item>
-        <item name="colorAccent">#FF3D00</item>
-        <item name="drawerArrowStyle">@style/AppTheme.MyDrawerArrowStyle</item>
-        <item name="colorControlNormal">@android:color/white</item>
-        <item name="android:textColorPrimary">@android:color/white</item>-->
-
+        <!--
+               <item name="colorPrimary">#2196F3</item>
+               <item name="colorPrimaryDark">#1565C0</item>
+               <item name="colorAccent">#FF3D00</item>
+               <item name="drawerArrowStyle">@style/AppTheme.MyDrawerArrowStyle</item>
+               <item name="colorControlNormal">@android:color/white</item>
+               <item name="android:textColorPrimary">@android:color/white</item>-->
+        <item name="alertDialogTheme">@style/AppCompatAlertDialogStyle</item>
         <!-- Main theme colors -->
         <!--   your app branding color for the app bar -->
         <item name="colorPrimary">@color/primary</item>
@@ -29,8 +28,38 @@
         <!--   theme UI controls like checkboxes and text fields -->
         <item name="colorAccent">@color/accent</item>
         <item name="drawerArrowStyle">@style/AppTheme.MyDrawerArrowStyle</item>
-        <item name="colorControlNormal">@android:color/white</item>
-        <item name="android:textColorPrimary">@android:color/white</item>
+        <!--      <item name="colorControlNormal">@android:color/white</item>-->
+        <!--
+                <item name="android:textColorPrimary">@android:color/white</item>
+        -->
+        <!--<item name="alertDialogStyle">@style/MyAlertDialogStyle</item>-->
+    </style>
+
+    <style name="MyAlertDialogStyle" parent="AlertDialog.AppCompat.Light">
+        <item name="colorAccent">@color/accent</item>
+
+
+    </style>
+
+
+    <style name="AppCompatAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">@color/accent</item>
+    <!--    <item name="android:textColorPrimary">#FFFFFF</item>
+        <item name="android:background">#5fa3d0</item>-->
+    </style>
+
+
+    <style name="MyToolbarStyle">
+        <!--    <item name="android:minHeight">?actionBarSize</item>
+            <item name="android:background">?colorPrimary</item>-->
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Dark</item>
+        <item name="theme">@style/MyToolbarTheme</item>
+    </style>
+
+    <style name="MyToolbarTheme" parent="ThemeOverlay.AppCompat.Dark">
+        <!-- Used to tint the back arrow, menu and spinner arrow -->
+        <item name="colorControlNormal">#FFF</item>
+        <!--<item name="android:textColorPrimary">#FFF</item>-->
 
     </style>
 
@@ -46,7 +75,6 @@
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowContentOverlay">@null</item>
     </style>
-
 
 
     <style name="Widget.CardContent" parent="android:Widget">

@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewStub;
+import android.widget.TextView;
 
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVObject;
@@ -177,6 +178,8 @@ public class UserJoinListFragment extends BaseFragment implements UserJoinListAd
     @Override
     public void onResume() {
         super.onResume();
+
+        Log.i("onResume", UserJoinListFragment.class.getSimpleName());
         if (isSignIn()) {
 
             if (isFirstLoad) {
@@ -201,6 +204,8 @@ public class UserJoinListFragment extends BaseFragment implements UserJoinListAd
             if (mSignInPromptView == null) {
                 ViewStub viewStub = (ViewStub) mView.findViewById(R.id.id_vs_login_in_prompt);
                 mSignInPromptView = viewStub.inflate();
+                TextView tipsText = (TextView) mSignInPromptView.findViewById(R.id.tv_message);
+                tipsText.setText("登录才能看到自己已经参与的哦");
                 mSignInPromptView.findViewById(R.id.id_btn_log_in).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

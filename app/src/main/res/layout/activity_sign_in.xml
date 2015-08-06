@@ -1,73 +1,81 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
 
-    <include layout="@layout/include_toolbar" />
+    <include
+        android:id="@+id/include_toolbar"
+        layout="@layout/include_toolbar" />
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/til_phone_number"
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:errorEnabled="true">
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
 
         <EditText
-            android:id="@+id/id_et_phone_number"
+            android:id="@+id/edit_mobile_phone_number"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             android:hint="手机号"
             android:inputType="number"
-
             android:maxLength="11" />
-    </android.support.design.widget.TextInputLayout>
 
-
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/til_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:errorEnabled="true">
 
         <EditText
             android:id="@+id/id_et_password"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableRight="@drawable/ic_visibility_white_48dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
             android:hint="密码"
             android:inputType="textPassword" />
-    </android.support.design.widget.TextInputLayout>
 
-    <TextView
-        android:id="@+id/id_tv_forgot_password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:text="@string/forgot_password"
-        android:textSize="16sp" />
 
-    <Button
-        android:id="@+id/id_btn_sign_in"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
+        <Button
+            android:id="@+id/id_btn_sign_in"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:text="@string/sign_in" />
 
-        android:text="@string/sign_in" />
+        <TextView
+            android:id="@+id/id_tv_forgot_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="8dp"
+            android:padding="8dp"
+            android:text="@string/forgot_password" />
 
-    <Button
-        android:id="@+id/id_btn_sign_up_now"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@null"
-        android:gravity="center"
-        android:text="@string/sign_up_now_for_free" />
+
+        <Button
+            android:id="@+id/id_btn_sign_up_now"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/sign_up_now_for_free"
+            android:textColor="@color/primary" />
+
+    </LinearLayout>
 
 
     <RelativeLayout
         android:id="@+id/id_layout_line"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/id_tv_or"
@@ -102,13 +110,15 @@
         android:id="@+id/id_btn_sign_in_by_weibo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/sign_in_by_weibo" />
+        android:text="@string/sign_in_by_weibo"
+        android:visibility="gone" />
 
     <Button
         android:id="@+id/id_btn_sign_in_by_wchat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/sign_in_by_wchat" />
+        android:text="@string/sign_in_by_wchat"
+        android:visibility="gone" />
 
 
-</LinearLayout>
+</RelativeLayout>

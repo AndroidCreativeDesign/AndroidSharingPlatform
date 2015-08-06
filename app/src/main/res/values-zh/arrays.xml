@@ -6,4 +6,39 @@
         <item>从相册中选取</item>
     </string-array>
 
+
+    <string-array name="year">
+        <item>选择年级</item>
+        <item>2012 级</item>
+        <item>2013 级</item>
+        <item>2014 级</item>
+        <item>2015 级</item>
+    </string-array>
+
+    <string-array name="college">
+        <item>选择学院</item>
+        <item>电子与信息工程学院</item>
+        <item>艺术学院</item>
+        <item>数理学院</item>
+        <item>商学院</item>
+        <item>外国语学院</item>
+        <item>教育学院</item>
+        <item>教育学院</item>
+        <item>教育学院</item>
+        <item>教育学院</item>
+        <item>教育学院</item>
+        <item>教育学院</item>
+        <item>教育学院</item>
+        <item>教育学院</item>
+    </string-array>
+    <string-array name="user_info">
+        <item>TA参与的</item>
+        <item>TA发起的</item>
+        <item>取消关注</item>
+    </string-array>
+    <string-array name="comment_more">
+        <item>举报</item>
+    </string-array>
+
+
 </resources>

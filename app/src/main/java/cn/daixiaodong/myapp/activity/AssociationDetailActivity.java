@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -28,7 +29,7 @@ import cn.daixiaodong.myapp.fragment.AssociationPhotosFragment;
 @EActivity
 public class AssociationDetailActivity extends BaseActivity {
 
-    @ViewById(R.id.id_tb_toolbar)
+    @ViewById(R.id.toolbar)
     Toolbar mToolbar;
 
     @ViewById(R.id.tl_tab_layout)
@@ -63,6 +64,7 @@ public class AssociationDetailActivity extends BaseActivity {
     private void setUpViewPager() {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         mViewPager.setOffscreenPageLimit(2);
+        Log.i("id=---->",mAssociationId);
         AssociationIntroduceFragment introduceFragment = AssociationIntroduceFragment.newInstance(mAssociationId, null);
         AssociationPhotosFragment photosFragment = AssociationPhotosFragment.newInstance(mAssociationId, null);
         adapter.addFragment(introduceFragment, "介绍");

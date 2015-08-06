@@ -6,14 +6,18 @@
     android:orientation="vertical">
 
     <ImageView
+        android:id="@+id/img_prompt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_message_white_48dp" />
+        android:src="@drawable/ic_message_white_48dp"
+        android:visibility="gone" />
 
     <TextView
+        android:id="@+id/tv_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="登录才能看到自己的收藏哦" />
+        android:text="登录才能看到自己的收藏哦"
+        android:visibility="gone" />
 
     <Button
         android:id="@+id/id_btn_log_in"

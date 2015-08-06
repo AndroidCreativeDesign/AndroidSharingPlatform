@@ -18,41 +18,39 @@ import cn.daixiaodong.myapp.activity.common.BaseActivity;
 
 
 /**
- *  密码重置界面
+ * 密码重置界面
  */
 @EActivity(R.layout.activity_password_reset)
 public class PasswordResetActivity extends BaseActivity {
-    @ViewById(R.id.id_et_phone_number)
+    @ViewById(R.id.edit_mobile_phone_number)
     EditText mViewPhoneNumber;
 
-    @ViewById(R.id.id_et_new_password)
+    @ViewById(R.id.edit_password)
     EditText mViewNewPassword;
 
-    @ViewById(R.id.id_et_verify_code)
+    @ViewById(R.id.edit_verify_code)
     EditText mViewVerifyCode;
 
-    @ViewById(R.id.id_btn_password_reset)
+    @ViewById(R.id.btn_reset)
     Button mViewPasswordReset;
 
-    @ViewById(R.id.id_btn_verify_code)
+    @ViewById(R.id.btn_get_verify_code)
     Button mViewGetVerifyCode;
 
-    @Click(R.id.id_btn_password_reset)
-    void signUp() {
 
-        String phoneNumber = mViewPhoneNumber.getText().toString();
+    @Click(R.id.btn_reset)
+    void reset() {
+
         String newPassword = mViewNewPassword.getText().toString();
         String verifyCode = mViewVerifyCode.getText().toString();
-        if (!checkData(phoneNumber, newPassword, verifyCode)) {
-            return;
-        }
+
         AVUser.resetPasswordBySmsCodeInBackground(verifyCode, newPassword, new UpdatePasswordCallback() {
             @Override
             public void done(AVException e) {
-                if(e == null){
+                if (e == null) {
                     showToast("密码重置成功,返回登录");
                     finish();
-                }else{
+                } else {
                     e.printStackTrace();
                 }
             }
@@ -60,23 +58,20 @@ public class PasswordResetActivity extends BaseActivity {
     }
 
 
-    @Click(R.id.id_btn_verify_code)
+    @Click(R.id.btn_get_verify_code)
     void getVerifyCode() {
-        String phoneNumber = mViewPhoneNumber.getText().toString();
-        if (phoneNumber.isEmpty()) {
+        String mobilePhoneNumber = mViewPhoneNumber.getText().toString();
+        if (mobilePhoneNumber.isEmpty()) {
             showToast("请输入手机号码");
             return;
         }
-        if (phoneNumber.length() != 11) {
-            showToast("请输入正确的手机号码");
-            return;
-        }
-        AVUser.requestPasswordResetBySmsCodeInBackground(phoneNumber, new RequestMobileCodeCallback() {
+
+        AVUser.requestPasswordResetBySmsCodeInBackground(mobilePhoneNumber, new RequestMobileCodeCallback() {
             @Override
             public void done(AVException e) {
-                if(e==null){
+                if (e == null) {
                     showToast("验证码正在发送中");
-                }else{
+                } else {
                     e.printStackTrace();
                 }
             }
@@ -88,7 +83,7 @@ public class PasswordResetActivity extends BaseActivity {
      * 校验用户输入
      *
      * @param phoneNumber 手机号
-     * @param newPassword    密码
+     * @param newPassword 密码
      * @param verifyCode  验证码
      */
     private boolean checkData(String phoneNumber, String newPassword, String verifyCode) {

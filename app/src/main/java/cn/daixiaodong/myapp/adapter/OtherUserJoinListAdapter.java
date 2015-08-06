@@ -149,7 +149,6 @@ public class OtherUserJoinListAdapter extends RecyclerView.Adapter<RecyclerView.
 
         public TextView join;
         public TextView address;
-        public TextView status;
 
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -158,7 +157,7 @@ public class OtherUserJoinListAdapter extends RecyclerView.Adapter<RecyclerView.
             endTime = (TextView) itemView.findViewById(R.id.tv_end_time);
             join = (TextView) itemView.findViewById(R.id.id_tv_join);
             address = (TextView) itemView.findViewById(R.id.id_tv_address);
-            status = (TextView) itemView.findViewById(R.id.id_tv_status);
+
         }
     }
 

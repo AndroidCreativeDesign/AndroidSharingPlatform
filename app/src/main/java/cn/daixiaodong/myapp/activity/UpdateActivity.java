@@ -31,7 +31,7 @@ public class UpdateActivity extends BaseActivity {
     @ViewById(R.id.group_type)
     RadioGroup mTypeGroup;
 
-    @ViewById(R.id.id_tb_toolbar)
+    @ViewById(R.id.toolbar)
     Toolbar mToolbar;
 
     @AfterViews

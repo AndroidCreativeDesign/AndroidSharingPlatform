@@ -1,7 +1,6 @@
 package cn.daixiaodong.myapp.activity;
 
 import android.content.Intent;
-import android.support.design.widget.TextInputLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.Button;
@@ -10,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.avos.avoscloud.AVException;
+import com.avos.avoscloud.AVInstallation;
 import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.LogInCallback;
 
@@ -34,14 +34,11 @@ public class SignInActivity extends BaseActivity {
     public final static int SIGN_IN_CANCEL_RESULT_CODE = 1113;
 
 
-    @ViewById(R.id.id_tb_toolbar)
+    @ViewById(R.id.toolbar)
     Toolbar mViewToolbar;
 
 
-    @ViewById(R.id.til_phone_number)
-    TextInputLayout mPhoneNumberInputLayout;
-
-    @ViewById(R.id.id_et_phone_number)
+    @ViewById(R.id.edit_mobile_phone_number)
     EditText mViewPhoneNumber;
 
     @ViewById(R.id.id_et_password)
@@ -60,7 +57,7 @@ public class SignInActivity extends BaseActivity {
 
     @Click(R.id.id_btn_sign_up_now)
     void signUp() {
-        SignUpFirstStepActivity_.intent(this).start();
+        SignUpFirstStepNewActivity_.intent(this).startForResult(Constants.REQUEST_LOGIN_UP_BY_PHONE);
     }
 
     @AfterViews
@@ -103,6 +100,9 @@ public class SignInActivity extends BaseActivity {
             public void done(AVUser avUser, AVException e) {
                 if (e == null) {
                     showToast("登录成功");
+                    String installationId = AVInstallation.getCurrentInstallation().getInstallationId();
+                    AVUser.getCurrentUser().put("installationId", installationId);
+                    AVUser.getCurrentUser().saveInBackground();
                     SignInActivity.this.setResult(SIGN_IN_SUCCESS_RESULT_CODE, getIntent());
                     Intent intent = new Intent(Constants.ACTION_USER_SIGN_IN);
                     sendBroadcast(intent);
@@ -124,7 +124,6 @@ public class SignInActivity extends BaseActivity {
     private boolean checkData(String phoneNumber, String password) {
         if (phoneNumber.isEmpty()) {
             // showToast("请输入手机号码");
-            mPhoneNumberInputLayout.setError("请输入手机号码");
             return false;
         }
         if (phoneNumber.length() != 11) {
@@ -160,8 +159,25 @@ public class SignInActivity extends BaseActivity {
             case android.R.id.home:
                 SignInActivity.this.setResult(SIGN_IN_CANCEL_RESULT_CODE, getIntent());
                 finish();
-                break;
+                return true;
+
+
         }
         return super.onOptionsItemSelected(item);
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == Constants.REQUEST_LOGIN_UP_BY_PHONE && resultCode == RESULT_OK) {
+            showToast("登录成功");
+            String installationId = AVInstallation.getCurrentInstallation().getInstallationId();
+            AVUser.getCurrentUser().put("installationId", installationId);
+            AVUser.getCurrentUser().saveInBackground();
+            SignInActivity.this.setResult(SIGN_IN_SUCCESS_RESULT_CODE, getIntent());
+            Intent intent = new Intent(Constants.ACTION_USER_SIGN_IN);
+            sendBroadcast(intent);
+            finish();
+        }
     }
 }

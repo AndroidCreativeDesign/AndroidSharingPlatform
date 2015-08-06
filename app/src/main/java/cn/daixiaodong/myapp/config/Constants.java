@@ -10,6 +10,8 @@ public class Constants {
     public static final int TOPIC = 1;
     public static final String ASSOCIATION_TOPIC = "社团专题";
 
+    public static final int PAGE_SIZE = 10;
+
     // 表名
     public static final String TABLE_USER_JOIN = "user_join_all";
     public static final String TABLE_USER_COLLECT = "user_collect_all";
@@ -27,6 +29,13 @@ public class Constants {
     public static final String ACTION_USER_SIGN_IN = "cn.daixiaodong.myapp.USER_SIGN_IN";
     public static final String ACTION_USER_SIGN_OUT = "cn.daixiaodong.myapp.USER_SIGN_OUT";
 
+
+    // RequestCode
+    public static final int REQUEST_MAGE_CAPTURE = 4560;
+    public static final int REQUEST_CROP_IMAGE = 4561;
+    public static final int REQUEST_LOGIN_UP_BY_PHONE = 1353;
+    public static final int REQUEST_PICK = 4562;
+    public static final int REQUEST_EDIT_USER_INFO = 4563;
 
     // 支付方式
 

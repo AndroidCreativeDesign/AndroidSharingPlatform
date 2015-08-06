@@ -7,22 +7,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.avos.avoscloud.AVObject;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 import cn.daixiaodong.myapp.R;
-import cn.daixiaodong.myapp.model.PhotoModel;
 
 
 public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.PhotoViewHolder> {
 
     private Context mContext;
-    private List<PhotoModel> mDataSet;
+    private List<AVObject> mDataSet;
     private LayoutInflater mLayoutInflater;
 
 
-    public PhotosAdapter(Context context, List<PhotoModel> data) {
+    public PhotosAdapter(Context context, List<AVObject> data) {
         this.mContext = context;
         mLayoutInflater = LayoutInflater.from(context);
         this.mDataSet = data;
@@ -35,8 +35,8 @@ public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.PhotoViewH
 
     @Override
     public void onBindViewHolder(PhotosAdapter.PhotoViewHolder holder, int position) {
-        PhotoModel photoModel = mDataSet.get(position);
-        Picasso.with(mContext).load(photoModel.getUrl()).into(holder.photo);
+        AVObject photo = mDataSet.get(position);
+        Picasso.with(mContext).load(photo.getString("url")).into(holder.photo);
     }
 
     @Override

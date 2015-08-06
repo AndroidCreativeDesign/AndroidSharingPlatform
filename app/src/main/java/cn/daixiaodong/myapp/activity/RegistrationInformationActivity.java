@@ -40,12 +40,12 @@ public class RegistrationInformationActivity extends BaseActivity implements Pay
     EditText mName;
     @ViewById(R.id.id_et_student_id)
     EditText mStudentId;
-    @ViewById(R.id.id_et_phone_number)
+    @ViewById(R.id.edit_mobile_phone_number)
     EditText mPhoneNumber;
     @ViewById(R.id.id_et_class)
     EditText mClass;
 
-    @ViewById(R.id.id_tb_toolbar)
+    @ViewById(R.id.toolbar)
     Toolbar mToolbar;
 
 

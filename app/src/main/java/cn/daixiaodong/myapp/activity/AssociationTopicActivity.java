@@ -7,12 +7,14 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.FindCallback;
+import com.github.rahatarmanahmed.cpv.CircularProgressView;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
@@ -29,18 +31,24 @@ import cn.daixiaodong.myapp.view.SpacesItemDecoration;
 /**
  * 协会专题
  */
-@EActivity
+@EActivity(R.layout.activity_association_topic)
 public class AssociationTopicActivity extends BaseActivity implements AssociationListAdapter.OnItemClickListener {
 
     private List<AVObject> mData;
     private AssociationListAdapter mAdapter;
 
 
-    @ViewById(R.id.id_tb_toolbar)
+    @ViewById(R.id.toolbar)
     Toolbar mToolbar;
 
     @ViewById(R.id.id_rv_recycler_view)
     RecyclerView mRecyclerView;
+
+
+    @ViewById(R.id.progress_load)
+    CircularProgressView mProgressLoad;
+
+
 
 
     @AfterViews
@@ -66,6 +74,8 @@ public class AssociationTopicActivity extends BaseActivity implements Associatio
                 if (e == null) {
                     mData.addAll(list);
                     mAdapter.notifyDataSetChanged();
+                    mProgressLoad.setVisibility(View.GONE);
+                    mRecyclerView.setVisibility(View.VISIBLE);
                 }
             }
         });
@@ -86,7 +96,6 @@ public class AssociationTopicActivity extends BaseActivity implements Associatio
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_association_topic);
     }
 
     @Override
@@ -116,9 +125,11 @@ public class AssociationTopicActivity extends BaseActivity implements Associatio
             layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT;*/
 
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("搜索");
             builder.setView(R.layout.dialog_search);
            
             builder.setPositiveButton("确定", null);
+            builder.setNegativeButton("取消",null);
             builder.create().show();
         }
 

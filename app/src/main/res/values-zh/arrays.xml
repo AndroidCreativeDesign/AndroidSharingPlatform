@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string-array name="array_left_menu">
+        <item>首页</item>
+        <item>收藏</item>
+        <item>消息</item>
+        <item>设置</item>
+    </string-array>
     <string-array name="item_choose_photo">
         <item>拍照</item>
         <item>从相册中选取</item>
     </string-array>
 
-
     <string-array name="year">
-        <item>选择年级</item>
-        <item>2012 级</item>
-        <item>2013 级</item>
-        <item>2014 级</item>
-        <item>2015 级</item>
+        <item>2012级</item>
+        <item>2013级</item>
+        <item>2014级</item>
+        <item>2015级</item>
     </string-array>
 
     <string-array name="college">
-        <item>选择学院</item>
         <item>电子与信息工程学院</item>
         <item>艺术学院</item>
         <item>数理学院</item>
@@ -31,14 +34,24 @@
         <item>教育学院</item>
         <item>教育学院</item>
     </string-array>
+
     <string-array name="user_info">
         <item>TA参与的</item>
         <item>TA发起的</item>
         <item>取消关注</item>
     </string-array>
+
     <string-array name="comment_more">
         <item>举报</item>
     </string-array>
-
-
+    <string-array name="account_settints">
+        <item>修改密码</item>
+        <item>账号绑定</item>
+    </string-array>
+    <string-array name="gender">
+        <item>男生</item>
+        <item>女生</item>
+        <item>不知道</item>
+        <item>保密</item>
+    </string-array>
 </resources>

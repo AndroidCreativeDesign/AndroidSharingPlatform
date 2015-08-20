@@ -3,13 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="cn.daixiaodong.myapp.activity.SettingsActivity">
+    tools:context="life.z_turn.app.activity.SettingsActivity">
 
     <include layout="@layout/include_toolbar" />
 
     <fragment
         android:id="@+id/id_fragment_settings"
-        class="cn.daixiaodong.myapp.fragment.SettingsFragment"
+        class="life.z_turn.app.fragment.SettingsFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

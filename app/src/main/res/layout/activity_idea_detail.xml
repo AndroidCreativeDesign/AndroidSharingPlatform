@@ -12,11 +12,12 @@
         android:layout_alignParentBottom="true"
         android:gravity="right"
         android:orientation="horizontal">
+
         <Button
             android:id="@+id/btn_comment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="评论"/>
+            android:text="评论" />
 
         <Button
             android:id="@+id/id_btn_join"
@@ -79,7 +80,6 @@
             android:id="@+id/scroll_view_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="gone"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
 
@@ -87,70 +87,77 @@
                 android:id="@+id/llayout_container"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp"
                 android:orientation="vertical">
 
 
-                <android.support.v7.widget.CardView
+                <RelativeLayout
+                    android:id="@+id/rlayout_publisher"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp">
+                    android:layout_height="wrap_content">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/img_profile_photo"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/test_img" />
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="16dp"
+                        android:layout_toRightOf="@id/img_profile_photo"
                         android:orientation="vertical">
 
-
                         <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="开始时间：2015-09-01" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="结束时间：2015-09-10" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="地点：井大10栋201" />
-
-
-                    </LinearLayout>
-
-
-                </android.support.v7.widget.CardView>
-
-                <android.support.v7.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:src="@drawable/ic_message_white_48dp" />
-
-                        <TextView
+                            android:id="@+id/text_username"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="xxxx" />
+                            android:text="CodingAdai" />
 
-                        <Button
+                        <TextView
                             android:id="@+id/id_btn_follow"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="关注"
-                            android:textColor="#000000" />
+                            android:layout_marginTop="8dp"
+                            android:text="不折腾，无青春！" />
+                    </LinearLayout>
 
+
+                </RelativeLayout>
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="8dp">
+
+                        <TextView
+                            android:id="@+id/text_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="标题"
+                            android:textColor="@color/textColorPrimary"
+                            android:textSize="18sp" />
+
+
+                        <TextView
+                            android:id="@+id/text_introduce"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:lineSpacingMultiplier="1.2"
+                            android:text="在build.gradle添加以空扥金龙扥洪亮发窘扥开森就韩诺王佛为俄方陪我恶化下依赖（请使用最新版RecyclerView。新版RecyclerView的addOnScrollListener比旧版的setOnScrollListener的扩展性更强。可以让开发者更具项目需求再次添加自定义滚动监听器。这一点比ListView的设计好很多，在处理ListView时还得用反射获取开发者设置的自定义滚动监听器。）"
+                            android:textSize="16sp" />
 
                     </LinearLayout>
 
@@ -166,121 +173,39 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="在build.gradle添加以下依赖（请使用最新版RecyclerView。新版RecyclerView的addOnScrollListener比旧版的setOnScrollListener的扩展性更强。可以让开发者更具项目需求再次添加自定义滚动监听器。这一点比ListView的设计好很多，在处理ListView时还得用反射获取开发者设置的自定义滚动监听器。）" />
-
-                    </LinearLayout>
-
-
-                </android.support.v7.widget.CardView>
-
-
-                <android.support.v7.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
+                        android:orientation="vertical"
+                        android:padding="8dp">
 
                         <TextView
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="在build.gradle添加以下依赖（请使用最新版RecyclerView。新版RecyclerView的addOnScrollListener比旧版的setOnScrollListener的扩展性更强。可以让开发者更具项目需求再次添加自定义滚动监听器。这一点比ListView的设计好很多，在处理ListView时还得用反射获取开发者设置的自定义滚动监听器。）" />
-
-                    </LinearLayout>
-
-
-                </android.support.v7.widget.CardView>
-
-                <android.support.v7.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
+                            android:text="时间地点"
+                            android:textColor="@color/textColorPrimary"
+                            android:textSize="16sp" />
 
                         <TextView
+                            android:id="@+id/text_start_date"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="在build.gradle添加以下依赖（请使用最新版RecyclerView。新版RecyclerView的addOnScrollListener比旧版的setOnScrollListener的扩展性更强。可以让开发者更具项目需求再次添加自定义滚动监听器。这一点比ListView的设计好很多，在处理ListView时还得用反射获取开发者设置的自定义滚动监听器。）" />
-
-                    </LinearLayout>
-
-
-                </android.support.v7.widget.CardView>
-
-                <android.support.v7.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
+                            android:text="开始时间：2015-09-01"
+                            android:textSize="16sp" />
 
                         <TextView
+                            android:id="@+id/text_end_date"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="在build.gradle添加以下依赖（请使用最新版RecyclerView。新版RecyclerView的addOnScrollListener比旧版的setOnScrollListener的扩展性更强。可以让开发者更具项目需求再次添加自定义滚动监听器。这一点比ListView的设计好很多，在处理ListView时还得用反射获取开发者设置的自定义滚动监听器。）" />
-
-                    </LinearLayout>
-
-
-                </android.support.v7.widget.CardView>
-
-
-                <android.support.v7.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
+                            android:layout_marginTop="8dp"
+                            android:text="开始时间：2015-09-01"
+                            android:textSize="16sp" />
 
                         <TextView
+                            android:id="@+id/text_address"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="2015.9.1 -- 2015.9.10" />
+                            android:layout_marginTop="8dp"
+                            android:text="地点：井大10栋201"
+                            android:textSize="16dp" />
 
-                    </LinearLayout>
-
-
-                </android.support.v7.widget.CardView>
-
-
-                <android.support.v7.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="目前参与" />
 
                     </LinearLayout>
 
@@ -292,25 +217,17 @@
 
         </android.support.v4.widget.NestedScrollView>
 
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:clickable="true"
+            android:src="@drawable/ic_add_white_48dp"
+            app:layout_anchor="@id/id_abl_app_bar_layout"
+            app:layout_anchorGravity="bottom|right|end" />
+
 
     </android.support.design.widget.CoordinatorLayout>
-
-
-    <RelativeLayout
-        android:id="@+id/rlayout_progress_load"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="200dp">
-
-        <com.github.rahatarmanahmed.cpv.CircularProgressView
-            android:id="@+id/progress_load"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_centerInParent="true"
-            app:cpv_animAutostart="true"
-            app:cpv_indeterminate="true" />
-
-    </RelativeLayout>
 
 
 </RelativeLayout>

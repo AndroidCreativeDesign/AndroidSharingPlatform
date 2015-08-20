@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="cn.daixiaodong.myapp">
+    package="life.z_turn.app" >
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -18,15 +17,15 @@
     <application
         android:name=".application.MyApp"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="萌想"
-        android:theme="@style/AppTheme">
+        android:icon="@drawable/app_icon"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
         <meta-data
             android:name="leancloud"
             android:value="LeanCloud" />
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="55a9006167e58ec10b004054" />
+            android:value="55a078e267e58eb7fb009430" />
         <meta-data
             android:name="UMENG_CHANNEL"
             android:value="fir" />
@@ -37,11 +36,12 @@
 
         <activity
             android:name="com.umeng.update.UpdateDialogActivity"
+            android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name=".activity.MainActivity_"
             android:launchMode="singleInstance"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -50,16 +50,13 @@
         </activity>
         <activity
             android:name=".activity.SignInActivity_"
-            android:label="@string/title_activity_sign_in"
             android:screenOrientation="portrait" />
         <activity android:name=".activity.SignUpFirstStepActivity_" />
         <activity
             android:name=".activity.SignUpSecondStepActivity_"
-            android:label="@string/title_activity_sign_up_second_step"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.SplashActivity_"
-            android:label="@string/title_activity_welcome"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".activity.PasswordResetActivity_" />
@@ -71,7 +68,7 @@
             android:name="com.avos.avoscloud.PushService"
             android:exported="true" />
 
-        <receiver android:name=".receiver.PushBroadcastReceiver">
+        <receiver android:name=".receiver.PushBroadcastReceiver" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.USER_PRESENT" />
@@ -84,6 +81,7 @@
             android:name=".activity.SettingsActivity"
             android:label="@string/title_activity_settings"
             android:screenOrientation="portrait" />
+
         <!-- bmob pay sdk activity begin ,please put below code into application tag -->
         <activity
             android:name="com.alipay.sdk.app.H5PayActivity"
@@ -97,7 +95,9 @@
             android:theme="@android:style/Theme.Translucent" />
         <!-- bmob pay sdk activity end -->
 
-        <activity android:name=".activity.UserProfileActivity_">
+        <activity
+            android:name=".activity.UserProfileActivity_"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -111,68 +111,131 @@
         </activity>
         <activity
             android:name=".activity.SearchActivity"
-            android:label="@string/title_activity_search" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.AssociationTopicActivity_"
-            android:label="@string/title_activity_topic" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.CollegeActivity_"
-            android:label="@string/title_activity_college" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.AssociationDetailActivity_"
-            android:label="@string/title_activity_association" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.RegistrationInformationActivity_"
-            android:label="@string/title_activity_registration_information" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".chat.LeanCloudChat"
-            android:label="@string/title_activity_lean_cloud_chat" />
+            android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.EditIdeaDetailActivity"
-            android:label="@string/title_activity_edit_idea_detail" />
+            android:name=".activity.EditIdeaDetailActivity_"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.UpdateIdeaActivity_"
-            android:label="@string/title_activity_idea_edit" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.UpdateActivity_"
-            android:label="@string/title_activity_update_recruitment" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.UserJoinActivity_"
-            android:label="@string/title_activity_user_join" />
+            android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.SignUpFirstStepNewActivity_"
-            android:label="@string/title_activity_sign_up_first_step_new"
-            android:windowSoftInputMode="stateHidden">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="cn.daixiaodong.myapp.activity.common.BaseActivity" />
-
-            <!--
-              <intent-filter>
-                  <action android:name="android.intent.action.MAIN" />
-
-                  <category android:name="android.intent.category.LAUNCHER" />
-              </intent-filter>
-            -->
-        </activity>
-        <activity
-            android:name=".activity.SignUpSecondStepNewActivity_"
-            android:label="@string/title_activity_sign_up_second_step_new"
-            android:windowSoftInputMode="stateHidden">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="cn.daixiaodong.myapp.activity.common.BaseActivity" />
-        </activity>
+            android:name=".activity.SettingsNewActivity_"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.UserPublishActivity_"
-            android:label="@string/title_activity_user_publish" />
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.SignUpFirstStepNewActivity_"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".activity.SignUpSecondStepNewActivity_"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".activity.CommentActivity_"
-            android:label="@string/title_activity_comment" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
-            android:name=".activity.SignInByEmailActivity"
-            android:label="@string/title_activity_sign_in_by_email"
-            android:windowSoftInputMode="stateHidden"></activity>
+            android:name=".activity.SignUpByEmailActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".activity.EditTitleActivity"
+            android:label="@string/title_activity_edit_title" />
+        <activity
+            android:name=".activity.EditIntroduceActivity_"
+            android:label="@string/title_activity_edit_introduce" />
+        <activity
+            android:name=".activity.StudentUnionTopicActivity_"
+            android:label="@string/title_activity_student_union_topic" />
+        <activity
+            android:name=".activity.StudentUnionDetailActivity_"
+            android:label="@string/title_activity_student_union_detail" />
+        <activity
+            android:name=".activity.DepartmentDetailActivity_"
+            android:label="@string/title_activity_department_detail" />
+        <activity
+            android:name=".activity.ApplyInfoActivity_"
+            android:label="@string/title_activity_apply_info" />
+        <activity
+            android:name=".activity.ResetPasswordByEmailActivity_"
+            android:label="@string/title_activity_reset_password_by_email" />
+        <activity
+            android:name=".activity.PayActivity_"
+            android:label="@string/title_activity_pay" />
+        <activity
+            android:name=".activity.NoteDetailActivity_"
+            android:label="@string/title_activity_note_detail" />
+        <activity
+            android:name=".activity.NotificationListActivity_"
+            android:label="@string/title_activity_notification_list" />
+        <activity
+            android:name=".activity.ReceiveCommentActivity_"
+            android:label="@string/title_activity_receive_comment" />
+        <activity
+            android:name=".activity.ChangePasswordActivity_"
+            android:label="@string/title_activity_change_password" />
+        <activity
+            android:name=".activity.AccountBindingActivity_"
+            android:label="@string/title_activity_account_binding" >
+        </activity>
+        <activity
+            android:name=".activity.AccountSettingsActivity"
+            android:label="@string/title_activity_account_settings" >
+        </activity>
+        <activity
+            android:name=".activity.AssociationMemberActivity_"
+            android:label="@string/title_activity_association_member" >
+        </activity>
+        <activity
+            android:name=".activity.ImageViewerActivity_"
+            android:label="@string/title_activity_image_viewer" >
+        </activity>
+        <activity
+            android:name=".activity.ImagesViewerActivity_"
+            android:label="@string/title_activity_images_viewer" >
+        </activity>
+        <activity
+            android:name=".activity.NotificationDetailActivity_"
+            android:label="@string/title_activity_notification_detail" >
+        </activity>
+        <activity
+            android:name=".activity.EditDefaultActivity_"
+            android:label="@string/title_activity_edit_default" >
+        </activity>
+
+        <activity
+            android:name=".activity.EditCrowdfundingActivity_"
+            android:label="@string/title_activity_edit_default" >
+        </activity>
+
+        <activity
+            android:name=".activity.EditRecruitmentActivity_"
+            android:label="@string/title_activity_edit_default" >
+        </activity>
     </application>
 
 </manifest>

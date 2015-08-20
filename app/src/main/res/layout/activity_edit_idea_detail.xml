@@ -1,16 +1,180 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="cn.daixiaodong.myapp.activity.EditIdeaDetailActivity">
+    android:orientation="vertical">
+
+    <include layout="@layout/include_toolbar" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:padding="16dp"
+        android:text="选择类型："
+        android:textSize="18sp" />
 
-</RelativeLayout>
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_view_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.balysv.materialripple.MaterialRippleLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:gravity="center"
+                    android:text="一般活动"
+                    android:textSize="18sp" />
+            </com.balysv.materialripple.MaterialRippleLayout>
+
+
+            <Button
+                android:id="@+id/ripple_creative"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="创意想法" />
+
+            <Button
+                android:id="@+id/ripple_recruitment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="团队招募" />
+
+            <Button
+                android:id="@+id/ripple_crowdfunding"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="梦想众筹" />
+
+
+
+            <Button
+                android:id="@+id/btn_work_display"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="作品展示" />
+
+
+            <com.balysv.materialripple.MaterialRippleLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:gravity="center"
+                        android:text="创意想法"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+
+            </com.balysv.materialripple.MaterialRippleLayout>
+
+            <com.balysv.materialripple.MaterialRippleLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:gravity="center"
+                    android:text="团队招募"
+                    android:textSize="18sp" />
+            </com.balysv.materialripple.MaterialRippleLayout>
+
+            <com.balysv.materialripple.MaterialRippleLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:gravity="center"
+                    android:text="梦想众筹"
+                    android:textSize="18sp" />
+            </com.balysv.materialripple.MaterialRippleLayout>
+
+            <com.balysv.materialripple.MaterialRippleLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:gravity="center"
+                    android:text="作品展示"
+                    android:textSize="18sp" />
+            </com.balysv.materialripple.MaterialRippleLayout>
+
+
+            <com.balysv.materialripple.MaterialRippleLayout
+                android:id="@+id/ripple_not_have"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:gravity="center"
+                    android:text="没有适合你的？"
+                    android:textSize="18sp" />
+            </com.balysv.materialripple.MaterialRippleLayout>
+
+
+        </LinearLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="说明："
+        android:textSize="18sp" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="“创意活动”包括但不限于以下形式：" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="创意活动：" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="创意活动：" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="禁止发布违反法律法规的任何内容，若发现此类行为，将不予通知，直接封号，严重者将举报至相关部门。" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="广告性质的内容将不予发布，如有商务合作的需求，请联系Z-Turn Team，谢谢合作。" />
+
+</LinearLayout>

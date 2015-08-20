@@ -1,0 +1,34 @@
+Applications Memory Usage (kB):
+Uptime: 510490 Realtime: 510490
+
+** MEMINFO in pid 1586 [life.z_turn.app] **
+                   Pss  Private  Private  Swapped     Heap     Heap     Heap
+                 Total    Dirty    Clean    Dirty     Size    Alloc     Free
+                ------   ------   ------   ------   ------   ------   ------
+  Native Heap    10174    10108        0        0    24671    24671    13216
+  Dalvik Heap    15327    14748        0        0    41363    29518    11845
+ Dalvik Other     1100     1100        0        0                           
+        Stack      356      356        0        0                           
+    Other dev        5        0        4        0                           
+     .so mmap     1973      192       68        0                           
+    .apk mmap      327        0       68        0                           
+    .ttf mmap      499        0      240        0                           
+    .dex mmap     7020        0     7016        0                           
+    code mmap     2643        0      676        0                           
+   image mmap     1644     1240       20        0                           
+   Other mmap       92        4        4        0                           
+      Unknown      104      104        0        0                           
+        TOTAL    41264    27852     8096        0    66034    54189    25061
+ 
+ Objects
+               Views:      220         ViewRootImpl:        1
+         AppContexts:        4           Activities:        1
+              Assets:        2        AssetManagers:        2
+       Local Binders:       13        Proxy Binders:       20
+    Death Recipients:        0
+     OpenSSL Sockets:        5
+ 
+ SQL
+         MEMORY_USED:        0
+  PAGECACHE_OVERFLOW:        0          MALLOC_SIZE:        0
+ 

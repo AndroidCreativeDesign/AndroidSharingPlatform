@@ -1,0 +1,79 @@
+Activity Resolver Table:
+  Schemes:
+      user_profile:
+        500f935 life.z_turn.app/.activity.UserProfileActivity_ filter 2e39ef6a
+          Action: "android.intent.action.VIEW"
+          Category: "android.intent.category.DEFAULT"
+          Category: "android.intent.category.BROWSABLE"
+          Scheme: "user_profile"
+          Authority: "daixiaodong.cn": -1
+
+  Non-Data Actions:
+      android.intent.action.MAIN:
+        215671ca life.z_turn.app/.activity.MainActivity_ filter 37b36955
+          Action: "android.intent.action.MAIN"
+          Category: "android.intent.category.LAUNCHER"
+
+Receiver Resolver Table:
+  Non-Data Actions:
+      android.net.conn.CONNECTIVITY_CHANGE:
+        14b62f3b life.z_turn.app/.receiver.PushBroadcastReceiver filter c5e3c0c
+          Action: "android.intent.action.BOOT_COMPLETED"
+          Action: "android.intent.action.USER_PRESENT"
+          Action: "android.net.conn.CONNECTIVITY_CHANGE"
+          Action: "cn.daixiaodong.myapp.push"
+      cn.daixiaodong.myapp.push:
+        14b62f3b life.z_turn.app/.receiver.PushBroadcastReceiver filter c5e3c0c
+          Action: "android.intent.action.BOOT_COMPLETED"
+          Action: "android.intent.action.USER_PRESENT"
+          Action: "android.net.conn.CONNECTIVITY_CHANGE"
+          Action: "cn.daixiaodong.myapp.push"
+      android.intent.action.BOOT_COMPLETED:
+        14b62f3b life.z_turn.app/.receiver.PushBroadcastReceiver filter c5e3c0c
+          Action: "android.intent.action.BOOT_COMPLETED"
+          Action: "android.intent.action.USER_PRESENT"
+          Action: "android.net.conn.CONNECTIVITY_CHANGE"
+          Action: "cn.daixiaodong.myapp.push"
+      android.intent.action.USER_PRESENT:
+        14b62f3b life.z_turn.app/.receiver.PushBroadcastReceiver filter c5e3c0c
+          Action: "android.intent.action.BOOT_COMPLETED"
+          Action: "android.intent.action.USER_PRESENT"
+          Action: "android.net.conn.CONNECTIVITY_CHANGE"
+          Action: "cn.daixiaodong.myapp.push"
+
+Key Set Manager:
+  [life.z_turn.app]
+      Signing KeySets: 857
+
+Packages:
+  Package [life.z_turn.app] (16984658):
+    userId=10099 gids=[1028, 1015, 3003]
+    pkg=Package{454f3b1 life.z_turn.app}
+    codePath=/data/app/life.z_turn.app-1
+    resourcePath=/data/app/life.z_turn.app-1
+    legacyNativeLibraryDir=/data/app/life.z_turn.app-1/lib
+    primaryCpuAbi=x86
+    secondaryCpuAbi=null
+    versionCode=3 targetSdk=22
+    versionName=V1.1.0 beta
+    applicationInfo=ApplicationInfo{2651e096 life.z_turn.app}
+    flags=[ DEBUGGABLE HAS_CODE ALLOW_CLEAR_USER_DATA ALLOW_BACKUP ]
+    dataDir=/data/data/life.z_turn.app
+    supportsScreens=[small, medium, large, xlarge, resizeable, anyDensity]
+    timeStamp=2015-08-10 22:57:05
+    firstInstallTime=2015-08-09 08:23:31
+    lastUpdateTime=2015-08-10 22:57:05
+    signatures=PackageSignatures{d4e8417 [17777004]}
+    permissionsFixed=true haveGids=true installStatus=1
+    pkgFlags=[ DEBUGGABLE HAS_CODE ALLOW_CLEAR_USER_DATA ALLOW_BACKUP ]
+    User 0:  installed=true hidden=false stopped=false notLaunched=false enabled=0
+    grantedPermissions:
+      android.permission.READ_PHONE_STATE
+      android.permission.INTERNET
+      android.permission.WRITE_EXTERNAL_STORAGE
+      android.permission.MODIFY_AUDIO_SETTINGS
+      android.permission.RECEIVE_BOOT_COMPLETED
+      android.permission.READ_EXTERNAL_STORAGE
+      android.permission.ACCESS_NETWORK_STATE
+      android.permission.VIBRATE
+      android.permission.ACCESS_WIFI_STATE

@@ -1,0 +1,21 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="life.z_turn.app.activity.NoteDetailActivity">
+
+
+    <item
+        android:id="@+id/action_comment"
+        android:title="评论"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_share"
+        android:title="分享"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_upvote"
+        android:title="赞"
+        app:showAsAction="ifRoom" />
+</menu>

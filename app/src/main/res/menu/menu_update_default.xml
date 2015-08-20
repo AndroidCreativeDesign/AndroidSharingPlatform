@@ -1,11 +1,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="cn.daixiaodong.myapp.activity.UpdateActivity">
+    tools:context="life.z_turn.app.activity.UpdateActivity">
+
+    <item
+        android:id="@+id/action_preview"
+        android:title="预览"
+        app:showAsAction="always" />
+
+
     <item
         android:id="@+id/action_done"
 
-        android:title="完成"
+        android:title="发布"
 
         app:showAsAction="always" />
 </menu>

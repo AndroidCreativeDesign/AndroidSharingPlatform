@@ -44,15 +44,15 @@
 
     <style name="AppCompatAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="colorAccent">@color/accent</item>
-    <!--    <item name="android:textColorPrimary">#FFFFFF</item>
-        <item name="android:background">#5fa3d0</item>-->
+        <!--    <item name="android:textColorPrimary">#FFFFFF</item>
+            <item name="android:background">#5fa3d0</item>-->
     </style>
 
 
     <style name="MyToolbarStyle">
         <!--    <item name="android:minHeight">?actionBarSize</item>
             <item name="android:background">?colorPrimary</item>-->
-        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Dark</item>
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
         <item name="theme">@style/MyToolbarTheme</item>
     </style>
 
@@ -84,5 +84,35 @@
         <item name="android:paddingBottom">24dp</item>
         <item name="android:orientation">vertical</item>
     </style>
+
+
+    <style name="Widget.MyApp.HeaderBar.Spinner" parent="Widget.AppCompat.Light.Spinner.DropDown.ActionBar">
+        <item name="android:background">?android:selectableItemBackground</item>
+        <item name="android:dropDownSelector">?android:selectableItemBackground</item>
+        <item name="android:divider">@null</item>
+    </style>
+
+
+    <style name="App.TextAppearance.Item" parent="" />
+
+    <style name="App.TextAppearance.Item.PrimaryText">
+        <item name="android:textSize">@dimen/item_primary_text_size</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+    </style>
+
+    <style name="App.TextAppearance.Item.SecondaryText">
+        <item name="android:textSize">@dimen/item_secondary_text_size</item>
+        <item name="android:textColor">@color/textColorSecondary</item>
+    </style>
+
+    <style name="App.Button" parent="" />
+
+    <style name="App.EditText" parent="">
+        <item name="android:paddingLeft">@dimen/edit_text_padding_left</item>
+        <item name="android:paddingRight">@dimen/edit_text_padding_right</item>
+        <item name="android:layout_height">@dimen/edit_text_height</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
 
 </resources>

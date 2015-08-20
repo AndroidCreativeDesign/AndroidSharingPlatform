@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    tools:context="cn.daixiaodong.myapp.activity.CollegeActivity">
+    tools:context="life.z_turn.app.activity.CollegeActivity">
 
     <ExpandableListView
         android:id="@+id/id_elv_expandable_list_view"

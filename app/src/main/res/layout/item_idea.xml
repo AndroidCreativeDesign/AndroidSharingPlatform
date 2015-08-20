@@ -20,7 +20,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/id_iv_img"
+                android:id="@+id/img"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
@@ -42,7 +42,7 @@
 
 
         <TextView
-            android:id="@+id/id_tv_title"
+            android:id="@+id/text_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingBottom="0dp"
@@ -53,7 +53,7 @@
             android:textSize="24sp" />
 
         <TextView
-            android:id="@+id/id_tv_time"
+            android:id="@+id/text_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="16dp"

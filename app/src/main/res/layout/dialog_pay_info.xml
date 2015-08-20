@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/text_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="姓名：戴小冬"
+        android:textColor="@color/textColorSecondary"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/text_college"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="学院：人文学院"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/text_major"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="班级：15新闻学"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/text_mobile_phone_num"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="手机号：18079609745"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/text_qq"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="QQ：496690324"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/text_association_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="协会：三农学社"
+        android:textSize="16sp" />
+
+
+    <TextView
+        android:id="@+id/text_dues"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="会费：20元"
+        android:textSize="16sp" />
+</LinearLayout>

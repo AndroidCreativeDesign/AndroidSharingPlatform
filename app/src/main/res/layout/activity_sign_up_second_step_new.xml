@@ -37,9 +37,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="8dp"
-                    android:text="点击上传头像" />
-
-
+                    android:text="头像" />
 
 
                 <EditText
@@ -51,7 +49,8 @@
                     android:hint="密码（至少6位）"
                     android:inputType="textPassword"
 
-                    android:padding="8dp" />
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp" />
 
                 <EditText
                     android:id="@+id/edit_username"
@@ -61,7 +60,8 @@
                     android:hint="用户名（2至5位）"
 
                     android:inputType="textPersonName"
-                    android:padding="8dp" />
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp" />
 
 
                 <!--  横向
@@ -88,17 +88,19 @@
                 <Spinner
                     android:id="@+id/spinner_year"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp" />
+                    android:layout_height="48dp"
+                    android:visibility="gone" />
 
                 <Spinner
                     android:id="@+id/spinner_college"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp" />
+                    android:layout_height="48dp"
+                    android:visibility="gone" />
 
                 <RadioGroup
                     android:id="@+id/group_gender"
                     android:layout_width="wrap_content"
-                    android:layout_height="48dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="8dp"
                     android:gravity="center"
@@ -119,12 +121,11 @@
 
                 </RadioGroup>
 
-
                 <Button
                     android:id="@+id/btn_done"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_height="56dp"
+                    android:layout_marginTop="8dp"
                     android:text="完成" />
             </LinearLayout>
         </ScrollView>

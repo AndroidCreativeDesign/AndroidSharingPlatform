@@ -1,7 +1,6 @@
 <resources>
-    <string name="app_name">MyApp</string>
+    <string name="app_name">Z-TURN</string>
 
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -20,15 +19,6 @@
     <string name="term_of_service">同意<a href="http://www.google.com">《服务条款》</a>与<a href="http://www.google.com">《隐私条款》</a></string>
 
 
-    <string-array name="array_left_menu">
-        <item>首页</item>
-        <item>收藏</item>
-        <item>消息</item>
-        <item>设置</item>
-    </string-array>
-    <string name="title_activity_detail">DetailActivity</string>
-    <string name="title_activity_test">TestActivity</string>
-    <string name="title_activity_sign_in">SignInActivity</string>
     <string name="enter_phone_number">请输入手机号</string>
     <string name="enter_password">请输入密码</string>
     <string name="sign_up_now_for_free">没有帐号，立即注册</string>
@@ -38,36 +28,289 @@
     <string name="sign_in">登录</string>
     <string name="forgot_password">忘记密码？</string>
     <string name="enter_sign_in_password">请输入密码（8–15位）</string>
-    <string name="title_activity_sign_up_second_step">SignUpSecondStepActivity</string>
     <string name="done">完成</string>
     <string name="get_verify_code_again">重新获取验证码</string>
-    <string name="title_activity_welcome">WelcomeActivity</string>
-    <string name="title_activity_sign_up">SignUpActivity</string>
     <string name="get_verify_code">获取验证码</string>
-    <string name="title_activity_test2">Test2Activity</string>
-    <string name="title_activity_test4">Test4Activity</string>
-    <string name="title_activity_main_activity2">MainActivity2Activity</string>
-    <string name="title_activity_settings">SettingsActivity</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_profile">ProfileActivity</string>
-    <string name="title_activity_search">SearchActivity</string>
-    <string name="title_activity_topic">TopicActivity</string>
-    <string name="title_activity_college">CollegeActivity</string>
-    <string name="title_activity_association">AssociationActivity</string>
-    <string name="title_activity_registration_information">RegistrationInformationActivity</string>
-    <string name="title_activity_lean_cloud_chat">LeanCloudChat</string>
-    <string name="title_activity_edit_idea_detail">EditIdeaDetailActivity</string>
-    <string name="title_activity_idea_edit">IdeaEditActivity</string>
-    <string name="title_activity_update_recruitment">UpdateRecruitmentActivity</string>
-    <string name="title_activity_user_join">UserJoinActivity</string>
-    <string name="title_activity_sign_up_first_step_new">SignUpFirstStepNewActivity</string>
-    <string name="title_activity_sign_up_second_step_new">SignUpSecondStepNewActivity</string>
-    <string name="title_activity_user_publish">UserPublishActivity</string>
-    <string name="title_activity_comment">CommentActivity</string>
-    <string name="comment_username"><a href="%1$s">%2$s</a></string>
-    <string name="comment_username_2">   <a href="m://my.com/">%1$s</a><br/></string>
-    <string name="title_activity_sign_in_by_email">SignInByEmailActivity</string>
+
+    <string name="user_join_num" formatted="false">%1$d \n参与的</string>
+    <string name="user_publish_num" formatted="false">%1$d \n发起的</string>
+    <string name="username_password_mismatch">啊哦，账号或密码不正确</string>
+    <string name="user_does_not_exist">用户不存在</string>
+    <string name="unknown_error">未知错误</string>
+    <string name="pls_enter_password">请输入密码</string>
+    <string name="success_sign_in">登录成功</string>
+    <string name="tab_name_home">首页</string>
+    <string name="tab_name_discover">发现</string>
+    <string name="tab_name_my_join">我参与的</string>
+    <string name="tab_name_my_publish">我发起的</string>
+    <string name="pls_read_trem_of_service">请仔细阅读《用户使用条款》并同意才可注册</string>
+    <string name="object_not_found">类未找到</string>
+    <string name="get_verify_code_busy">获取短信验证码过于频繁，请稍后再试</string>
+    <string name="password_length_must_bigger_than_6">密码长度至少大于6位</string>
+    <string name="success_sign_up">注册成功</string>
+    <string name="invalid_verify_code">验证码错误</string>
+    <string name="pls_enter_mobile_phone_number">请输入手机号码</string>
+    <string name="title_activity_edit_title">EditTitleActivity</string>
+
+
+    <string name="title_activity_edit_introduce">EditIntroduceActivity</string>
+    <string name="activity_introduce">活动介绍</string>
+    <string name="save">保存</string>
+    <string name="date" formatted="false">%1$d-%2$d-%3$d</string>
+    <string name="time" formatted="false">%1$d:%2$d</string>
+    <string name="exit_edit_tip">退出后，所编辑的内容会全部丢失，是否留下来继续编辑？</string>
+    <string name="title_activity_student_union_topic">StudentUnionTopicActivity</string>
+    <string name="title_activity_student_union_detail">StudentUnionDetailActivity</string>
+    <string name="title_activity_department_detail">DepartmentDetailActivity</string>
+    <string name="title_activity_apply_info">ApplyInfoActivity</string>
+    <string name="success_apply">成功报名</string>
+    <string name="title_activity_reset_password_by_email">ResetPasswordByEmailActivity</string>
+    <string name="enter_email">邮箱</string>
+    <string name="pls_enter_email">请输入邮箱</string>
+    <string name="email_not_found">邮箱不存在</string>
+    <string name="user_with_mobilephone_not_found">该手机号码未注册</string>
+    <string name="sign_up_by_mobile_phone_number">手机号注册</string>
+    <string name="network_error">请检查网络连接是否正常</string>
+    <string name="title_activity_pay">PayActivity</string>
+    <string name="success_submit">提交成功，请等待面试通知。</string>
+    <string name="not_fill_out">未设置</string>
+    <string name="title_activity_note_detail">NoteDetailActivity</string>
+    <string name="title_activity_notification_list">NotificationListActivity</string>
+    <string name="title_activity_receive_comment">ReceiveCommentActivity</string>
+    <string name="title_activity_change_password">ChangePasswordActivity</string>
+    <string name="title_activity_account_binding">AccountBindingActivity</string>
+
+
+    <string name="com.crashlytics.android.build_id">7ec6f0eb-b4f7-4244-9abb-9d5ce1449446</string>
+    <string name="abc_action_bar_home_description">Navigate home</string>
+    <string name="abc_action_bar_up_description">Navigate up</string>
+    <string name="abc_action_menu_overflow_description">More options</string>
+    <string name="abc_action_mode_done">Done</string>
+    <string name="abc_activity_chooser_view_see_all">See all</string>
+    <string name="abc_activitychooserview_choose_application">Choose an app</string>
+    <string name="abc_searchview_description_clear">Clear query</string>
+    <string name="abc_searchview_description_query">Search query</string>
+    <string name="abc_searchview_description_search">Search</string>
+    <string name="abc_searchview_description_submit">Submit query</string>
+    <string name="abc_searchview_description_voice">Voice search</string>
+    <string name="abc_shareactionprovider_share_with">Share with</string>
+    <string name="abc_shareactionprovider_share_with_application">Share with %s</string>
+    <string name="abc_action_bar_home_description_format">%1$s, %2$s</string>
+    <string name="abc_action_bar_home_subtitle_description_format">%1$s, %2$s, %3$s</string>
+    <string name="abc_search_hint">Search…</string>
+    <string name="abc_toolbar_collapse_description">Collapse</string>
+    <string name="action_comment_compose">写点评</string>
+    <string name="action_comment_compose_done">发布</string>
+    <string name="action_dark_mode_dark">夜间模式</string>
+    <string name="action_dark_mode_light">日间模式</string>
+    <string name="action_news_comment_default">...</string>
+    <string name="action_news_like_default">...</string>
+    <string name="action_notification">消息</string>
+
+    <string name="action_sharing_compose_done">发布</string>
+    <string name="action_user_edit">编辑</string>
+    <string name="action_user_save">保存</string>
+
+    <string name="app_version_latest">已是最新版本</string>
+    <string name="back">后退</string>
+    <string name="big_font">大字号</string>
+    <string name="comment_colspan">收起</string>
+    <string name="comment_compose_hint">不友善言论会被删除，深度讨论会被优先展示。</string>
+    <string name="comment_copy">复制</string>
+    <string name="comment_delete">删除</string>
+    <string name="comment_expand">展开</string>
+    <string name="comment_likes_like">%1$s 人赞过</string>
+    <string name="comment_loading">努力加载中</string>
+    <string name="comment_long_comments">%1$s 条长评</string>
+    <string name="comment_my_comment">我的点评</string>
+    <string name="comment_my_comment_title">原文：%1$s</string>
+    <string name="comment_no_comment">深度长评虚位以待</string>
+    <string name="comment_prompt">同时分享到：</string>
+    <string name="comment_replies">回复我的点评</string>
+    <string name="comment_reply">回复</string>
+    <string name="comment_report">举报</string>
+    <string name="comment_report_done">感谢举报。</string>
+    <string name="comment_report_prompt">太好了 我们一起净化评论区</string>
+    <string name="comment_report_prompt_cancel">取消</string>
+    <string name="comment_report_prompt_ok">确认举报</string>
+    <string name="comment_short_comments">%1$s 条短评</string>
+    <string name="comment_vote">赞同</string>
+    <string name="comment_vote_cancel">取消赞同</string>
+    <string name="dark_mode_off">开启日间模式………</string>
+    <string name="dark_mode_on">开启夜间模式………</string>
+    <string name="dialog_app_update_direct_download">直接下载</string>
+    <string name="dialog_app_update_googleplay">Google Play</string>
+    <string name="dialog_cancel">取消</string>
+    <string name="dialog_offline_cancel">稍后再说</string>
+    <string name="dialog_offline_message">离线下载会耗费流量，建议在 Wi-Fi 网络下载</string>
+    <string name="dialog_offline_ok">继续下载</string>
+    <string name="dialog_offline_title">提示</string>
+    <string name="dialog_ok">确定</string>
+    <string name="drawer_close" />
+    <string name="drawer_day">白天</string>
+    <string name="drawer_favorite">我的收藏</string>
+    <string name="drawer_night">夜间</string>
+    <string name="drawer_notification">消息</string>
+    <string name="drawer_offline">离线下载</string>
+    <string name="drawer_open" />
+    <string name="drawer_settings">设置</string>
+    <string name="drawer_theme_subscribe_success">关注成功，关注内容会在首页呈现</string>
+    <string name="drawer_user_default_name">请登录</string>
+    <string name="email_feedback_body">"
+
+
+技术信息:
+
+%1$s"</string>
+    <string name="email_feedback_dialog_title">发送邮件</string>
+    <string name="email_feedback_subject">知乎日报安卓客户端反馈</string>
+    <string name="email_feedback_to">mua@zhihu.com</string>
+    <string name="errcode_cancel">发送取消</string>
+    <string name="errcode_deny">发送被拒绝</string>
+    <string name="errcode_success">发送成功</string>
+    <string name="errcode_unknown">发送返回</string>
+    <string name="esdk__err_api_setup">Error intializing Evernote API</string>
+    <string name="esdk__err_authentication">Error authenticating to Evernote</string>
+    <string name="esdk__err_protocol_version">Incomatible EDAM client protocol version</string>
+    <string name="esdk__evernote">Evernote</string>
+    <string name="esdk__evernote_login_failed">Evernote Login Failed</string>
+    <string name="esdk__evernote_login_successful">Evernote login successful</string>
+    <string name="esdk__loading">Loading...</string>
+    <string name="forward">前进</string>
+    <string name="ga_trackingId">UA-34053832-5</string>
+    <string name="guide_enter_now">立即体验</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="home_list_item_choose_from">选自</string>
+    <string name="login">使用微博登录</string>
+    <string name="login_right">知乎日报不会未经同意通过你的微博账号发布任何信息</string>
+    <string name="menu_save">保存</string>
+    <string name="news_toolbar_editor_name">%1$s 推荐</string>
+    <string name="news_toolbar_theme_name">%1$s</string>
+    <string name="next">下一篇</string>
+    <string name="notifications_action_reply">回复了你的点评：</string>
+    <string name="notifications_action_vote">赞了你的点评：</string>
+    <string name="notifications_empty">哟，还没有新消息哦~</string>
+    <string name="notifications_user_count1">等 %1$s 人</string>
+    <string name="notifications_user_count2">%1$s 个人</string>
+    <string name="offline_progress">%1$s %%</string>
+    <string name="offline_status">下载中：%1$s %%</string>
+    <string name="offline_status1">正在离线最新内容</string>
+    <string name="offline_status_done">下载完成</string>
+    <string name="offline_status_done1">离线完成</string>
+    <string name="offline_status_done2">完成</string>
+    <string name="offline_title">离线下载</string>
+    <string name="preference_key_app_check">key_app_check</string>
+    <string name="preference_key_app_upgrade_reminder">key_app_upgrade_reminder</string>
+    <string name="preference_key_auto_offline_open">key_auto_offline_open</string>
+    <string name="preference_key_big_font_mode_open">key_big_font_mode_open</string>
+    <string name="preference_key_cache_clear">key_cache_clear</string>
+    <string name="preference_key_comment_share_open">key_comment_share_open</string>
+    <string name="preference_key_dark_mode_open">key_dark_mode_open</string>
+    <string name="preference_key_feedback">key_feedback</string>
+    <string name="preference_key_guide_is_viewed">key_guide_is_viewed</string>
+    <string name="preference_key_last_cache_time">key_last_cache_time</string>
+    <string name="preference_key_last_offline_time">key_last_offline_time</string>
+    <string name="preference_key_no_image_mode_open">key_no_image_mode_open</string>
+    <string name="preference_key_push_open">key_push_open</string>
+    <string name="preference_key_recommendation_reminder">key_recommendation_reminder</string>
+    <string name="preference_key_shake_to_dark_mode_open">key_shake_to_dark_mode_open</string>
+    <string name="preference_key_test_server">key_test_server</string>
+    <string name="preference_test_server">测试服务器</string>
+    <string name="preferences_app_check">检查更新</string>
+    <string name="preferences_auto_offline">自动离线下载</string>
+    <string name="preferences_auto_offline_prompt">仅 Wi-Fi 下可用，自动下载最新内容</string>
+    <string name="preferences_bit_font_mode">大字号</string>
+    <string name="preferences_cache_clear">清除缓存</string>
+    <string name="preferences_cache_clear_success">清理成功</string>
+    <string name="preferences_category_feedback">反馈</string>
+    <string name="preferences_category_general">常规</string>
+    <string name="preferences_category_other">其它</string>
+    <string name="preferences_comment_share">点评分享到微博</string>
+    <string name="preferences_dark_mode">夜间模式</string>
+    <string name="preferences_feedback">意见反馈</string>
+    <string name="preferences_no_image_mode">无图模式</string>
+    <string name="preferences_no_image_mode_prompt">2G/3G 网络下不下载图片</string>
+    <string name="preferences_offline">立即离线下载</string>
+    <string name="preferences_push">推送消息</string>
+    <string name="preferences_shake_to_dark_mode">摇一摇夜间/白天模式</string>
+    <string name="preferences_shake_to_dark_mode_prompt">仅首页/文章页可用</string>
+    <string name="recommenders_title">回答%1$s（作者：%2$s）推荐者</string>
+    <string name="recommenders_title2">本文推荐者</string>
+    <string name="refresh">刷新</string>
+    <string name="save_image_success">保存成功</string>
+    <string name="share">分享</string>
+    <string name="share_success">分享成功</string>
+    <string name="sharing_compose">分享到新浪微博</string>
+    <string name="sharing_compose_done">发布</string>
+    <string name="sharing_dialog_title">分享</string>
+    <string name="sharing_longweibo">生成长微博</string>
+    <string name="sharing_prompt">已附带原文链接</string>
+    <string name="sharing_success">已分享</string>
+    <string name="sharing_wx_is_not_installed">微信未安装或版本不对</string>
+    <string name="sharing_youdaonote_is_not_installed">有道云笔记未安装或版本不对</string>
+    <string name="showcase_sliding_close">我知道了</string>
+    <string name="showcase_sliding_left">左划到下一篇</string>
+    <string name="showcase_sliding_right">右划到上一篇</string>
+    <string name="sina_weibo">新浪微博</string>
+    <string name="splash_text">Image: 1tu/pitrs</string>
+    <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="story_recommender_title">推荐者</string>
+    <string name="subscribe_is_subcribed">已关注主题</string>
+    <string name="subscribe_not_subcribed">推荐主题</string>
+    <string name="system_configuration">设置</string>
+    <string name="tencent_weibo">腾讯微博</string>
+    <string name="theme_editor_list_all">全部主编</string>
+    <string name="theme_editor_list_fold">收起</string>
+    <string name="theme_editor_list_title">主编</string>
+    <string name="theme_follow">已关注</string>
+    <string name="theme_not_subscribed">关注</string>
+    <string name="theme_subscribed">已关注</string>
+    <string name="theme_unfollow">已取消关注</string>
+    <string name="title_activity_test">TestActivity</string>
+    <string name="title_comment">%1$s 条点评</string>
+    <string name="title_comment_compose">写点评</string>
+    <string name="title_comment_likes">查看赞</string>
+    <string name="title_comment_replies">查看回复</string>
+    <string name="title_editor">主编资料</string>
+    <string name="title_editors">主编</string>
+    <string name="title_favorite">我的收藏</string>
+    <string name="title_favorite_count">%1$s 条收藏</string>
+    <string name="title_home">首页</string>
+    <string name="title_home_today">今日热闻</string>
+    <string name="title_login">登录</string>
+    <string name="title_notifications">消息</string>
+    <string name="title_recommendation">应用推荐</string>
+    <string name="title_recommenders">推荐者</string>
+    <string name="title_settings">设置</string>
+    <string name="title_sharing_compose">分享到新浪微博</string>
+    <string name="title_subscribe">主题日报</string>
+    <string name="title_user">个人主页</string>
+    <string name="toast_like_count_default">+1</string>
+    <string name="umeng_channel">知乎</string>
+    <string name="user_bind_sina_weibo">绑定新浪微博</string>
+    <string name="user_bind_tencent_weibo">绑定腾讯微博</string>
+    <string name="user_choose_from_camera">拍照</string>
+    <string name="user_choose_from_sdcard">从相册选择</string>
+    <string name="user_logout">登出</string>
+    <string name="user_unbind_sina_weibo">解绑新浪微博</string>
+    <string name="user_unbind_tencent_weibo">解绑腾讯微博</string>
+    <string name="weibo_login">使用微博登录</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="preference_key_account_settings">key_account_settings</string>
+    <string name="preference_key_about_us">key_about_us</string>
+    <string name="preference_key_term_of_service">key_term_of_service</string>
+    <string name="preference_key_business_cooperation">key_business_cooperation</string>
+    <string name="preference_key_shake_feedback">key_shake_feedback</string>
+    <string name="title_activity_account_settings">AccountSettingsActivity</string>
+    <string name="preference_title_account_mail">邮箱</string>
+    <string name="preference_title_account_password">帐号密码</string>
+    <string name="preference_title_account_phone">手机</string>
+    <string name="search_result" formatted="false" >搜索结果（%1$d）</string>
+    <string name="title_activity_association_member">AssociationMemberActivity</string>
+    <string name="title_activity_image_viewer">ImageViewerActivity</string>
+    <string name="title_activity_images_viewer">ImagesViewerActivity</string>
+    <string name="title_activity_notification_detail">NotificationDetailActivity</string>
+    <string name="title_activity_edit_default">EditDefaultActivity</string>
 
 </resources>

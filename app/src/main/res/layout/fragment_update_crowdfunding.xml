@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="cn.daixiaodong.myapp.fragment.UpdateCrowdfundingFragment">
+    tools:context="life.z_turn.app.fragment.UpdateCrowdfundingFragment">
 
     <ScrollView
         android:layout_width="match_parent"

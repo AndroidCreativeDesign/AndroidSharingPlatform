@@ -14,22 +14,20 @@ android {
     compileSdkVersion 22
     buildToolsVersion "22.0.1"
     defaultConfig {
-
-
-        applicationId "cn.daixiaodong.myapp"
+        applicationId 'life.z_turn.app'
         minSdkVersion 15
         targetSdkVersion 22
-        versionCode 2
-        versionName "1.0"
+        versionCode 3
+        versionName "V1.1.0 beta"
         buildConfigField "String", "URL", "\"http://www.baidu.com\""
 
 
     }
     buildTypes {
         release {
-            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.releaseConfig
+            debuggable true
         }
     }
     //为了解决部分第三方库重复打包了META-INF的问题
@@ -40,6 +38,8 @@ android {
     lintOptions {
         abortOnError true
     }
+    productFlavors {
+    }
 }
 
 dependencies {
@@ -49,13 +49,13 @@ dependencies {
     compile "org.androidannotations:androidannotations-api:$AAVersion"
     compile 'com.android.support:support-v4:22.2.1'
     compile 'cn.leancloud.android:avoscloud-search:v3.4.4@aar'
-    compile 'com.android.support:design:22.2.0'
-    compile 'com.android.support:cardview-v7:22.2.0'
-    compile 'com.android.support:recyclerview-v7:22.2.0'
+    compile 'com.android.support:design:22.2.1'
+    compile 'com.android.support:cardview-v7:22.2.1'
+    compile 'com.android.support:recyclerview-v7:22.2.1'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'de.hdodenhof:circleimageview:1.3.0'
     //avoscloud-sdk 为 LeanCloud基础包
-    compile 'cn.leancloud.android:avoscloud-sdk:v3.4.4'
+    compile 'cn.leancloud.android:avoscloud-sdk:v3.7'
     //avoscloud-push 与 Java-WebSocket 为推送与IM需要的包
     compile 'cn.leancloud.android:avoscloud-push:v3.4.4@aar'
     compile 'cn.leancloud.android:Java-WebSocket:1.2.0-leancloud'
@@ -71,6 +71,8 @@ dependencies {
     compile 'com.github.rahatarmanahmed:circularprogressview:2.3.2'
     compile 'com.android.support:gridlayout-v7:22.2.1'
     compile 'com.wdullaer:materialdatetimepicker:1.4.2'
+    compile 'com.balysv:material-ripple:1.0.2'
+    compile 'com.github.chrisbanes.photoview:library:1.2.3'
 }
 
 

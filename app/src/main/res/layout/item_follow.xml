@@ -22,14 +22,14 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tv_username"
+            android:id="@+id/text_username"
             style="@style/TextAppearance.AppCompat.Body1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="用户名" />
 
         <TextView
-            android:id="@+id/tv_user_status"
+            android:id="@+id/text_signature"
             style="@style/TextAppearance.AppCompat.Caption"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

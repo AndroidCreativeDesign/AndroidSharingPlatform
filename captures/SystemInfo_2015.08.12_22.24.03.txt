@@ -1,0 +1,270 @@
+TASK life.z_turn.app id=3438
+  ACTIVITY life.z_turn.app/.activity.MainActivity_ 2ed1f2f3 pid=1586
+    Local FragmentActivity 3144d636 State:
+      mCreated=truemResumed=true mStopped=false mReallyStopped=false
+      mLoadersStarted=true
+    Active Fragments in 3fa7c750:
+      #0: HomeFragment{310a6d49 #0 id=0x7f0e0087 首页}
+        mFragmentId=#7f0e0087 mContainerId=#7f0e0087 mTag=首页
+        mState=5 mIndex=0 mWho=android:fragment:0 mBackStackNesting=0
+        mAdded=true mRemoving=false mResumed=true mFromLayout=false mInLayout=false
+        mHidden=false mDetached=false mMenuVisible=true mHasMenu=true
+        mRetainInstance=false mRetaining=false mUserVisibleHint=true
+        mFragmentManager=FragmentManager{3fa7c750 in MainActivity_{3144d636}}
+        mActivity=life.z_turn.app.activity.MainActivity_@3144d636
+        mContainer=android.widget.FrameLayout{1e32f64e V.E..... ........ 0,0-1080,1533 #7f0e0087 app:id/id_layout_content_container}
+        mView=android.widget.LinearLayout{3112d36f V.E..... ........ 0,0-1080,1533}
+        mInnerView=android.widget.LinearLayout{3112d36f V.E..... ........ 0,0-1080,1533}
+        Child FragmentManager{184a087c in HomeFragment{310a6d49}}:
+          Active Fragments in 184a087c:
+            #0: IdeaListFragment{32039505 #0 id=0x7f0e010a android:switcher:2131624202:0}
+              mFragmentId=#7f0e010a mContainerId=#7f0e010a mTag=android:switcher:2131624202:0
+              mState=5 mIndex=0 mWho=android:fragment:0:0 mBackStackNesting=0
+              mAdded=true mRemoving=false mResumed=true mFromLayout=false mInLayout=false
+              mHidden=false mDetached=false mMenuVisible=true mHasMenu=false
+              mRetainInstance=false mRetaining=false mUserVisibleHint=true
+              mFragmentManager=FragmentManager{184a087c in HomeFragment{310a6d49}}
+              mActivity=life.z_turn.app.activity.MainActivity_@3144d636
+              mParentFragment=HomeFragment{310a6d49 #0 id=0x7f0e0087 首页}
+              mContainer=android.support.v4.view.ViewPager{29cc295a VFED.... ........ 0,144-1080,1533 #7f0e010a app:id/id_vp_view_pager}
+              mView=android.widget.FrameLayout{1623378b V.E..... ........ 0,0-1080,1389 #7f0e010b app:id/flayout_root}
+              mInnerView=android.widget.FrameLayout{1623378b V.E..... ........ 0,0-1080,1389 #7f0e010b app:id/flayout_root}
+              Child FragmentManager{286d3068 in IdeaListFragment{32039505}}:
+                FragmentManager misc state:
+                  mActivity=life.z_turn.app.activity.MainActivity_@3144d636
+                  mContainer=android.support.v4.app.Fragment$1@13ad7c81
+                  mParent=IdeaListFragment{32039505 #0 id=0x7f0e010a android:switcher:2131624202:0}
+                  mCurState=5 mStateSaved=false mDestroyed=false
+            #1: DiscoveryFragment{9938126 #1 id=0x7f0e010a android:switcher:2131624202:1}
+              mFragmentId=#7f0e010a mContainerId=#7f0e010a mTag=android:switcher:2131624202:1
+              mState=5 mIndex=1 mWho=android:fragment:0:1 mBackStackNesting=0
+              mAdded=true mRemoving=false mResumed=true mFromLayout=false mInLayout=false
+              mHidden=false mDetached=false mMenuVisible=false mHasMenu=false
+              mRetainInstance=false mRetaining=false mUserVisibleHint=false
+              mFragmentManager=FragmentManager{184a087c in HomeFragment{310a6d49}}
+              mActivity=life.z_turn.app.activity.MainActivity_@3144d636
+              mParentFragment=HomeFragment{310a6d49 #0 id=0x7f0e0087 首页}
+              mContainer=android.support.v4.view.ViewPager{29cc295a VFED.... ........ 0,144-1080,1533 #7f0e010a app:id/id_vp_view_pager}
+              mView=android.widget.FrameLayout{e8bc167 V.E..... ........ 1080,0-2160,1389}
+              mInnerView=android.widget.FrameLayout{e8bc167 V.E..... ........ 1080,0-2160,1389}
+              Child FragmentManager{318eb14 in DiscoveryFragment{9938126}}:
+                FragmentManager misc state:
+                  mActivity=life.z_turn.app.activity.MainActivity_@3144d636
+                  mContainer=android.support.v4.app.Fragment$1@eb45fbd
+                  mParent=DiscoveryFragment{9938126 #1 id=0x7f0e010a android:switcher:2131624202:1}
+                  mCurState=5 mStateSaved=false mDestroyed=false
+            #2: UserJoinListFragment{12689b2 #2 id=0x7f0e010a android:switcher:2131624202:2}
+              mFragmentId=#7f0e010a mContainerId=#7f0e010a mTag=android:switcher:2131624202:2
+              mState=5 mIndex=2 mWho=android:fragment:0:2 mBackStackNesting=0
+              mAdded=true mRemoving=false mResumed=true mFromLayout=false mInLayout=false
+              mHidden=false mDetached=false mMenuVisible=false mHasMenu=false
+              mRetainInstance=false mRetaining=false mUserVisibleHint=false
+              mFragmentManager=FragmentManager{184a087c in HomeFragment{310a6d49}}
+              mActivity=life.z_turn.app.activity.MainActivity_@3144d636
+              mParentFragment=HomeFragment{310a6d49 #0 id=0x7f0e0087 首页}
+              mContainer=android.support.v4.view.ViewPager{29cc295a VFED.... ........ 0,144-1080,1533 #7f0e010a app:id/id_vp_view_pager}
+              mView=android.widget.RelativeLayout{2d090d03 V.E..... ........ 2160,0-3240,1389}
+              mInnerView=android.widget.RelativeLayout{2d090d03 V.E..... ........ 2160,0-3240,1389}
+              Child FragmentManager{223a480 in UserJoinListFragment{12689b2}}:
+                FragmentManager misc state:
+                  mActivity=life.z_turn.app.activity.MainActivity_@3144d636
+                  mContainer=android.support.v4.app.Fragment$1@4c3ab9
+                  mParent=UserJoinListFragment{12689b2 #2 id=0x7f0e010a android:switcher:2131624202:2}
+                  mCurState=5 mStateSaved=false mDestroyed=false
+            #3: UserPublishListFragment{3e6f8efe #3 id=0x7f0e010a android:switcher:2131624202:3}
+              mFragmentId=#7f0e010a mContainerId=#7f0e010a mTag=android:switcher:2131624202:3
+              mState=5 mIndex=3 mWho=android:fragment:0:3 mBackStackNesting=0
+              mAdded=true mRemoving=false mResumed=true mFromLayout=false mInLayout=false
+              mHidden=false mDetached=false mMenuVisible=false mHasMenu=false
+              mRetainInstance=false mRetaining=false mUserVisibleHint=false
+              mFragmentManager=FragmentManager{184a087c in HomeFragment{310a6d49}}
+              mActivity=life.z_turn.app.activity.MainActivity_@3144d636
+              mParentFragment=HomeFragment{310a6d49 #0 id=0x7f0e0087 首页}
+              mContainer=android.support.v4.view.ViewPager{29cc295a VFED.... ........ 0,144-1080,1533 #7f0e010a app:id/id_vp_view_pager}
+              mView=android.widget.RelativeLayout{2985765f V.E..... ........ 3240,0-4320,1389}
+              mInnerView=android.widget.RelativeLayout{2985765f V.E..... ........ 3240,0-4320,1389}
+              Child FragmentManager{45e88ac in UserPublishListFragment{3e6f8efe}}:
+                FragmentManager misc state:
+                  mActivity=life.z_turn.app.activity.MainActivity_@3144d636
+                  mContainer=android.support.v4.app.Fragment$1@aecc975
+                  mParent=UserPublishListFragment{3e6f8efe #3 id=0x7f0e010a android:switcher:2131624202:3}
+                  mCurState=5 mStateSaved=false mDestroyed=false
+          Added Fragments:
+            #0: IdeaListFragment{32039505 #0 id=0x7f0e010a android:switcher:2131624202:0}
+            #1: DiscoveryFragment{9938126 #1 id=0x7f0e010a android:switcher:2131624202:1}
+            #2: UserJoinListFragment{12689b2 #2 id=0x7f0e010a android:switcher:2131624202:2}
+            #3: UserPublishListFragment{3e6f8efe #3 id=0x7f0e010a android:switcher:2131624202:3}
+          FragmentManager misc state:
+            mActivity=life.z_turn.app.activity.MainActivity_@3144d636
+            mContainer=android.support.v4.app.Fragment$1@11b19d0a
+            mParent=HomeFragment{310a6d49 #0 id=0x7f0e0087 首页}
+            mCurState=5 mStateSaved=false mDestroyed=false
+    Added Fragments:
+      #0: HomeFragment{310a6d49 #0 id=0x7f0e0087 首页}
+    Fragments Created Menus:
+      #0: HomeFragment{310a6d49 #0 id=0x7f0e0087 首页}
+    FragmentManager misc state:
+      mActivity=life.z_turn.app.activity.MainActivity_@3144d636
+      mContainer=android.support.v4.app.FragmentActivity$2@2635197b
+      mCurState=5 mStateSaved=false mDestroyed=false
+    View Hierarchy:
+      com.android.internal.policy.impl.PhoneWindow$DecorView{22818398 V.E..... ... 0,0-1080,1920}
+        android.widget.LinearLayout{6cd87f1 V.E..... ... 0,0-1080,1776}
+          android.view.ViewStub{1a547fd6 G.E..... ... 0,0-0,0 #102036e}
+          android.widget.FrameLayout{2a71d257 V.E..... ... 0,75-1080,1776}
+            android.support.v7.internal.widget.FitWindowsLinearLayout{6d74144 V.E..... ... 0,0-1080,1701 #7f0e0057 app:id/action_bar_root}
+              android.support.v7.internal.widget.ViewStubCompat{3e21b22d G.E..... ... 0,0-0,0 #7f0e0058 app:id/action_mode_bar_stub}
+              android.support.v7.internal.widget.ContentFrameLayout{3470c362 V.E..... ... 0,0-1080,1701 #1020002 android:id/content}
+                android.widget.LinearLayout{2f573cf3 V.E..... ... 0,0-1080,1701}
+                  android.widget.LinearLayout{13a92db0 V.E..... ... 0,0-1080,168}
+                    android.support.v7.widget.Toolbar{31144429 V.E..... ... 0,0-1080,168 #7f0e007f app:id/toolbar}
+                      android.widget.TextView{331bb3ae V.ED.... ... 180,43-300,124}
+                      android.widget.ImageButton{1a1eb54f VFED..C. ... 0,0-168,168}
+                      android.support.v7.widget.ActionMenuView{46b74dc V.E..... ... 936,0-1080,168}
+                        android.support.v7.internal.view.menu.ActionMenuItemView{1d83f9e5 VFED..CL ... 0,12-144,156 #7f0e017d app:id/action_search}
+                  android.support.v4.widget.DrawerLayout{33735cba VFE..... ... 0,168-1080,1701 #7f0e0086 app:id/id_layout_drawer_layout}
+                    android.widget.FrameLayout{1e32f64e V.E..... ... 0,0-1080,1533 #7f0e0087 app:id/id_layout_content_container}
+                      android.widget.LinearLayout{3112d36f V.E..... ... 0,0-1080,1533}
+                        android.support.design.widget.TabLayout{3b576b VFED.... ... 0,0-1080,144 #7f0e0109 app:id/id_tl_tab_layout}
+                          android.support.design.widget.TabLayout$SlidingTabStrip{35a902c8 V.ED.... ... 0,0-1080,144}
+                            android.support.design.widget.TabLayout$TabView{67f4f61 VFE...C. .S. 0,0-270,144}
+                              android.widget.ImageView{146a8a86 G.ED.... .S. 0,0-0,0}
+                              android.support.v7.widget.AppCompatTextView{1135ff47 V.ED.... .S. 93,43-177,100}
+                            android.support.design.widget.TabLayout$TabView{3faf8374 VFE...C. ... 270,0-540,144}
+                              android.widget.ImageView{3780809d G.ED.... ... 0,0-0,0}
+                              android.support.v7.widget.AppCompatTextView{1f54c912 V.ED.... ... 93,43-177,100}
+                            android.support.design.widget.TabLayout$TabView{24948e3 VFE...C. ... 540,0-810,144}
+                              android.widget.ImageView{ffb62e0 G.ED.... ... 0,0-0,0}
+                              android.support.v7.widget.AppCompatTextView{3f698999 V.ED.... ... 51,43-219,100}
+                            android.support.design.widget.TabLayout$TabView{2d32645e VFE...C. ... 810,0-1080,144}
+                              android.widget.ImageView{17bd903f G.ED.... ... 0,0-0,0}
+                              android.support.v7.widget.AppCompatTextView{2d63cd0c V.ED.... ... 51,43-219,100}
+                        android.support.v4.view.ViewPager{29cc295a VFED.... ... 0,144-1080,1533 #7f0e010a app:id/id_vp_view_pager}
+                          android.widget.FrameLayout{1623378b V.E..... ... 0,0-1080,1389 #7f0e010b app:id/flayout_root}
+                            android.support.v4.widget.SwipeRefreshLayout{1f402655 V.ED.... ... 0,0-1080,1389 #7f0e00d9 app:id/id_srl_refresh_data}
+                              android.support.v7.widget.RecyclerView{14bc686a VFED.... F.. 0,0-1080,1389 #7f0e010c app:id/id_rv_idea_recycler_view}
+                                android.support.v7.widget.CardView{2804f15b V.E...C. ... 24,24-1056,474}
+                                  android.widget.LinearLayout{1306adf8 V.E..... ... 0,0-1032,450}
+                                    android.widget.RelativeLayout{28a9d2d1 V.E..... ... 0,0-1032,450}
+                                      android.widget.ImageView{2af5dfb5 V.ED.... ... 0,0-450,450 #7f0e0129 app:id/id_iv_img}
+                                      android.support.v7.widget.AppCompatTextView{2d30a136 V.ED.... ... 834,12-1020,87 #7f0e012a app:id/id_tv_tag_name}
+                                      android.widget.LinearLayout{34974837 V.E..... ... 474,48-1032,129}
+                                        android.support.v7.widget.AppCompatTextView{df4b1a4 G.ED.... ... 0,0-24,97 #7f0e0117 app:id/id_tv_title}
+                                        android.support.v7.widget.AppCompatTextView{827cb0d G.ED.... ... 0,97-400,178 #7f0e012b app:id/id_tv_time}
+                                        android.support.v7.widget.AppCompatTextView{31dd9ac2 V.ED.... ... 0,0-424,81}
+                                        android.support.v7.widget.AppCompatTextView{348e30d3 G.ED.... ... 0,0-0,0 #7f0e012c app:id/id_tv_introduce}
+                                      android.widget.RelativeLayout{99d4410 V.E..... ... 450,306-1032,450 #7f0e012d app:id/rlayout_action}
+                                        android.widget.ImageButton{37130b09 VFED..C. ... 48,48-104,96 #7f0e012e app:id/ibtn_comment}
+                                        android.widget.ImageButton{126ea10e VFED..C. ... 152,48-210,96 #7f0e012f app:id/ibtn_share}
+                                        android.support.v7.widget.AppCompatButton{2d01072f VFED..C. ... 294,0-558,144}
+                                android.support.v7.widget.CardView{36fa913c V.E...C. ... 24,498-1056,948}
+                                  android.widget.LinearLayout{11584ec5 V.E..... ... 0,0-1032,450}
+                                    android.widget.RelativeLayout{3bf7c01a V.E..... ... 0,0-1032,450}
+                                      android.widget.ImageView{191bc8bf V.ED.... ... 0,0-450,450 #7f0e0129 app:id/id_iv_img}
+                                      android.support.v7.widget.AppCompatTextView{3320e74b V.ED.... ... 792,12-1020,87 #7f0e012a app:id/id_tv_tag_name}
+                                      android.widget.LinearLayout{3a7d8528 V.E..... ... 474,48-1032,129}
+                                        android.support.v7.widget.AppCompatTextView{af41241 G.ED.... ... 0,0-24,97 #7f0e0117 app:id/id_tv_title}
+                                        android.support.v7.widget.AppCompatTextView{26c1c3e6 G.ED.... ... 0,97-400,178 #7f0e012b app:id/id_tv_time}
+                                        android.support.v7.widget.AppCompatTextView{3414ad27 V.ED.... ... 0,0-424,81}
+                                        android.support.v7.widget.AppCompatTextView{cb9cbd4 G.ED.... ... 0,0-0,0 #7f0e012c app:id/id_tv_introduce}
+                                      android.widget.RelativeLayout{12e917d V.E..... ... 450,306-1032,450 #7f0e012d app:id/rlayout_action}
+                                        android.widget.ImageButton{34d63872 VFED..C. ... 48,48-104,96 #7f0e012e app:id/ibtn_comment}
+                                        android.widget.ImageButton{1e94f4c3 VFED..C. ... 152,48-210,96 #7f0e012f app:id/ibtn_share}
+                                        android.support.v7.widget.AppCompatButton{39d1d140 VFED..C. ... 294,0-558,144}
+                                android.support.v7.widget.CardView{2397c879 V.E...C. ... 24,972-1056,1422}
+                                  android.widget.LinearLayout{2d4b69be V.E..... ... 0,0-1032,450}
+                                    android.widget.RelativeLayout{a481a1f V.E..... ... 0,0-1032,450}
+                                      android.widget.ImageView{389e5faf V.ED.... ... 0,0-450,450 #7f0e0129 app:id/id_iv_img}
+                                      android.support.v7.widget.AppCompatTextView{2ba2c16c G.ED.... ... 0,0-0,0 #7f0e012a app:id/id_tv_tag_name}
+                                      android.widget.LinearLayout{30c37335 V.E..... ... 474,48-1032,307}
+                                        android.support.v7.widget.AppCompatTextView{205063ca V.ED.... ... 0,0-24,97 #7f0e0117 app:id/id_tv_title}
+                                        android.support.v7.widget.AppCompatTextView{38de393b V.ED.... ... 0,97-400,178 #7f0e012b app:id/id_tv_time}
+                                        android.support.v7.widget.AppCompatTextView{2ab08858 V.ED.... ... 0,178-424,259}
+                                        android.support.v7.widget.AppCompatTextView{2c50db1 G.ED.... ... 0,0-0,0 #7f0e012c app:id/id_tv_introduce}
+                                      android.widget.RelativeLayout{3ff8f296 V.E..... ... 450,306-1032,450 #7f0e012d app:id/rlayout_action}
+                                        android.widget.ImageButton{ced2e17 VFED..C. ... 48,48-104,96 #7f0e012e app:id/ibtn_comment}
+                                        android.widget.ImageButton{1d1d204 VFED..C. ... 152,48-210,96 #7f0e012f app:id/ibtn_share}
+                                        android.support.v7.widget.AppCompatButton{276bd3ed VFED..C. ... 294,0-558,144}
+                              android.support.v4.widget.CircleImageView{39c9a222 G.ED.... ... 480,-120-600,0}
+                            com.melnykov.fab.FloatingActionButton{21037c0 VFED..C. ... 864,1173-1032,1341 #7f0e010d app:id/id_fab_floating_action_button}
+                          android.widget.FrameLayout{e8bc167 V.E..... ... 1080,0-2160,1389}
+                            android.support.v4.widget.SwipeRefreshLayout{128c94b3 V.ED.... ... 0,0-1080,1389 #7f0e0071 app:id/refresh_layout}
+                              android.support.v7.widget.RecyclerView{309c0a70 VFED.... ... 0,0-1080,1389 #7f0e0072 app:id/recycler_view}
+                              android.support.v4.widget.CircleImageView{3ec1e9 G.ED.... ... 480,-120-600,0}
+                          android.widget.RelativeLayout{2d090d03 V.E..... ... 2160,0-3240,1389}
+                            android.support.v4.widget.SwipeRefreshLayout{1d03be6e V.ED.... ... 0,0-1080,1389 #7f0e00d9 app:id/id_srl_refresh_data}
+                              android.support.v7.widget.RecyclerView{35b1c90f VFED.... ... 0,0-1080,1389 #7f0e00da app:id/id_rv_join_recycler_view}
+                                android.support.v7.widget.CardView{188f5d9c V.E...C. ... 24,24-1056,473}
+                                  android.widget.RelativeLayout{263893a5 V.E..... ... 0,0-1032,449}
+                                    android.widget.LinearLayout{19b1537a V.E..... ... 0,0-1032,449}
+                                      android.support.v7.widget.AppCompatTextView{24be72b V.ED.... ... 48,48-144,113 #7f0e0117 app:id/id_tv_title}
+                                      android.widget.LinearLayout{1102b788 V.E..... ... 48,137-366,194}
+                                        android.support.v7.widget.AppCompatTextView{d43c521 V.ED.... ... 0,0-294,57}
+                                        android.support.v7.widget.AppCompatTextView{24712d46 V.ED.... ... 294,0-318,57 #7f0e0118 app:id/id_tv_join}
+                                      android.widget.LinearLayout{a1fcb07 V.E..... ... 48,206-590,263}
+                                        android.support.v7.widget.AppCompatTextView{dcfc434 V.ED.... ... 0,0-210,57}
+                                        android.support.v7.widget.AppCompatTextView{2376925d V.ED.... ... 210,0-542,57 #7f0e0119 app:id/id_tv_start_time}
+                                      android.widget.LinearLayout{b02d7d2 V.E..... ... 48,275-590,332}
+                                        android.support.v7.widget.AppCompatTextView{c6410a3 V.ED.... ... 0,0-210,57}
+                                        android.support.v7.widget.AppCompatTextView{4beefa0 V.ED.... ... 210,0-542,57 #7f0e0097 app:id/tv_end_time}
+                                      android.widget.LinearLayout{280ef759 V.E..... ... 48,344-174,401}
+                                        android.support.v7.widget.AppCompatTextView{5929f1e V.ED.... ... 0,0-126,57}
+                                        android.support.v7.widget.AppCompatTextView{3b1d13ff V.ED.... ... 126,0-126,57 #7f0e011a app:id/id_tv_address}
+                                android.support.v7.widget.CardView{3db365cc V.E...C. ... 24,497-1056,946}
+                                  android.widget.RelativeLayout{362eb015 V.E..... ... 0,0-1032,449}
+                                    android.widget.LinearLayout{10c58f2a V.E..... ... 0,0-1032,449}
+                                      android.support.v7.widget.AppCompatTextView{3a38f11b V.ED.... ... 48,48-144,113 #7f0e0117 app:id/id_tv_title}
+                                      android.widget.LinearLayout{399712b8 V.E..... ... 48,137-366,194}
+                                        android.support.v7.widget.AppCompatTextView{3f573891 V.ED.... ... 0,0-294,57}
+                                        android.support.v7.widget.AppCompatTextView{1c8573f6 V.ED.... ... 294,0-318,57 #7f0e0118 app:id/id_tv_join}
+                                      android.widget.LinearLayout{346b83f7 V.E..... ... 48,206-590,263}
+                                        android.support.v7.widget.AppCompatTextView{1c06a264 V.ED.... ... 0,0-210,57}
+                                        android.support.v7.widget.AppCompatTextView{31a5cccd V.ED.... ... 210,0-542,57 #7f0e0119 app:id/id_tv_start_time}
+                                      android.widget.LinearLayout{1b8cd982 V.E..... ... 48,275-590,332}
+                                        android.support.v7.widget.AppCompatTextView{21ca6893 V.ED.... ... 0,0-210,57}
+                                        android.support.v7.widget.AppCompatTextView{3bd80d0 V.ED.... ... 210,0-542,57 #7f0e0097 app:id/tv_end_time}
+                                      android.widget.LinearLayout{5cf68c9 V.E..... ... 48,344-174,401}
+                                        android.support.v7.widget.AppCompatTextView{3fb30bce V.ED.... ... 0,0-126,57}
+                                        android.support.v7.widget.AppCompatTextView{1c28faef V.ED.... ... 126,0-126,57 #7f0e011a app:id/id_tv_address}
+                              android.support.v4.widget.CircleImageView{3dc1d9fc G.ED.... ... 480,-120-600,0}
+                            android.view.ViewStub{30dcc885 G.E..... ... 0,0-0,0 #7f0e0108}
+                          android.widget.RelativeLayout{2985765f V.E..... ... 3240,0-4320,1389}
+                            android.support.v4.widget.SwipeRefreshLayout{2ef816da V.ED.... ... 0,0-1080,1389 #7f0e00d9 app:id/id_srl_refresh_data}
+                              android.support.v7.widget.RecyclerView{1d34570b VFED.... ... 0,0-1080,1389 #7f0e010f app:id/id_rv_publish_recycler_view}
+                                android.support.v7.widget.CardView{3f5099e8 V.E...C. ... 24,24-1056,473}
+                                  android.widget.RelativeLayout{35a66801 V.E..... ... 0,0-1032,449}
+                                    android.support.v7.widget.AppCompatButton{3d50c6a6 VFED..C. ... 720,152-984,296 #7f0e0135 app:id/btn_edit}
+                                    android.widget.LinearLayout{24f58e7 V.E..... ... 48,48-720,401}
+                                      android.support.v7.widget.AppCompatTextView{12896c94 V.ED.... ... 0,0-48,65 #7f0e011b app:id/tv_title}
+                                      android.widget.LinearLayout{1210833d V.E..... ... 0,89-294,146}
+                                        android.support.v7.widget.AppCompatTextView{3732a732 V.ED.... ... 0,0-294,57}
+                                        android.support.v7.widget.AppCompatTextView{322e9c83 V.ED.... ... 294,0-294,57 #7f0e0118 app:id/id_tv_join}
+                                      android.widget.LinearLayout{21dabe00 V.E..... ... 0,158-210,215}
+                                        android.support.v7.widget.AppCompatTextView{4071639 V.ED.... ... 0,0-210,57}
+                                        android.support.v7.widget.AppCompatTextView{8e0047e V.ED.... ... 210,0-210,57 #7f0e0094 app:id/tv_start_date}
+                                      android.widget.LinearLayout{347ddf V.E..... ... 0,227-210,284}
+                                        android.support.v7.widget.AppCompatTextView{e2dba2c V.ED.... ... 0,0-210,57}
+                                        android.support.v7.widget.AppCompatTextView{2239dcf5 V.ED.... ... 210,0-210,57 #7f0e0096 app:id/tv_end_date}
+                                      android.widget.LinearLayout{e73ea8a V.E..... ... 0,296-126,353}
+                                        android.support.v7.widget.AppCompatTextView{298d18fb V.ED.... ... 0,0-126,57}
+                                        android.support.v7.widget.AppCompatTextView{3bd24d18 V.ED.... ... 126,0-126,57 #7f0e011a app:id/id_tv_address}
+                              android.support.v4.widget.CircleImageView{4985371 G.ED.... ... 480,-120-600,0}
+                            android.view.ViewStub{18ae2556 G.E..... ... 0,0-0,0 #7f0e0108}
+                    android.support.design.widget.NavigationView{80a49d7 I.E..... ... -888,0-0,1533 #7f0e0088 app:id/id_nv_navigation}
+                      android.support.design.internal.NavigationMenuView{22b22c4 VFED..C. ... 0,0-888,1533}
+                        android.widget.LinearLayout{388db5ad V.E..... ... 0,0-888,405}
+                          android.widget.RelativeLayout{327f40e2 V.E..... ... 0,0-888,381}
+                            android.widget.LinearLayout{16bfac73 V.E...C. ... 48,96-228,381 #7f0e0081 app:id/llayout_container}
+                              de.hdodenhof.circleimageview.CircleImageView{7d1cced V.ED.... ... 0,0-180,180 #7f0e0111 app:id/id_iv_profile_photo}
+                              android.support.v7.widget.AppCompatTextView{2a19a730 V.ED.... ... 10,180-170,285 #7f0e0112 app:id/tv_username}
+                        android.support.design.internal.NavigationMenuItemView{3cfcffa9 V.ED.... ... 0,405-888,549}
+                        android.support.design.internal.NavigationMenuItemView{3354892e V.ED.... ... 0,549-888,693}
+                        android.support.design.internal.NavigationMenuItemView{245e9ccf V.ED.... ... 0,693-888,837}
+                        android.support.design.internal.NavigationMenuItemView{272a065c V.ED.... ... 0,837-888,981}
+                        android.widget.FrameLayout{1fced65 V.E..... ... 0,981-888,1008}
+                          android.view.View{2a240a3a V.ED.... ... 0,24-888,27}
+                        android.support.v7.widget.AppCompatTextView{f5236eb V.ED.... ... 0,1008-888,1152}
+                        android.support.design.internal.NavigationMenuItemView{377f2c48 V.ED.... ... 0,1152-888,1296}
+                        android.support.design.internal.NavigationMenuItemView{2853fae1 V.ED.... ... 0,1296-888,1440}
+        android.view.View{2d389006 V.ED.... ... 0,0-1080,75 #102002f android:id/statusBarBackground}
+        android.view.View{279b56c7 V.ED.... ... 0,1776-1080,1920 #1020030 android:id/navigationBarBackground}

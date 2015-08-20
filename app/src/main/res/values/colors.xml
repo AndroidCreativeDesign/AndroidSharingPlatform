@@ -7,15 +7,16 @@
         <color name="refresh_progress_3">@color/theme_primary</color>-->
 
 
-    <color name="primary">#3F51B5</color>
-    <color name="primary_dark">#303F9F</color>
-    <color name="accent">#FF4081</color>
+    <color name="primary">#2196F3</color>
+    <color name="primary_dark">#1976D2</color>
+    <color name="accent">#FF6E40</color>
 
 
-    <color name="textColorPrimary">?android:attr/textColorPrimary</color>
-    <color name="textColorSecondary">?android:attr/textColorSecondary</color>
+    <color name="textColorPrimary">#de000000</color>
+    <color name="textColorSecondary">#8a000000</color>
     <color name="textColorHint">?android:attr/textColorHintInverse</color>
-    <color name="dividerColor">#1F000000</color>
+    <color name="divider">#1F000000</color>
+
 
 
 </resources>

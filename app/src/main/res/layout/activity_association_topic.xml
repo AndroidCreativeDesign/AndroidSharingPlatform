@@ -10,6 +10,7 @@
         layout="@layout/include_toolbar" />
 
 
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/id_rv_recycler_view"
         android:layout_width="match_parent"

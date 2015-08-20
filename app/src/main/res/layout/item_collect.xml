@@ -18,7 +18,7 @@
 
 
             <TextView
-                android:id="@+id/id_tv_title"
+                android:id="@+id/text_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="活动标题"
@@ -35,7 +35,7 @@
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/id_tv_title"
+                    android:layout_below="@id/text_title"
                     android:text="目前参与人数：" />
 
                 <TextView

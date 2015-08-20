@@ -1,0 +1,50 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="4dp"
+    android:layout_marginTop="4dp"
+    android:paddingBottom="8dp"
+    android:paddingLeft="16dp"
+    android:background="@drawable/list_item_background"
+    android:paddingRight="16dp"
+    android:paddingTop="8dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/topic_background"
+        android:padding="4dp"
+        android:text="2014年十佳社团" />
+
+
+    <TextView
+        android:id="@+id/text_association_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="北斗之芯协会"
+        android:textColor="@color/textColorPrimary"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/text_member_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_association_name"
+        android:layout_marginTop="8dp"
+        android:text="目前共233个成员"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/id_btn_join"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:text="加入"
+        android:visibility="gone" />
+
+
+</RelativeLayout>
+
+
+

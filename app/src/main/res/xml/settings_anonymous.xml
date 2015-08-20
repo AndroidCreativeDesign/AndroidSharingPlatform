@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="设置">
+
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="@string/preference_key_push_open"
+            android:title="接收消息" />
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="@string/preference_key_shake_feedback"
+            android:title="摇一摇反馈" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="其他">
+
+        <Preference
+            android:key="@string/preference_key_business_cooperation"
+            android:title="商务合作" />
+        <Preference
+            android:key="@string/preference_key_term_of_service"
+            android:title="服务条款" />
+        <Preference
+            android:key="@string/preference_key_app_check"
+            android:title="检查更新" />
+        <Preference
+            android:key="@string/preference_key_about_us"
+            android:title="关于我们" />
+    </PreferenceCategory>
+</PreferenceScreen>

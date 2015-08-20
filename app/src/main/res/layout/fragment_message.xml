@@ -4,10 +4,65 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/id_rv_message_recycler_view"
+    <LinearLayout
+        android:id="@+id/llayout_notification"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:clickable="true"
+        android:padding="16dp">
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/ic_notifications_none_grey600_48dp" />
+
+        <TextView
+            android:id="@+id/text_notification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:gravity="center_vertical"
+            android:text="通知"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="18sp" />
+
+
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:layout_marginLeft="66dp"
+
+        android:background="@color/divider" />
+
+
+    <LinearLayout
+        android:id="@+id/llayout_comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="16dp">
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/ic_comment_grey600_48dp" />
+
+        <TextView
+            android:id="@+id/text_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:gravity="center_vertical"
+            android:text="收到的评论"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="18sp" />
+
+
+    </LinearLayout>
+
 
 </LinearLayout>

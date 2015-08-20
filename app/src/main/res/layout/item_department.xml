@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="电子与信息工程学院"
+        android:textColor="@color/textColorPrimary"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tv_student_union"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/tv_name"
+        android:layout_marginLeft="8dp"
+        android:layout_toRightOf="@id/tv_name"
+        android:text="团委学生会"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_intro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_name"
+        android:layout_marginTop="8dp"
+        android:text="共11个部门"
+        android:textSize="16sp" />
+
+
+</RelativeLayout>

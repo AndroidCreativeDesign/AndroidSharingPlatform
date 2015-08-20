@@ -1,124 +1,83 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
 
-    <include
-        android:id="@+id/include_toolbar"
-        layout="@layout/include_toolbar" />
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:orientation="vertical">
-
-        <EditText
-            android:id="@+id/edit_mobile_phone_number"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:hint="手机号"
-            android:inputType="number"
-            android:maxLength="11" />
-
-
-        <EditText
-            android:id="@+id/id_et_password"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="16dp"
-            android:hint="密码"
-            android:inputType="textPassword" />
-
-
-        <Button
-            android:id="@+id/id_btn_sign_in"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="16dp"
-            android:gravity="center"
-            android:text="@string/sign_in" />
-
-        <TextView
-            android:id="@+id/id_tv_forgot_password"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="8dp"
-            android:padding="8dp"
-            android:text="@string/forgot_password" />
-
-
-        <Button
-            android:id="@+id/id_btn_sign_up_now"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/sign_up_now_for_free"
-            android:textColor="@color/primary" />
-
-    </LinearLayout>
+    <include layout="@layout/include_toolbar" />
 
 
     <RelativeLayout
-        android:id="@+id/id_layout_line"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
 
-        <TextView
-            android:id="@+id/id_tv_or"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:text="@string/or" />
+            android:orientation="vertical"
+            android:paddingBottom="16dp"
+            android:paddingTop="16dp">
 
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="0.1dp"
-            android:layout_centerVertical="true"
-            android:layout_toLeftOf="@id/id_tv_or"
-            android:layout_toStartOf="@id/id_tv_or"
+            <EditText
+                android:id="@+id/edit_account_number"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="手机号或用户名"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:maxLength="11"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp" />
 
-            android:background="@android:color/white" />
 
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="0.1dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_toEndOf="@id/id_tv_or"
-            android:layout_toRightOf="@id/id_tv_or"
-            android:background="@android:color/white" />
+            <EditText
+                android:id="@+id/id_et_password"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="16dp"
+                android:hint="密码"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp" />
+
+
+            <Button
+                android:id="@+id/id_btn_sign_in"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:text="@string/sign_in" />
+
+            <TextView
+                android:id="@+id/id_tv_forgot_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginTop="8dp"
+                android:padding="8dp"
+                android:text="@string/forgot_password" />
+
+
+        </LinearLayout>
+
     </RelativeLayout>
 
-    <Button
-        android:id="@+id/id_btn_sign_in_by_weibo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/sign_in_by_weibo"
-        android:visibility="gone" />
 
     <Button
-        android:id="@+id/id_btn_sign_in_by_wchat"
+        android:id="@+id/id_btn_sign_up_now"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/sign_in_by_wchat"
-        android:visibility="gone" />
+        android:layout_height="56dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/sign_up_now_for_free"
+        android:textColor="@color/primary" />
 
 
-</RelativeLayout>
+</LinearLayout>

@@ -7,35 +7,39 @@
     android:layout_marginRight="8dp"
     android:layout_marginTop="8dp">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="8dp">
+        android:padding="16dp">
 
 
         <TextView
-            android:id="@+id/tv_title"
+            android:id="@+id/text_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="招募标题" />
+            android:paddingRight="8dp"
+            android:text="招募标题"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="16sp" />
 
         <TextView
-            android:id="@+id/tv_register"
+            android:id="@+id/text_current_join_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tv_title"
-            android:text="已有100人报名" />
+            android:layout_below="@id/text_title"
+            android:layout_marginTop="8dp"
+            android:text="已有100人参与" />
 
         <Button
             android:id="@+id/btn_check"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toLeftOf="@id/btn_update"
+            android:layout_toLeftOf="@id/btn_edit"
             android:text="查看报名" />
 
         <Button
-            android:id="@+id/btn_update"
+            android:id="@+id/btn_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"

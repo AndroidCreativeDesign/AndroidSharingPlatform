@@ -1,0 +1,19 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="life.z_turn.app.activity.UserProfileActivity">
+
+    <item
+        android:id="@+id/action_chat"
+        android:title="聊天"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_follow"
+        android:title="关注"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_report"
+        android:title="举报"
+        app:showAsAction="never" />
+</menu>
